@@ -34,5 +34,12 @@ Route::get('/home', 'HomeController@index')->name('home');
   // User Model
   Route::get('/users/{user_type}','AdminController@users')->name('users');
   Route::get('/user/edit/{user}','AdminController@user_edit')->name('user_edit');
+  Route::get('user/view/{user}','AdminController@user_view')->name('user_view');
+  Route::post('user/update','AdminController@user_update')->name('user_update');
+  Route::get('user/create/{user_type}','AdminController@user_create')->name('user_create');
+  Route::post('user/store/{user_type}','AdminController@user_store')->name('user_store');
 
+  // Provider Model
+  Route::post('/provider/store/{user_type}','ProviderController@store')->name('provider_store');
+  Route::post('/provider/update/{user}/{user_type}','ProviderController@update')->name('provider_update');
 });

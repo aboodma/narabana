@@ -1,5 +1,9 @@
 @extends('layouts.backend')
 @section('page_header','Users List')
+@section('page_toolbar')
+<a href="{{route('admin.user_create',$user_type)}}" class="btn btn-sm btn-primary font-weight-bolder text-uppercase">Create User</a>
+
+@endsection
 @section('content')
 
 <div class="content flex-column-fluid" id="kt_content">
@@ -24,7 +28,16 @@
             <div class="mr-3">
               <!--begin::Name-->
               <a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">{{$user->name}}
-              <i class="flaticon2-correct text-success icon-md ml-2"></i></a>
+                @if ($user->user_type == 1 )
+                @if ($user->provider->is_approved)
+                <i class="flaticon2-correct text-success icon-md ml-2"></i>
+                @else
+                <i class="flaticon2-correct text-default icon-md ml-2"></i>
+                    
+                @endif
+                    
+                @endif
+              </a>
               <!--end::Name-->
               <!--begin::Contacts-->
               <div class="d-flex flex-wrap my-2">
@@ -39,7 +52,10 @@
                     </g>
                   </svg>
                   <!--end::Svg Icon-->
-                </span>jason@siastudio.com</a>
+                </span>{{$user->email}}</a>
+                @if ($user_type == 1)
+                    
+               
                 <a href="#" class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                 <span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                   <!--begin::Svg Icon | path:assets/media/svg/icons/General/Lock.svg-->
@@ -53,7 +69,9 @@
                     </g>
                   </svg>
                   <!--end::Svg Icon-->
-                </span>PR Manager</a>
+                </span>{{$user->provider->ProviderType->name}}
+                </a>
+                
                 <a href="#" class="text-muted text-hover-primary font-weight-bold">
                 <span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                   <!--begin::Svg Icon | path:assets/media/svg/icons/Map/Marker2.svg-->
@@ -64,14 +82,15 @@
                     </g>
                   </svg>
                   <!--end::Svg Icon-->
-                </span>Melbourne</a>
+                </span>{{$user->provider->Country->name}}</a>
+                @endif
               </div>
               <!--end::Contacts-->
             </div>
             <!--begin::User-->
             <!--begin::Actions-->
             <div class="my-lg-0 my-1">
-              <a href="#" class="btn btn-sm btn-light-primary font-weight-bolder text-uppercase mr-2"><i class="fa fa-eye"></i>View</a>
+              <a href="{{route('admin.user_view',$user->id)}}" class="btn btn-sm btn-light-primary font-weight-bolder text-uppercase mr-2"><i class="fa fa-eye"></i>View</a>
               <a href="{{route('admin.user_edit',$user->id)}}" class="btn btn-sm btn-primary font-weight-bolder text-uppercase"><i class="fa fa-edit"></i>Edit</a>
               <a href="#" class="btn btn-sm btn-danger font-weight-bolder text-uppercase"> <i class="fa fa-trash"></i> Delete</a>
             </div>
@@ -81,8 +100,10 @@
           <!--begin::Content-->
           <div class="d-flex align-items-center flex-wrap justify-content-between">
             <!--begin::Description-->
-            <div class="flex-grow-1 font-weight-bold text-dark-50 py-2 py-lg-2 mr-5">I distinguish three main text objectives could be merely to inform people.
-            <br />A second could be persuade people. You want people to bay objective.</div>
+            @if ($user_type == 1)
+            <div class="flex-grow-1 font-weight-bold text-dark-50 py-2 py-lg-2 mr-5">{{$user->provider->about_me }}</div>
+                
+            @endif
             <!--end::Description-->
             <!--begin::Progress-->
             <div class="d-flex mt-4 mt-sm-0">

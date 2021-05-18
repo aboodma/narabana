@@ -17,7 +17,7 @@ class Admin
     public function handle($request, Closure $next)
     {
     //   dd(Auth::user()->user_type);
-        if (Auth::user()->user_type == 3) {
+        if (Auth::user()->user_type == 2) {
             return $next($request);
         }else{
             abort(404);

@@ -723,6 +723,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							    <!--end::Info-->
 							    <!--begin::Toolbar-->
 							    <div class="d-flex align-items-center">
+									@yield('page_toolbar')
 							    </div>
 							    <!--end::Toolbar-->
 							  </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Provider;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class ProviderController extends Controller
 {
@@ -33,9 +35,24 @@ class ProviderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$user_type)
     {
-        //
+        $user =  User::create([
+            'name' => $request->name,
+            'email' =>$request->email,
+            'password' => Hash::make($request->password),
+            'user_type'=>$user_type
+        ]);
+        if ($user) {
+            $provider = new Provider();
+            $provider->user_id = $user->id;
+            $provider->about_me = $request->about_me;
+            $provider->provider_type_id = $request->provider_type;
+            $provider->country_id = $request->country_id;
+            $provider->is_approved = $request->is_approved;
+            $provider->save();
+            return $provider;
+        }
     }
 
     /**
@@ -67,9 +84,21 @@ class ProviderController extends Controller
      * @param  \App\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Provider $provider)
+    public function update(Request $request, User $user,$user_type)
     {
-        //
+
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        if ($user->save()) {
+            $provider = Provider::where('user_id',$user->id)->first();
+            $provider->about_me = $request->about_me;
+            $provider->country_id = $request->country_id;
+            $provider->provider_type_id = $request->provider_type;
+            $provider->is_approved = $request->is_approved;
+            if ($provider->save()) {
+                return redirect()->back();
+            }
+        }
     }
 
     /**
