@@ -38,8 +38,10 @@ Route::get('/home', 'HomeController@index')->name('home');
   Route::post('user/update/{user}','AdminController@user_update')->name('user_update');
   Route::get('user/create/{user_type}','AdminController@user_create')->name('user_create');
   Route::post('user/store/{user_type}','AdminController@user_store')->name('user_store');
+  Route::delete('user/delete/{user}','AdminController@user_delete')->name('user_delete');
 
   // Provider Model
   Route::post('/provider/store/{user_type}','ProviderController@store')->name('provider_store');
   Route::post('/provider/update/{user}/{user_type}','ProviderController@update')->name('provider_update');
+  Route::delete('provider/delete/{user}/{provider}','ProviderController@destroy')->name('provider_delete');
 });

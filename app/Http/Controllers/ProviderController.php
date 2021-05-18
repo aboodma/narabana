@@ -107,8 +107,13 @@ class ProviderController extends Controller
      * @param  \App\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Provider $provider)
+    public function destroy(User $user ,Provider $provider)
     {
-        //
+        if ($user->delete()) {
+            if ($provider->delete()) {
+                return redirect()->back();
+            }
+        }
+
     }
 }

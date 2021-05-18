@@ -90,9 +90,18 @@
             <!--begin::User-->
             <!--begin::Actions-->
             <div class="my-lg-0 my-1">
-              <a href="{{route('admin.user_view',$user->id)}}" class="btn btn-sm btn-light-primary font-weight-bolder text-uppercase mr-2"><i class="fa fa-eye"></i>View</a>
+              <form @if ($user->provider)
+                action="{{route('admin.provider_delete',[$user->id,$user->provider->id])}}"
+                @else
+                action="{{route('admin.user_delete',$user->id)}}"
+              @endif method="POST">
+              {{-- <a href="{{route('admin.user_view',$user->id)}}" class="btn btn-sm btn-light-primary font-weight-bolder text-uppercase mr-2"><i class="fa fa-eye"></i>View</a> --}}
               <a href="{{route('admin.user_edit',$user->id)}}" class="btn btn-sm btn-primary font-weight-bolder text-uppercase"><i class="fa fa-edit"></i>Edit</a>
-              <a href="#" class="btn btn-sm btn-danger font-weight-bolder text-uppercase"> <i class="fa fa-trash"></i> Delete</a>
+              
+                @method('DELETE')
+                @csrf
+                <button type="sumbit" class="btn btn-sm btn-danger font-weight-bolder text-uppercase"><i class="fa fa-trash"></i> Delete</button>
+              </form>
             </div>
             <!--end::Actions-->
           </div>

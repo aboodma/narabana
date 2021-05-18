@@ -36,6 +36,10 @@ class AdminController extends Controller
         return redirect()->back();
       }
     }
+    public function user_delete(Request $request , User $user)
+    {
+      return $user;
+    }
     public function user_store(Request $request,$user_type)
     {
     try {
