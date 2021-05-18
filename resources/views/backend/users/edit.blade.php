@@ -15,7 +15,7 @@
                 
             </div>
             <!--begin::Form-->
-            <form action="{{route('admin.user_update',$user->user_type)}}" method="POST">
+            <form action="{{route('admin.user_update',$user->id)}}" method="POST">
                 @csrf
                 <div class="card-body">
                     <div class="form-group mb-8">

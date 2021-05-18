@@ -35,7 +35,7 @@ Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/users/{user_type}','AdminController@users')->name('users');
   Route::get('/user/edit/{user}','AdminController@user_edit')->name('user_edit');
   Route::get('user/view/{user}','AdminController@user_view')->name('user_view');
-  Route::post('user/update','AdminController@user_update')->name('user_update');
+  Route::post('user/update/{user}','AdminController@user_update')->name('user_update');
   Route::get('user/create/{user_type}','AdminController@user_create')->name('user_create');
   Route::post('user/store/{user_type}','AdminController@user_store')->name('user_store');
 

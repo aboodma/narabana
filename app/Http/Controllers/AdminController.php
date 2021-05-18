@@ -27,6 +27,15 @@ class AdminController extends Controller
     {
       return view('backend.users.create',compact('user_type'));
     }
+    public function user_update(Request $request , User $user)
+    {
+      
+      $user->name = $request->name;
+      $user->phone = $request->phone;
+      if ($user->save()) {
+        return redirect()->back();
+      }
+    }
     public function user_store(Request $request,$user_type)
     {
     try {
