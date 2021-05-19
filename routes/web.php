@@ -44,4 +44,15 @@ Route::get('/home', 'HomeController@index')->name('home');
   Route::post('/provider/store/{user_type}','ProviderController@store')->name('provider_store');
   Route::post('/provider/update/{user}/{user_type}','ProviderController@update')->name('provider_update');
   Route::delete('provider/delete/{user}/{provider}','ProviderController@destroy')->name('provider_delete');
+
+  // Service Model 
+  Route::get('/service/list','ServiceController@index')->name('service_list');
+  Route::get('/service/create','ServiceController@create')->name('service_create');
+  Route::post('/service/store','ServiceController@store')->name('service_store');
+  Route::get('/service/edit/{service}','ServiceController@edit')->name('service_edit');
+  Route::post('/service/update/{service}','ServiceController@update')->name('service_update');
+  Route::delete('/service/delete/{service}','ServiceController@destroy')->name('service_delete');
+
+  // 
+  
 });

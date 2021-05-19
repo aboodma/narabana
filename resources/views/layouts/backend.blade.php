@@ -794,6 +794,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--end::Page Vendors-->
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="{{asset('assets/js/pages/widgets.js')}}"></script>
+		@yield('script')
 		<!--end::Page Scripts-->
 	</body>
 	<!--end::Body-->
