@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class ProviderController extends Controller
 {
+
+    public function dashboard()
+    {
+        return view('website.provider.dashboard');
+    }
     /**
      * Display a listing of the resource.
      *

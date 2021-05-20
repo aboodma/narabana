@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
@@ -56,3 +56,10 @@ Route::get('/home', 'HomeController@index')->name('home');
   // 
   
 });
+ 
+//Provider Routes
+Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], function(){
+  Route::get('/dashboard','ProviderController@dashboard')->name('dashboard');
+  
+});
+ 

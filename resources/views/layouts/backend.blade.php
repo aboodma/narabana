@@ -685,8 +685,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="navi-separator mt-3"></div>
 											<div class="navi-footer px-8 py-5">
 												<a href="{{ route('logout') }}"
-													 onclick="event.preventDefault();
-																				 document.getElementById('logout-form').submit();" class="btn btn-light-primary font-weight-bold">Sign Out</a>
+													 onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="btn btn-light-primary font-weight-bold">Sign Out</a>
 												<a href="custom/user/login-v2.html" target="_blank" class="btn btn-clean font-weight-bold">Upgrade Plan</a>
 											</div>
 											<!--end::Footer-->
