@@ -30,4 +30,14 @@ class Provider extends Model
     {
         return $this->belongsTo(Country::class);
     }
+
+    /**
+     * Get all of the services for the Provider
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function services()
+    {
+        return $this->hasMany(ProviderService::class);
+    }
 }

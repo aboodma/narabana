@@ -94,28 +94,30 @@
 
 
                 <div class="col">
-                    <div class="freelancer">
-                        <img src="{{asset($provider->user->avatar)}}">
-                        <h3 style="position: absolute;
-                        left: 27px;
-                        bottom: 68px;
-                        font-size: 14px;
-                        font-weight: bold;
-                        text-transform: capitalize;
-                        color: #3c3c3c;
-                        background-color: #dfeaea;
-                        padding: 3px;
-                        border-radius: 3px;">1000 TL <i class="fa fa-video-camera"></i> </h3>
-                        <div class="freelancer-footer">
-
-                            <h5 style="padding: 0px;">{{$provider->user->name}}
-                                <span style="font-size: 12px">{{$provider->ProviderType->name}} ,
-                                    {{$provider->Country->name}}</span>
-                            </h5>
-                            <button class="btn btn-default"><i style="font-size: 21px"
-                                    class="fa fa-heart-o"></i></button>
+                    <a href="{{route('provider_profile',$provider->id)}}">
+                        <div class="freelancer">
+                            <img src="{{asset($provider->user->avatar)}}">
+                            <h3 style="position: absolute;
+                            left: 27px;
+                            bottom: 68px;
+                            font-size: 14px;
+                            font-weight: bold;
+                            text-transform: capitalize;
+                            color: #3c3c3c;
+                            background-color: #dfeaea;
+                            padding: 3px;
+                            border-radius: 3px;">1000 TL <i class="fa fa-video-camera"></i> </h3>
+                            <div class="freelancer-footer">
+    
+                                <h5 style="padding: 0px;">{{$provider->user->name}}
+                                    <span style="font-size: 12px">{{$provider->ProviderType->name}} ,
+                                        {{$provider->Country->name}}</span>
+                                </h5>
+                                <button class="btn btn-default"><i style="font-size: 21px"
+                                        class="fa fa-heart-o"></i></button>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 @endforeach
             </div>

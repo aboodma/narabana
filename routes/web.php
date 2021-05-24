@@ -20,12 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 //Web Routes
+Route::get('star/{provider}','HomeController@provider_profile')->name('provider_profile');
 
 
-//Provider Routes
-Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
-Route::get('/home', 'HomeController@index')->name('home');
-});
+
 
 
 //Admin Routes
@@ -60,6 +58,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Provider Routes
 Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], function(){
   Route::get('/dashboard','ProviderController@dashboard')->name('dashboard');
+  Route::get('/profile','ProviderController@profile')->name('profile');
+  Route::get('/services','ProviderController@services')->name('services');
+  Route::get('/service/add/{service}','ProviderController@add_service')->name('add_service');
+  Route::post('/service/store','ProviderController@store_service')->name('store_service');
   
 });
+
  

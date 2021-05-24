@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Provider;
 use Illuminate\Http\Request;
 use App\User;
+use App\Service;
+use App\ProviderService;
 use Illuminate\Support\Facades\Hash;
 
 class ProviderController extends Controller
@@ -19,9 +21,27 @@ class ProviderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function profile()
     {
-        //
+        return view('website.provider.profile');
+    }
+    public function services()
+    {
+        return view('website.provider.services');
+    }
+    public function add_service(Service $service)
+    {
+       return view('website.provider.add_service',compact('service'));
+    }
+    public function store_service(Request $request)
+    {
+        $service_provider = new ProviderService();
+        $service_provider->service_id = $request->service_id;
+        $service_provider->provider_id = auth()->user()->provider->id;
+        $service_provider->price = $request->price;
+        if ($service_provider->save()) {
+            return redirect()->route('provider.services');
+        }
     }
 
     /**
