@@ -46,7 +46,11 @@
             <div class="col-md-6 offset-md-1">
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="">
+                        <form action="{{route('pay')}}" method="POST">
+                            <input type="hidden" name="service_id" value="{{$request->service_id}}">
+                            <input type="hidden" name="provider_id" value="{{$request->provider_id}}">
+                            <input type="hidden" name="price" value="{{$request->price}}">
+                            @csrf
                             <div class="form-group">
                                 <legend>Payment Inforamtions</legend>
                             <small>Your card will not get charged until the video is complete <br></small>

@@ -22,7 +22,6 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('provider_id');
             $table->bigInteger('service_id');
             $table->bigInteger('total_price');
-            $table->bigInteger('order_details_id');
             $table->integer('status')->unsigned()->default(0);
             $table->boolean('is_public')->default(false);
             $table->timestamps();

@@ -24,6 +24,10 @@ Route::get('star/{provider}','HomeController@provider_profile')->name('provider_
 Route::get('dashboard','HomeController@customer_dashboard')->name('customer_dashboard');
 Route::post('checkout','HomeController@checkout')->name('checkout')->middleware('auth');
 Route::post('payment_info','HomeController@payment_info')->name('payment_info')->middleware('auth');
+Route::post('pay','HomeController@pay')->name('pay')->middleware('auth');
+Route::get('order_copmlete/{order_id}','HomeController@order_complete')->name('order_complete');
+
+//ws routes
 Route::get('service_check','ProviderServiceController@service_check')->name('service_check');
 
 

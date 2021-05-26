@@ -47,6 +47,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <form action="{{route('payment_info')}}" method="POST">
+                            <input type="hidden" name="service_id" value="{{$request->service_id}}">
+                            <input type="hidden" name="provider_id" value="{{$request->provider_id}}">
+                            <input type="hidden" name="price" value="{{$request->price}}">
                             @csrf
                             <legend>Request a video from Nora Fathi to :</legend>
                             <div class="form-group">
@@ -68,7 +71,7 @@
                             </div>
                             <hr>
                             <div class="form-check">
-                                <input class="form-check-input" name="is_public" type="checkbox" value="0" id="flexCheckDefault">
+                                <input class="form-check-input" name="is_public" type="checkbox" value="1" id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Make this video public on our platform
                                 </label>

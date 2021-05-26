@@ -58,6 +58,7 @@
                     <div class="col-md-12">
                         <form action="{{route('checkout')}}" method="POST">
                             <input type="hidden" name="price" id="price">
+                            <input type="hidden" name="provider_id" value="{{$provider->id}}">
                             @csrf
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 @foreach ($provider->services as $service)
