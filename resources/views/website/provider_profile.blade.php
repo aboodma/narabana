@@ -56,13 +56,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="">
+                        <form action="{{route('checkout')}}" method="POST">
+                            <input type="hidden" name="price" id="price">
+                            @csrf
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 @foreach ($provider->services as $service)
 
 
                                 <label class="btn btn-outline-dark">
-                                    <input type="radio" name="options" value="{{$service->Service->id}}"
+                                    <input type="radio" onclick="select_service({{$service->Service->id}},this)" name="service_id" value="{{$service->Service->id}}"
                                         id="option{{$service->Service->id}}"> {{$service->Service->name}}
                                 </label>
                                 @endforeach
@@ -70,7 +72,7 @@
                             <br>
                             <div class="form-group mt-2">
                                 <button type="submit"
-                                    class="btn  btn-primary  btn-xlg form-control btn-big-pink p-2">Book Now</button>
+                                    class="btn  btn-primary  btn-xlg form-control btn-big-pink p-2">Book Now <i class="price"></i> </button>
                             </div>
                         </form>
                     </div>
@@ -175,6 +177,18 @@
     @endsection
     @section('script')
     <script>
+         function select_service(service_id,e) {
+              $.ajax({
+                  url:"{{route('service_check')}}",
+                  type:"GET",
+                data:{service_id:service_id},
+                  success : function (re) {
+                      $(".price").html(re.price + " USD");
+                      $("#price").val(re.price);
+                  }
+              });
+                $("#"+e.id).parent().toggleClass('active');
+            }
         $(document).ready(function () {
 
             $('.freelance-slider').slick({
@@ -187,6 +201,8 @@
                 // adaptiveHeight: true,
 
             });
+
+           
 
         })
         //   freelance-slider

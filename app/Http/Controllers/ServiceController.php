@@ -98,4 +98,6 @@ class ServiceController extends Controller
             return redirect()->route('admin.service_list');
         }
     }
+
+   
 }

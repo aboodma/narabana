@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\ProviderService;
+use App\Order;
 use Illuminate\Http\Request;
 
-class ProviderServiceController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ProviderServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ProviderService  $providerService
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(ProviderService $providerService)
+    public function show(Order $order)
     {
         //
     }
@@ -52,10 +52,10 @@ class ProviderServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ProviderService  $providerService
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProviderService $providerService)
+    public function edit(Order $order)
     {
         //
     }
@@ -64,10 +64,10 @@ class ProviderServiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProviderService  $providerService
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProviderService $providerService)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -75,15 +75,11 @@ class ProviderServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ProviderService  $providerService
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProviderService $providerService)
+    public function destroy(Order $order)
     {
         //
-    }
-    public function service_check(Request $request)
-    {
-      return ProviderService::where('service_id',$request->service_id)->first();
     }
 }

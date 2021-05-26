@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\ProviderService;
+use App\OrderDetail;
 use Illuminate\Http\Request;
 
-class ProviderServiceController extends Controller
+class OrderDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ProviderServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ProviderService  $providerService
+     * @param  \App\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(ProviderService $providerService)
+    public function show(OrderDetail $orderDetail)
     {
         //
     }
@@ -52,10 +52,10 @@ class ProviderServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ProviderService  $providerService
+     * @param  \App\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProviderService $providerService)
+    public function edit(OrderDetail $orderDetail)
     {
         //
     }
@@ -64,10 +64,10 @@ class ProviderServiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProviderService  $providerService
+     * @param  \App\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProviderService $providerService)
+    public function update(Request $request, OrderDetail $orderDetail)
     {
         //
     }
@@ -75,15 +75,11 @@ class ProviderServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ProviderService  $providerService
+     * @param  \App\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProviderService $providerService)
+    public function destroy(OrderDetail $orderDetail)
     {
         //
-    }
-    public function service_check(Request $request)
-    {
-      return ProviderService::where('service_id',$request->service_id)->first();
     }
 }

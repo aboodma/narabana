@@ -66,6 +66,7 @@
                                 <a href="#" class="list-group-item list-group-item-action">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1">{{$provider_service->service->name}}</h5>
+                                        <span class="badge badge-success">{{$provider_service->price}} USD</span>
                                      
                                     </div>
                                     <p class="mb-1">{{$provider_service->service->description}}</p>

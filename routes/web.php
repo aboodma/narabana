@@ -21,8 +21,10 @@ Auth::routes();
 
 //Web Routes
 Route::get('star/{provider}','HomeController@provider_profile')->name('provider_profile');
-
-
+Route::get('dashboard','HomeController@customer_dashboard')->name('customer_dashboard');
+Route::post('checkout','HomeController@checkout')->name('checkout')->middleware('auth');
+Route::post('payment_info','HomeController@payment_info')->name('payment_info')->middleware('auth');
+Route::get('service_check','ProviderServiceController@service_check')->name('service_check');
 
 
 

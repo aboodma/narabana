@@ -18,6 +18,22 @@ class HomeController extends Controller
         return view('website.provider_profile',compact('provider'));
      }
 
+
+     public function customer_dashboard()
+     {
+        return view('website.customer.dashboard');
+     }
+     public function checkout(Request $request)
+     {
+   
+        return view('website.checkout');
+     }
+
+     public function payment_info(Request $request)
+     {
+        return view('website.payment_info');
+     }
+
     /**
      * Show the application dashboard.
      *

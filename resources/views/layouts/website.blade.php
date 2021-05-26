@@ -91,7 +91,7 @@
                 @endguest
                 @auth
                 <li class="nav-item dropdown no-arrow no-caret mr-3 ">
-                    <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="{{route('provider.dashboard')}}" role="button"
+                    <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="@if(auth()->user()->user_type == 1){{route('provider.dashboard')}} @elseif(auth()->user()->user_type == 0){{route('customer_dashboard')}} @else {{route('admin.home')}}  @endif" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dashboard
                     </a>
