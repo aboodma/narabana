@@ -30,7 +30,13 @@ Route::get('order_copmlete/{order_id}','HomeController@order_complete')->name('o
 //ws routes
 Route::get('service_check','ProviderServiceController@service_check')->name('service_check');
 
+//customer routes
 
+Route::group(['prefix'=>'customer','as'=>'customer.','middleware'=>'customer'], function(){
+
+Route::get('profile','CustomerController@profile')->name('profile');
+Route::get('myOrders','CustomerController@orders')->name('orders');
+});
 
 //Admin Routes
 Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(){
