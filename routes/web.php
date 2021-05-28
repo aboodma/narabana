@@ -26,14 +26,16 @@ Route::post('checkout','HomeController@checkout')->name('checkout')->middleware(
 Route::post('payment_info','HomeController@payment_info')->name('payment_info')->middleware('auth');
 Route::post('pay','HomeController@pay')->name('pay')->middleware('auth');
 Route::get('order_copmlete/{order_id}','HomeController@order_complete')->name('order_complete');
+Route::get('be_our_partner/','HomeController@be_our_partner')->name('be_our_partner');
+Route::post('provider_request','HomeController@provider_request')->name('provider_request');
+Route::get('request_submited/{user}','HomeController@request_submited')->name('request_submited');
+Route::get('category/{providerType}','HomeController@FilterByType')->name('FilterByType');
 
 //ws routes
 Route::get('service_check','ProviderServiceController@service_check')->name('service_check');
 
 //customer routes
-
 Route::group(['prefix'=>'customer','as'=>'customer.','middleware'=>'customer'], function(){
-
 Route::get('profile','CustomerController@profile')->name('profile');
 Route::get('myOrders','CustomerController@orders')->name('orders');
 });
@@ -63,7 +65,15 @@ Route::get('/home', 'HomeController@index')->name('home');
   Route::post('/service/update/{service}','ServiceController@update')->name('service_update');
   Route::delete('/service/delete/{service}','ServiceController@destroy')->name('service_delete');
 
-  // 
+  // Categories
+
+  Route::get('/categories','ProviderTypeController@index')->name('categories');
+  Route::get('/categories/create','ProviderTypeController@create')->name('categories_create');
+  Route::post('/categories/store','ProviderTypeController@store')->name('categories_store');
+  Route::get('/categories/edit/{providerType}','ProviderTypeController@edit')->name('categories_edit');
+  Route::post('/categories/update/{providerType}','ProviderTypeController@update')->name('categories_update');
+  Route::delete('/categories/delete/{providerType}','ProviderTypeController@destroy')->name('categories_delete');
+
   
 });
  
@@ -72,6 +82,9 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::get('/dashboard','ProviderController@dashboard')->name('dashboard');
   Route::get('/profile','ProviderController@profile')->name('profile');
   Route::get('/services','ProviderController@services')->name('services');
+  Route::get('/orders','ProviderController@orders')->name('orders');
+  Route::get('/orders/procced/{order}','ProviderController@orders_procced')->name('orders_procced');
+  Route::post('/orders/procced/video','ProviderController@video_order_upload')->name('video_order_upload');
   Route::get('/service/add/{service}','ProviderController@add_service')->name('add_service');
   Route::post('/service/store','ProviderController@store_service')->name('store_service');
   

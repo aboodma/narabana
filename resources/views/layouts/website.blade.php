@@ -82,9 +82,16 @@
 
                 </li>
                 <li class="nav-item dropdown no-arrow no-caret mr-3 ">
-                    <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="javascript:void(0);"
+                    <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="{{route('register')}}"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Sign Up
+                    </a>
+
+                </li>
+                <li class="nav-item dropdown no-arrow no-caret mr-3 ">
+                    <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="{{route('be_our_partner')}}"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Be Our Partner
                     </a>
 
                 </li>

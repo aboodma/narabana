@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ProviderType;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
+use Buglinjo\LaravelWebp\Facades\Webp;
 class ProviderTypeController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class ProviderTypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = ProviderType::all();
+        return view('backend.category.index',compact('types'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ProviderTypeController extends Controller
      */
     public function create()
     {
-        //
+       return view('backend.category.create');
     }
 
     /**
@@ -35,7 +37,19 @@ class ProviderTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $type = new ProviderType();
+        $type->name = $request->name;
+        $type->description = $request->description;
+        $random = Str::random(40);
+        $webp = Webp::make($request->file('image'));
+  
+      if ($webp->save(public_path('uploads/categories/'.$random.'.webp'))) {
+        $type->image = 'uploads/categories/'.$random.'.webp';
+
+      }
+      if ($type->save()) {
+          return redirect()->route('admin.categories');
+      }
     }
 
     /**
@@ -46,7 +60,7 @@ class ProviderTypeController extends Controller
      */
     public function show(ProviderType $providerType)
     {
-        //
+     
     }
 
     /**
@@ -57,7 +71,7 @@ class ProviderTypeController extends Controller
      */
     public function edit(ProviderType $providerType)
     {
-        //
+        return view('backend.category.edit',compact('providerType'));
     }
 
     /**
@@ -69,7 +83,23 @@ class ProviderTypeController extends Controller
      */
     public function update(Request $request, ProviderType $providerType)
     {
-        //
+        $providerType->name  = $request->name;
+        $providerType->description = $request->description;
+        if ($request->hasFile('image')) {
+            if($providerType->image != null){
+                unlink($providerType->image);
+            }
+            $random = Str::random(40);
+            $webp = Webp::make($request->file('image'));
+  
+        if ($webp->save(public_path('uploads/categories/'.$random.'.webp'))) {
+                    $providerType->image = 'uploads/categories/'.$random.'.webp';
+
+                }
+        }
+        if ($providerType->save()) {
+            return redirect()->route('admin.categories');
+        }
     }
 
     /**
@@ -80,6 +110,10 @@ class ProviderTypeController extends Controller
      */
     public function destroy(ProviderType $providerType)
     {
-        //
+        if (unlink($providerType->image)) {
+            $providerType->delete();
+        }
+        return redirect()->route('admin.categories');
+
     }
 }

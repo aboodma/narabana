@@ -5,8 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Provider;
 use App\Order;
+use App\ProviderType;
 use Crypt;
-
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
+use FFMpeg\Filters\Video\VideoFilters;
+use Illuminate\Support\Str;
+use ProtoneMedia\LaravelFFMpeg\FFMpeg\CopyFormat;
+use Buglinjo\LaravelWebp\Facades\Webp;
 class HomeController extends Controller
 {
     /**
@@ -20,6 +27,11 @@ class HomeController extends Controller
         return view('website.provider_profile',compact('provider'));
      }
 
+     public function FilterByType(ProviderType $providerType)
+     {
+        $providers = $providerType->provider;
+        return view('website.byType',compact('providers','providerType'));
+     }
 
      public function customer_dashboard()
      {
@@ -65,5 +77,55 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function be_our_partner()
+    {
+       return view('website.be_partner');
+    }
+    public function provider_request(Request $request)
+    {
+      $random = Str::random(40);
+      $webp = Webp::make($request->file('avatar'));
+
+    if ($webp->save(public_path('uploads/avatars/'.$random.'.webp'))) {
+        // File is saved successfully
+    
+      $user =  User::create([
+         'name' => $request->name,
+         'email' =>$request->email,
+         'password' => Hash::make($request->password),
+         'user_type'=>1,
+         'avatar'=>'uploads/avatars/'.$random.'.webp',
+     ]);
+   }
+     if ($user) {
+         
+         $file = $request->file('video');     
+         $filename = $file->getClientOriginalName();
+         $path = public_path().'/uploads/ham_video';
+         $newName = explode('.',$filename);
+         $newName = $random.'.'.$newName[1];
+         $fil= $file->move($path, $newName);
+        $video =  FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
+         ->export()
+         ->save($random.'.webm');
+         unlink($path.'/'.$newName);
+        $provider = new Provider();
+        $provider->user_id = $user->id;
+        $provider->about_me = $request->about_me;
+        $provider->provider_type_id = $request->provider_type_id;
+        $provider->country_id = $request->country_id;
+        $provider->is_approved = false;
+        if ($provider->save()) {
+           return redirect()->route('request_submited',$user->id);
+        }
+     }
+       
+    }
+
+    public function request_submited(User $user)
+    {
+       return view('website.request_submited',compact('user'));
     }
 }

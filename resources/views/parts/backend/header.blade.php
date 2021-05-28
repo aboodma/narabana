@@ -91,6 +91,15 @@
           </a>
          
         </li>
+
+        <li class="menu-item menu-item-rel">
+          <a href="{{route('admin.categories')}}" class="menu-link ">
+            <span class="menu-text">Categoires</span>
+            <span class="menu-desc"></span>
+
+          </a>
+         
+        </li>
        
 
       </ul>

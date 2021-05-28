@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Provider;
 use Illuminate\Http\Request;
 use App\User;
+use App\Order;
 use App\Service;
 use App\ProviderService;
 use Illuminate\Support\Facades\Hash;
-
+use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
+use FFMpeg\Filters\Video\VideoFilters;
+use Illuminate\Support\Str;
+use ProtoneMedia\LaravelFFMpeg\FFMpeg\CopyFormat;
 class ProviderController extends Controller
 {
 
@@ -28,6 +32,31 @@ class ProviderController extends Controller
     public function services()
     {
         return view('website.provider.services');
+    }
+    public function orders()
+    {
+        $orders = auth()->user()->provider->orders;
+        return view('website.provider.orders',compact('orders'));
+    }
+    public function orders_procced(Order $order)
+    {
+        return view('website.provider.order_procced',compact('order'));
+    }
+    public function video_order_upload(Request $request)
+    {
+        if($request->hasFile('video')){
+            $random = Str::random(40);
+            $file = $request->file('video');     
+            $filename = $file->getClientOriginalName();
+            $path = public_path().'/uploads/ham_video';
+            $newName = explode('.',$filename);
+            $newName = $random.'.'.$newName[1];
+            $fil= $file->move($path, $newName);
+            FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
+            ->export()
+            ->save($random.'.webm');
+            unlink($path.'/'.$newName);
+        }
     }
     public function add_service(Service $service)
     {

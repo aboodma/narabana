@@ -17,6 +17,15 @@
         <div class="row">
             @include('parts.provider_sidebar')
             <div class="col-lg-8 right">
+                @if(!auth()->user()->provider->is_approved)
+                <div class="d-flex align-items-center p-3 bg-white rounded shadow-sm h5 m-0">
+                    <b>Un Approved Account</b>
+                    <div class="ml-auto d-flex align-items-center h5 m-0 text-muted">
+                        Your Account not Approved yet Please Wait until Approvement
+                    </div>
+                </div>
+                @else
+                
                 <div class="d-flex align-items-center p-3 bg-white rounded shadow-sm h5 m-0">
                     <b>Active orders</b>
                     <div class="ml-auto d-flex align-items-center h5 m-0 text-muted">
@@ -69,6 +78,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>

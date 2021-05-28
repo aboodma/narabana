@@ -69,14 +69,18 @@
             <h2>Categories</h2>
             <div class="row service-slider">
                 @foreach (App\ProviderType::all() as $providerType)
-                <div class="col">
-                    <div class="service">
-                        <div class="bak"></div>
-
-                        <img width="100" src="{{asset($providerType->image)}}">
-                        <h3 class="text-center">{{$providerType->name}}</h3>
+    
+                    <div class="col">
+                        <a href="{{route('FilterByType',$providerType->id)}}">
+                        <div class="service">
+                            <div class="bak"></div>
+    
+                            <img width="100" src="{{asset($providerType->image)}}">
+                            <h3 class="text-center">{{$providerType->name}}</h3>
+                        </div>
+                    </a>
                     </div>
-                </div>
+            
                 @endforeach
 
 
@@ -90,7 +94,7 @@
         <div class="container">
             <h1>Featured</h1>
             <div class="row freelance-slider">
-                @foreach (\App\Provider::all()->take(10) as $provider)
+                @foreach (\App\Provider::where('is_approved',true)->take(10)->get() as $provider)
 
 
                 <div class="col">
