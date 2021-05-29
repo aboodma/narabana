@@ -18,5 +18,9 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function details(Type $var = null)
+    {
+        return $this->hasOne(OrderDetail::class);
+    }
     
 }

@@ -57,6 +57,25 @@ class ProviderController extends Controller
             ->save($random.'.webm');
             unlink($path.'/'.$newName);
         }
+        $order = Order::find($request->order_id);
+        $order_details = $order->details;
+        $order_details->provider_message = asset('uploads/'.$random.'.webm');
+        $order_details->save();
+        $order->status = 0;
+        $order->save();
+        return redirect()->route('provider.orders');
+
+    }
+    public function other_order_upload(Request $request)
+    {
+        $order = Order::find($request->order_id);
+        $order_details = $order->details;
+        $order_details->provider_message = $request->provider_note;
+        $order_details->save();
+        $order->status = 0;
+        $order->save();
+        return redirect()->route('provider.orders');
+
     }
     public function add_service(Service $service)
     {

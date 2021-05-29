@@ -50,6 +50,10 @@
                             <input type="hidden" name="service_id" value="{{$request->service_id}}">
                             <input type="hidden" name="provider_id" value="{{$request->provider_id}}">
                             <input type="hidden" name="price" value="{{$request->price}}">
+                            <input type="hidden" name="from" value="{{$request->from}}">
+                            <input type="hidden" name="to" value="{{$request->to}}">
+                            <input type="hidden" name="customer_message" value="{{$request->customer_message}}">
+
                             @csrf
                             <div class="form-group">
                                 <legend>Payment Inforamtions</legend>

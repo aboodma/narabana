@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Provider;
 use App\Order;
+use App\OrderDetail;
 use App\ProviderType;
 use Crypt;
 use App\User;
@@ -48,6 +49,7 @@ class HomeController extends Controller
      }
      public function pay(Request $request)
      {
+
         $order = New Order;
         $order->user_id = auth()->user()->id;
         $order->provider_id = $request->provider_id;
@@ -57,7 +59,15 @@ class HomeController extends Controller
         if (isset($request->is_public)) {
            $order->is_public = $request->is_public;
          }
-        $order->save();
+        if ($order->save()) {
+            $order_details = new OrderDetail();
+            $order_details->order_id = $order->id;
+            $order_details->from = $request->from;
+            $order_details->to  = $request->to;
+            $order_details->customer_message = $request->customer_message;
+            $order_details->provider_message = " ";
+            $order_details->save();
+        }
 
         $order_id =  Crypt::encrypt($order->id);
         return redirect()->route('order_complete',$order_id);

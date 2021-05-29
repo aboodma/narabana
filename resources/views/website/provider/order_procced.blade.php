@@ -72,18 +72,37 @@
                                     Order Procced
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{route('provider.video_order_upload')}}" method="POST" enctype="multipart/form-data">
+                                   @if ($order->service->is_video)
+                                   <form action="{{route('provider.video_order_upload')}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="order_id" value="{{$order->id}}">
+                                    <div class="form-group">
+                                        <label for="">
+                                            Video Upload
+                                        </label>
+                                        <input type="file" name="video" accept="video/*" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="form-control btn btn-success">Upload</button>
+                                    </div>
+                                </form>
+                                @else
+                                    <form action="{{route('provider.other_order_upload')}}" method="POST">
                                         @csrf
+                                    <input type="hidden" name="order_id" value="{{$order->id}}">
+
                                         <div class="form-group">
                                             <label for="">
-                                                Video Upload
+                                                    Provider Note
                                             </label>
-                                            <input type="file" name="video" accept="video/*" class="form-control">
+                                            <textarea name="provider_note" class="form-control" id="" cols="30" rows="5"></textarea>
                                         </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="form-control btn btn-success">Upload</button>
+                                        <div class="form-group row ">
+                                            <button class="btn btn-primary rd-in btn-block">Procced</button>
                                         </div>
+
                                     </form>
+                                   @endif
                                 </div>
                             </div>
                         </div>

@@ -85,6 +85,7 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::get('/orders','ProviderController@orders')->name('orders');
   Route::get('/orders/procced/{order}','ProviderController@orders_procced')->name('orders_procced');
   Route::post('/orders/procced/video','ProviderController@video_order_upload')->name('video_order_upload');
+  Route::post('/orders/procced/other','ProviderController@other_order_upload')->name('other_order_upload');
   Route::get('/service/add/{service}','ProviderController@add_service')->name('add_service');
   Route::post('/service/store','ProviderController@store_service')->name('store_service');
   
