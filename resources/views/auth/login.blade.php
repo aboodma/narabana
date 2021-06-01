@@ -94,11 +94,19 @@
                             {{ __('Login') }}
                         </button>
 
-                        {{-- @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                        
+                        
+                    </div>
+                </div>
+                <div class="from-group row mb-0" >
+                    <div class=" col-md-6 offset-md-4" >
+                        <p> @if (Route::has('password.request'))
+                            <a  href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
                             </a>
-                        @endif --}}
+                        @endif </p>
+                        <p>By signing in you agree to narabana <a href=""> terms of service  and Privacy Policy</a></p>
+                        <p>Don’ don’t have an account? <a href="{{route('register')}}">Sign Up</a></p>
                     </div>
                 </div>
             </form>

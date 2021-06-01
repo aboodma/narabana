@@ -33,9 +33,15 @@ class ProviderController extends Controller
     {
         return view('website.provider.services');
     }
-    public function orders()
+    public function orders($status)
     {
-        $orders = auth()->user()->provider->orders;
+        if ($status == "onGoing") {
+            $orders = auth()->user()->provider->orders->wherein('status',[0,1]);
+
+        }else{
+            $orders = auth()->user()->provider->orders->wherein('status',[2,3,4,5]);
+            
+        }
         return view('website.provider.orders',compact('orders'));
     }
     public function orders_procced(Order $order)
@@ -61,10 +67,18 @@ class ProviderController extends Controller
         $order_details = $order->details;
         $order_details->provider_message = asset('uploads/'.$random.'.webm');
         $order_details->save();
-        $order->status = 0;
+        $order->status = 2;
         $order->save();
-        return redirect()->route('provider.orders');
+        return redirect()->route('provider.orders',"onGoing");
 
+    }
+
+    public function OrderChangeStatus($status,Order $order)
+    {
+       $order->status = $status;
+       if ($order->save()) {
+        return redirect()->route('provider.orders',"onGoing");
+       }
     }
     public function other_order_upload(Request $request)
     {
@@ -72,9 +86,9 @@ class ProviderController extends Controller
         $order_details = $order->details;
         $order_details->provider_message = $request->provider_note;
         $order_details->save();
-        $order->status = 0;
+        $order->status = 2;
         $order->save();
-        return redirect()->route('provider.orders');
+        return redirect()->route('provider.orders',"onGoing");
 
     }
     public function add_service(Service $service)
@@ -110,6 +124,19 @@ class ProviderController extends Controller
      */
     public function store(Request $request,$user_type)
     {
+        if($request->hasFile('video')){
+            $random = Str::random(40);
+            $file = $request->file('video');     
+            $filename = $file->getClientOriginalName();
+            $path = public_path().'/uploads/ham_video';
+            $newName = explode('.',$filename);
+            $newName = $random.'.'.$newName[1];
+            $fil= $file->move($path, $newName);
+            FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
+            ->export()
+            ->save("provider/".$random.'.webm');
+            unlink($path.'/'.$newName);
+        }
         $user =  User::create([
             'name' => $request->name,
             'email' =>$request->email,
@@ -119,6 +146,7 @@ class ProviderController extends Controller
         if ($user) {
             $provider = new Provider();
             $provider->user_id = $user->id;
+            $provider->video = "provider/".$random.'.webm';
             $provider->about_me = $request->about_me;
             $provider->provider_type_id = $request->provider_type;
             $provider->country_id = $request->country_id;

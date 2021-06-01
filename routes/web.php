@@ -30,6 +30,7 @@ Route::get('be_our_partner/','HomeController@be_our_partner')->name('be_our_part
 Route::post('provider_request','HomeController@provider_request')->name('provider_request');
 Route::get('request_submited/{user}','HomeController@request_submited')->name('request_submited');
 Route::get('category/{providerType}','HomeController@FilterByType')->name('FilterByType');
+Route::get('categories','HomeController@categories')->name('categories');
 
 //ws routes
 Route::get('service_check','ProviderServiceController@service_check')->name('service_check');
@@ -38,6 +39,7 @@ Route::get('service_check','ProviderServiceController@service_check')->name('ser
 Route::group(['prefix'=>'customer','as'=>'customer.','middleware'=>'customer'], function(){
 Route::get('profile','CustomerController@profile')->name('profile');
 Route::get('myOrders','CustomerController@orders')->name('orders');
+Route::get('videos','CustomerController@videos')->name('videos');
 });
 
 //Admin Routes
@@ -82,8 +84,9 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::get('/dashboard','ProviderController@dashboard')->name('dashboard');
   Route::get('/profile','ProviderController@profile')->name('profile');
   Route::get('/services','ProviderController@services')->name('services');
-  Route::get('/orders','ProviderController@orders')->name('orders');
+  Route::get('/orders/{status}','ProviderController@orders')->name('orders');
   Route::get('/orders/procced/{order}','ProviderController@orders_procced')->name('orders_procced');
+  Route::get('/orders/OrderChangeStatus/{status}/{order}','ProviderController@OrderChangeStatus')->name('OrderChangeStatus');
   Route::post('/orders/procced/video','ProviderController@video_order_upload')->name('video_order_upload');
   Route::post('/orders/procced/other','ProviderController@other_order_upload')->name('other_order_upload');
   Route::get('/service/add/{service}','ProviderController@add_service')->name('add_service');

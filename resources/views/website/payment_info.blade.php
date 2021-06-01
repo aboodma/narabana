@@ -61,16 +61,31 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="">
+                                <label>
                                     Card Holder Name
                                 </label>
-                                <input type="text" class="form-control rd-in" placeholder="Smith John" name="card_holder_name">
-                                <small>This field is required </small>
+                                <div class="input-group">
+                                    <input type="text" class="form-control " placeholder="Smith John" name="card_holder_name">
+                                    <div class="input-group-btn">
+                                          <span class="btn btn-default">
+                                            <i class="fa fa-user-o"></i>
+                                          </span>
+                                    </div>
+                                </div>
+                               
                             </div>
                             <div class="form-group">
                                 <label for="">Card Number</label>
-                                <input type="text" class="form-control rd-in" placeholder="xxxx-xxxx-xxxx-xxxx-xxxx" name="card_number">
-                                <small>This field is required </small>
+                                <div class="input-group">
+                                    <input type="text" class="form-control " placeholder="xxxx-xxxx-xxxx-xxxx-xxxx" name="card_number">
+
+                                    <div class="input-group-btn">
+                                        <span class="btn btn-default">
+                                          <i class="fa fa-credit-card"></i>
+                                        </span>
+                                  </div>
+                                </div>
+                               
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-3">
@@ -78,11 +93,19 @@
                                         <label for="">
                                             Exp.Month
                                         </label>
-                                        <select class="form-control rd-in" name="exp_month" id="">
-                                            @for ($i = 1; $i <= 12; $i++)
-                                                <option value="{{$i}}">{{$i}}</option>
-                                            @endfor
-                                        </select>
+                                        <div class="input-group">
+                                            <select class="form-control " name="exp_month" id="">
+                                                @for ($i = 1; $i <= 12; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                            <div class="input-group-btn">
+                                                <span class="btn btn-default">
+                                                  <i class="fa fa-calendar"></i>
+                                                </span>
+                                          </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-md-3 offset-md-1">
@@ -90,11 +113,18 @@
                                         <label for="">
                                             Exp.Year
                                         </label>
-                                        <select class="form-control rd-in" name="exp_month" id="">
-                                            @for ($i = 2021; $i <= 2035; $i++)
-                                                <option value="{{$i}}">{{$i}}</option>
-                                            @endfor
-                                        </select>
+                                        <div class="input-group">
+                                            <select class="form-control " name="exp_month" id="">
+                                                @for ($i = 2021; $i <= 2035; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                            <div class="input-group-btn">
+                                                <span class="btn btn-default">
+                                                  <i class="fa fa-calendar"></i>
+                                                </span>
+                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3 offset-md-1">
@@ -102,7 +132,14 @@
                                         <label for="">
                                             CVC
                                         </label>
-                                        <input type="number" name="cvc" class="form-control rd-in" maxlength="3" id="">
+                                        <div class="input-group">
+                                            <input type="number" name="cvc" class="form-control " maxlength="3" id="">
+                                        <div class="input-group-btn">
+                                            <span class="btn btn-default">
+                                              <i class="fa fa-credit-card-alt"></i>
+                                            </span>
+                                      </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +162,8 @@
                               <div class="form-group">
                                   <button class="btn btn-success  btn-lg btn-block" type="submit">Pay</button>
                                   <p>By Booking up you agree to Narabana <a href="">terms of service and Privacy Policy</a></p>
-                              </div>
+                                    <img src="{{asset('images/bank.png')}}" alt="">
+                                </div>
                         </form>
                     </div>
                 </div>

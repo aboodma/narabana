@@ -24,9 +24,16 @@
           <li>
             <a class="p-3 d-inline-block w-100 border-bottom text-muted @if (Route::is('provider.services')) active-menu   @endif" 
             @if(auth()->user()->provider->is_approved)
-            href="{{route('provider.orders')}}"
+            href="{{route('provider.orders',"onGoing")}}"
             @endif
-            > <i class="fa fa-cart-plus"></i> My Orders</a>
+            > <i class="fa fa-cart-plus"></i> On Going Orders</a>
+          </li>
+          <li>
+            <a class="p-3 d-inline-block w-100 border-bottom text-muted @if (Route::is('provider.services')) active-menu   @endif" 
+            @if(auth()->user()->provider->is_approved)
+            href="{{route('provider.orders',"history")}}"
+            @endif
+            > <i class="fa fa-cart-plus"></i> Orders History</a>
           </li>
 
           <li>

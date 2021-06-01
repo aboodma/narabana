@@ -75,6 +75,19 @@
                         @enderror
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+
+                    <div class="col-md-6">
+                        <input id="phone" type="text" class="form-control rd-in @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+
+                        @error('phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
 
                 <div class="form-group row">
                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -103,6 +116,12 @@
                         <button type="submit" class="btn btn-success rd-in btn-block">
                             {{ __('Register') }}
                         </button>
+                    </div>
+                </div>
+                <div class="from-group row mb-0" >
+                    <div class=" col-md-6 offset-md-4" >
+                        <p>By signing up you agree to narabana <a href=""> terms of service  and Privacy Policy</a></p>
+                        <p>Have an account? <a href="{{route('login')}}">Login</a></p>
                     </div>
                 </div>
             </form>

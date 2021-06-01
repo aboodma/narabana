@@ -13,6 +13,9 @@
           <li>
             <a class="p-3 d-inline-block w-100 border-bottom text-muted @if (Route::is('customer.orders')) active-menu   @endif" href="{{route('customer.orders')}}"> <i class="fa fa-cart-plus"></i> My Orders</a>
           </li>
+          <li>
+            <a class="p-3 d-inline-block w-100 border-bottom text-muted @if (Route::is('customer.videos')) active-menu   @endif" href="{{route('customer.videos')}}"> <i class="fa fa-cart-plus"></i> My Videos</a>
+          </li>
 
           <li>
             <a class="p-3 d-inline-block w-100 border-bottom text-muted " href="#Breadcrumb"> <i class="fa fa-sign-out"></i> Logout</a>

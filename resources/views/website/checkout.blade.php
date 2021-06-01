@@ -51,23 +51,23 @@
                             <input type="hidden" name="provider_id" value="{{$request->provider_id}}">
                             <input type="hidden" name="price" value="{{$request->price}}">
                             @csrf
-                            <legend>Request a video from Nora Fathi to :</legend>
+                            <legend>Request a Order from {{App\Provider::find($request->provider_id)->user->name}} to :</legend>
                             <div class="form-group">
                                 <label for="">
                                     From
                                 </label>
-                                <input type="text" class="form-control rd-in" name="from">
-                                <small>This field is required </small>
+                                <input type="text" class="form-control " name="from">
+             
                             </div>
                             <div class="form-group">
                                 <label for="">To</label>
-                                <input type="text" class="form-control rd-in" name="to">
-                                <small>This field is required </small>
+                                <input type="text" class="form-control " name="to">
+             
                             </div>
                             <div class="form-group">
                                 <label for="">Message</label>
-                                <textarea name="customer_message" class="form-control rd-in" id="" cols="30" rows="5"></textarea>
-                                <small>This field is required </small>
+                                <textarea name="customer_message" class="form-control " id="" cols="30" rows="5"></textarea>
+             
                             </div>
                             <hr>
                             <div class="form-check">
@@ -86,7 +86,7 @@
             </div>
             <div class="col-md-3">
 
-                <img class="http://localhost/celebrate/narabana/public/images/video.png" src="" width="250" alt="">
+                <img src="{{asset(App\Provider::find($request->provider_id)->user->avatar)}}"  width="250" alt="">
             </div>
            
         </div>

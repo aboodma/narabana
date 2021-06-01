@@ -42,7 +42,9 @@
         <div class="row">
             <div class="col-md-3">
 
-                <img class="" src="{{asset($provider->video_thumpnail)}}" width="250" alt="">
+                <video style="width: 100%" controls>
+                    <source src="{{asset($provider->video)}}" type="video/webm">
+                </video>
             </div>
             <div class="col-md-6">
                 <div class="row">
@@ -84,21 +86,18 @@
             <div class="container">
                 <h2>Anthony Videos</h2>
                 <div class="row freelance-slider">
-                    @foreach (\App\Provider::all()->take(10) as $provider)
+                    @foreach ($provider->orders->where('status',2) as $order)
+                    @if ($order->service->is_video) 
                     <div class="col">
                         <a href="#">
                             <div class="freelancer">
-                                <img src="{{asset('images/video.png')}}">
+                                <video style="width: 100%" controls>
+                                    <source src="{{$order->details->provider_message}}" type="video/webm">
+                                </video>
                             </div>
                         </a>
                     </div>
-                    <div class="col">
-                        <a href="#">
-                            <div class="freelancer">
-                                <img src="{{asset('images/video.png')}}">
-                            </div>
-                        </a>
-                    </div>
+                    @endif
                     @endforeach
                 </div>
             </div>

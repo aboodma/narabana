@@ -18,4 +18,12 @@ class CustomerController extends Controller
        $orders = $user->orders;
        return view('website.customer.orders',compact('orders'));
    }
+
+   public function videos()
+   {
+    $user = auth()->user();
+    $orders = $user->orders->where('status',2);
+    return view('website.customer.videos',compact('orders'));
+   
+   }
 }

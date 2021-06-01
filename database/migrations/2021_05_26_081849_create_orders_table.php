@@ -9,9 +9,12 @@ class CreateOrdersTable extends Migration
     /**
      * Run the migrations.
      *  Order Status will be assigend to intgere number
-     *  0 pending
+     *  0 pending 
      *  1 id paid
      *  2 approved
+     *  3 rejected
+     *  4 expire
+     *  5 completed 
      * @return void
      */
     public function up()

@@ -55,7 +55,7 @@ class HomeController extends Controller
         $order->provider_id = $request->provider_id;
         $order->service_id = $request->service_id;
         $order->total_price = $request->price;
-        $order->status = 2;
+        $order->status = 0;
         if (isset($request->is_public)) {
            $order->is_public = $request->is_public;
          }
@@ -77,6 +77,11 @@ class HomeController extends Controller
       $order_id =  Crypt::decrypt($order_id);
       $order = Order::find($order_id);
       return view('website.order_complete');
+     }
+     public function categories()
+     {
+       $categories = ProviderType::all();
+       return view('website.categories',compact('categories'));
      }
 
     /**
@@ -111,18 +116,22 @@ class HomeController extends Controller
    }
      if ($user) {
          
+      if($request->hasFile('video')){
+         $random = Str::random(40);
          $file = $request->file('video');     
          $filename = $file->getClientOriginalName();
          $path = public_path().'/uploads/ham_video';
          $newName = explode('.',$filename);
          $newName = $random.'.'.$newName[1];
          $fil= $file->move($path, $newName);
-        $video =  FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
+         FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
          ->export()
-         ->save($random.'.webm');
+         ->save("provider/".$random.'.webm');
          unlink($path.'/'.$newName);
+     }
         $provider = new Provider();
         $provider->user_id = $user->id;
+        $provider->video = "provider/".$random.'.webm';
         $provider->about_me = $request->about_me;
         $provider->provider_type_id = $request->provider_type_id;
         $provider->country_id = $request->country_id;

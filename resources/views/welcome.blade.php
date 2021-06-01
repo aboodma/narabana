@@ -66,7 +66,10 @@
 
     <div class="services-wrapper bg-white py-5">
         <div class="container">
-            <h2>Categories</h2>
+            <h2>Categories
+                <a href="{{route('categories')}}" class="float-right"> <small style="font-size: 18px">See All </small></a>
+
+            </h2>
             <div class="row service-slider">
                 @foreach (App\ProviderType::all() as $providerType)
     

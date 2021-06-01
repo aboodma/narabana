@@ -45,10 +45,26 @@
                                         <td>{{$order->id}}</td>
                                         <td>{{$order->service->name}}</td>
                                         <td>{{$order->provider->user->name}}</td>
-                                        <td>{{$order->status}}</td>
+                                        <td>@if ($order->status == 0)
+                                            <span class="badge badge-warning">Pending</span>
+                                            @elseif($order->status == 1)
+                                            <span class="badge badge-warning">Accepted</span>
+                                            @elseif($order->status == 2)
+                                            <span class="badge badge-success">Completed</span>
+                                            @elseif($order->status == 3)
+                                            <span class="badge badge-danger">Rejected</span>
+                                        @endif</td>
                                         <td>{{$order->total_price}}</td>
                                         <td>
+                                            @if($order->status == 0)
+                                            <a href="{{route('provider.OrderChangeStatus',[1,$order->id])}}" class="btn btn-success">Accept</a>
+                                            <a href="{{route('provider.OrderChangeStatus',[3,$order->id])}}" class="btn btn-danger">Reject</a>
+
+                                            @elseif($order->status == 1)
                                             <a href="{{route('provider.orders_procced',$order->id)}}" class="btn btn-success">Procced</a>
+
+
+                                            @endif
                                         </td>
                                     </tr>
                                        @endforeach
