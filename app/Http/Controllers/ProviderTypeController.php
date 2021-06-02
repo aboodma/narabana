@@ -87,7 +87,7 @@ class ProviderTypeController extends Controller
         $providerType->description = $request->description;
         if ($request->hasFile('image')) {
             if($providerType->image != null){
-                unlink(asset($providerType->image));
+                unlink(public_path().$providerType->image);
             }
             $random = Str::random(40);
             $file = $request->file('image');     
