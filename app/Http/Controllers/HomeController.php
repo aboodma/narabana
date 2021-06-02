@@ -125,7 +125,7 @@ class HomeController extends Controller
          $filename = $file->getClientOriginalName();
          $newName = explode('.',$filename);
          
-         $newName = $random.'.'.$file->extension();
+         $newName = $random.'.'.$file->getClientOriginalExtension();
          $fil= $file->move(public_path(), $newName);
          // FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
          // ->export()
