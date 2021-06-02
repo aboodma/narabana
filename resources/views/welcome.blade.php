@@ -34,18 +34,7 @@
         <div class="container">
             <div class="row main-slider">
 
-                <div class="col-md-12">
-                    <div class="service">
-                        <img src="images/pro_banner_1400px-2x.png">
-                        <h3 style="position: absolute;
-                        left: 41%;
-                        top: 50%;
-                        font-size: 36px;
-                        font-weight: bold;
-                        text-transform: capitalize;
-                        color: #fff;"><span>Build Your Brand</span> Logo Design</h3>
-                    </div>
-                </div>
+                
                 <div class="col-md-12">
                     <div class="service">
                         <img src="images/banner.png">
