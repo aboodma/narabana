@@ -42,7 +42,7 @@
         <div class="row">
             <div class="col-md-3">
 
-                <video id="v-{{$provider->id}}" style="width: 100%">
+                <video id="v-{{$provider->id}}" style="width: 100%" loop preload="false" autoplay   tabindex="0">
                     <source src="{{asset($provider->video)}}" type="video/mp4">
                 </video>
                 <span id="play-{{$provider->id}}" onclick="playVideo('{{$provider->id}}')" class="fa fa-play" style="position: absolute;
@@ -109,7 +109,7 @@
                     <div class="col">
                    
                             <div class="freelancer">
-                                <video id="v-{{$order->id}}" style="width: 100%"  playsinline>
+                                <video id="v-{{$order->id}}" style="width: 100%" >
                                     <source src="{{asset($order->details->provider_message)}}" type="video/mp4">
                                 </video>
                                 <span id="play-{{$order->id}}" onclick="playVideo('{{$order->id}}')" class="fa fa-play" style="position: absolute;
