@@ -101,9 +101,12 @@ class HomeController extends Controller
     public function provider_request(Request $request)
     {
       $random = Str::random(40);
-      $webp = Webp::make($request->file('avatar'));
-
-    if ($webp->save(public_path('uploads/avatars/'.$random.'.webp'))) {
+      $file = $request->file('avatar');     
+      $filename = $file->getClientOriginalName();
+      $avatar = explode('.',$filename);
+      $avatar = $random.'.'.$file->extension();
+      
+    if ($fil= $file->move(public_path(), $avatar))) {
         // File is saved successfully
     
       $user =  User::create([
@@ -111,7 +114,7 @@ class HomeController extends Controller
          'email' =>$request->email,
          'password' => Hash::make($request->password),
          'user_type'=>1,
-         'avatar'=>'uploads/avatars/'.$random.'.webp',
+         'avatar'=>$avatar,
      ]);
    }
      if ($user) {
