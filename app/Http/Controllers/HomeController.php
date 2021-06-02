@@ -119,7 +119,7 @@ class HomeController extends Controller
    }
      if ($user) {
       $provider = new Provider();
-      if($request->hasFile('video')){
+     
          $random = Str::random(40);
          $file = $request->file('video');     
          $filename = $file->getClientOriginalName();
@@ -132,7 +132,7 @@ class HomeController extends Controller
          // ->save("provider/".$random.'.webm');
          // unlink($path.'/'.$newName);
          $provider->video = $newName;
-     }
+     
    
         $provider->user_id = $user->id;
       
