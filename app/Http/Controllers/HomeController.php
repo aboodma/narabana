@@ -106,7 +106,7 @@ class HomeController extends Controller
       $avatar = explode('.',$filename);
       $avatar = $random.'.'.$file->extension();
       
-    if ($fil= $file->move(public_path(), $avatar))) {
+    if ($fil= $file->move(public_path(), $avatar)) {
         // File is saved successfully
     
       $user =  User::create([
