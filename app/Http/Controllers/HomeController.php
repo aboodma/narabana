@@ -1,5 +1,5 @@
 <?php
-
+ ini_set('upload_max_filesize','10M');
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ use ProtoneMedia\LaravelFFMpeg\FFMpeg\CopyFormat;
 use Buglinjo\LaravelWebp\Facades\Webp;
 class HomeController extends Controller
 {
-   ini_set('upload_max_filesize','10M');
+  
     /**
      * Create a new controller instance.
      *
