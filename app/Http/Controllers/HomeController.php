@@ -120,18 +120,18 @@ class HomeController extends Controller
          $random = Str::random(40);
          $file = $request->file('video');     
          $filename = $file->getClientOriginalName();
-         $path = public_path().'/uploads/ham_video';
          $newName = explode('.',$filename);
-         $newName = $random.'.'.$newName[1];
-         $fil= $file->move($path, $newName);
-         FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
-         ->export()
-         ->save("provider/".$random.'.webm');
-         unlink($path.'/'.$newName);
+         
+         $newName = $random.'.'.$file->extension();
+         $fil= $file->move(public_path(), $newName);
+         // FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
+         // ->export()
+         // ->save("provider/".$random.'.webm');
+         // unlink($path.'/'.$newName);
      }
         $provider = new Provider();
         $provider->user_id = $user->id;
-        $provider->video = "provider/".$random.'.webm';
+        $provider->video = $newName;
         $provider->about_me = $request->about_me;
         $provider->provider_type_id = $request->provider_type_id;
         $provider->country_id = $request->country_id;

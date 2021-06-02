@@ -130,6 +130,82 @@
             </div>
         </div>
     </div>
+    <div class="freelance-projects bg-white py-5">
+        <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                <h1>Sport Player</h1>
+                <div class="row freelance-category">
+                    @foreach (\App\Provider::where('provider_type_id',1)->take(10)->get() as $provider)
+    
+    
+                    <div class="col">
+                        <a href="{{route('provider_profile',$provider->id)}}">
+                            <div class="freelancer">
+                                <img src="{{asset($provider->user->avatar)}}">
+                                <h3 style="position: absolute;
+                                left: 27px;
+                                bottom: 68px;
+                                font-size: 14px;
+                                font-weight: bold;
+                                text-transform: capitalize;
+                                color: #3c3c3c;
+                                background-color: #dfeaea;
+                                padding: 3px;
+                                border-radius: 3px;">1000 TL <i class="fa fa-video-camera"></i> </h3>
+                                <div class="freelancer-footer">
+        
+                                    <h5 style="padding: 0px;">{{$provider->user->name}}
+                                        <span style="font-size: 12px">{{$provider->ProviderType->name}} ,
+                                            {{$provider->Country->name}}</span>
+                                    </h5>
+                                    <button class="btn btn-default"><i style="font-size: 21px"
+                                            class="fa fa-heart-o"></i></button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+              </div>
+              <div class="col-md-12">
+                <h1>Singer</h1>
+                <div class="row freelance-category">
+                    @foreach (\App\Provider::where('provider_type_id',2)->take(10)->get() as $provider)
+    
+    
+                    <div class="col">
+                        <a href="{{route('provider_profile',$provider->id)}}">
+                            <div class="freelancer">
+                                <img src="{{asset($provider->user->avatar)}}">
+                                <h3 style="position: absolute;
+                                left: 27px;
+                                bottom: 68px;
+                                font-size: 14px;
+                                font-weight: bold;
+                                text-transform: capitalize;
+                                color: #3c3c3c;
+                                background-color: #dfeaea;
+                                padding: 3px;
+                                border-radius: 3px;">1000 TL <i class="fa fa-video-camera"></i> </h3>
+                                <div class="freelancer-footer">
+        
+                                    <h5 style="padding: 0px;">{{$provider->user->name}}
+                                        <span style="font-size: 12px">{{$provider->ProviderType->name}} ,
+                                            {{$provider->Country->name}}</span>
+                                    </h5>
+                                    <button class="btn btn-default"><i style="font-size: 21px"
+                                            class="fa fa-heart-o"></i></button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
     @endsection
 @section('script')
     <script>
@@ -138,7 +214,7 @@
                 infinite: true,
                 slidesToShow: 6,
                 slidesToScroll: 6,
-                centerMode: true,
+                
                 centerPadding: '60px',
                 adaptiveHeight: true,
                 responsive:[
@@ -172,7 +248,7 @@
                 infinite: true,
                 slidesToShow: 4,
                 slidesToScroll: 4,
-                centerMode: true,
+                
                 centerPadding: '60px',
                 adaptiveHeight: true,
                 responsive:[
@@ -200,6 +276,16 @@
       }
     }
                 ]
+
+            });
+            $('.freelance-category').slick({
+                infinite: true,
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                
+                centerPadding: '60px',
+                adaptiveHeight: true,
+                
 
             });
             $('.main-slider').slick({

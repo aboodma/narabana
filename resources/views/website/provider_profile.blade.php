@@ -42,9 +42,27 @@
         <div class="row">
             <div class="col-md-3">
 
-                <video style="width: 100%" controls>
+                <video id="v-{{$provider->id}}" style="width: 100%">
                     <source src="{{asset($provider->video)}}" type="video/webm">
                 </video>
+                <span id="play-{{$provider->id}}" onclick="playVideo('{{$provider->id}}')" class="fa fa-play" style="position: absolute;
+                bottom: 50%;
+                left: 50%;
+                display:block;
+                transform: translate(-50%,50%);
+                font-size: 50px;
+                opacity: .8;
+                transition: opacity,font-size .4s;
+                color: #fff;"></span>
+                <span id="pause-{{$provider->id}}" onclick="pauseVideo('{{$provider->id}}')" class="fa fa-pause" style="position: absolute;
+                    display:none;
+                    bottom: 50%;
+                    left: 50%;
+                    transform: translate(-50%,50%);
+                    font-size: 50px;
+                    opacity: .8;
+                    transition: opacity,font-size .4s;
+                    color: #fff;"></span>
             </div>
             <div class="col-md-6">
                 <div class="row">
@@ -89,13 +107,31 @@
                     @foreach ($provider->orders->where('status',2) as $order)
                     @if ($order->service->is_video) 
                     <div class="col">
-                        <a href="#">
+                   
                             <div class="freelancer">
-                                <video style="width: 100%" controls>
-                                    <source src="{{$order->details->provider_message}}" type="video/webm">
+                                <video id="v-{{$order->id}}" style="width: 100%" >
+                                    <source src="{{asset($order->details->provider_message)}}" type="video/webm">
                                 </video>
+                                <span id="play-{{$order->id}}" onclick="playVideo('{{$order->id}}')" class="fa fa-play" style="position: absolute;
+                                    bottom: 50%;
+                                    left: 50%;
+                                    display:block;
+                                    transform: translate(-50%,50%);
+                                    font-size: 50px;
+                                    opacity: .8;
+                                    transition: opacity,font-size .4s;
+                                    color: #fff;"></span>
+                                    <span id="pause-{{$order->id}}" onclick="pauseVideo('{{$order->id}}')" class="fa fa-pause" style="position: absolute;
+                                        display:none;
+                                        bottom: 50%;
+                                        left: 50%;
+                                        transform: translate(-50%,50%);
+                                        font-size: 50px;
+                                        opacity: .8;
+                                        transition: opacity,font-size .4s;
+                                        color: #fff;"></span>
                             </div>
-                        </a>
+                       
                     </div>
                     @endif
                     @endforeach
@@ -177,6 +213,8 @@
     @endsection
     @section('script')
     <script>
+
+      
          function select_service(service_id,e) {
               $.ajax({
                   url:"{{route('service_check')}}",
@@ -190,7 +228,7 @@
                 $("#"+e.id).parent().toggleClass('active');
             }
         $(document).ready(function () {
-
+           
             $('.freelance-slider').slick({
                 infinite: true,
                 slidesToShow: 5,
@@ -206,6 +244,23 @@
 
         })
         //   freelance-slider
+        function playVideo(id) {
+            var vid =$("#v-"+id); 
+            var play_i =$("#play-"+id);
+            var pause_i =$("#pause-"+id);
+            play_i.hide();
+            pause_i.show();
 
+            $("#v-"+id).get(0).play();
+                }
+        function pauseVideo(id) {
+            var vid =$("#v-"+id); 
+            var play_i =$("#play-"+id);
+            var pause_i =$("#pause-"+id);
+            play_i.show();
+            pause_i.hide();
+
+            $("#v-"+id).get(0).pause();
+        }
     </script>
     @endsection

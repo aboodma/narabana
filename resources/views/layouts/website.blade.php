@@ -256,8 +256,8 @@
 
 
 
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+    
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}" type="3ebbb932e316a3ee2377425e-text/javascript"></script>
 
 

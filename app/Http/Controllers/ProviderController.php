@@ -54,18 +54,18 @@ class ProviderController extends Controller
             $random = Str::random(40);
             $file = $request->file('video');     
             $filename = $file->getClientOriginalName();
-            $path = public_path().'/uploads/ham_video';
             $newName = explode('.',$filename);
-            $newName = $random.'.'.$newName[1];
-            $fil= $file->move($path, $newName);
-            FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
-            ->export()
-            ->save($random.'.webm');
-            unlink($path.'/'.$newName);
+            
+            $newName = $random.'.'.$file->extension();
+            $fil= $file->move(public_path(), $newName);
+            // FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
+            // ->export()
+            // ->save($random.'.webm');
+            // unlink($path.'/'.$newName);
         }
         $order = Order::find($request->order_id);
         $order_details = $order->details;
-        $order_details->provider_message = asset('uploads/'.$random.'.webm');
+        $order_details->provider_message = $newName;
         $order_details->save();
         $order->status = 2;
         $order->save();
