@@ -89,13 +89,12 @@ class ProviderTypeController extends Controller
             if($providerType->image != null){
                 unlink($providerType->image);
             }
-            $random = Str::random(40);
-            $webp = Webp::make($request->file('image'));
-  
-        if ($webp->save(public_path('uploads/categories/'.$random.'.webp'))) {
-                    $providerType->image = 'uploads/categories/'.$random.'.webp';
-
-                }
+            $file = $request->file('image');     
+            $filename = $file->getClientOriginalName();
+            $avatar = explode('.',$filename);
+            $avatar = $random.'.'.$file->extension();
+            $fil= $file->move(public_path(), $avatar);
+            $type->image = $avatar;
         }
         if ($providerType->save()) {
             return redirect()->route('admin.categories');

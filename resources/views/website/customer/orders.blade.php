@@ -45,7 +45,15 @@
                                         <td>{{$order->id}}</td>
                                         <td>{{$order->service->name}}</td>
                                         <td>{{$order->provider->user->name}}</td>
-                                        <td>{{$order->status}}</td>
+                                        <td>@if ($order->status == 0)
+                                            <span class="badge badge-warning">Pending</span>
+                                            @elseif($order->status == 1)
+                                            <span class="badge badge-warning">Accepted</span>
+                                            @elseif($order->status == 2)
+                                            <span class="badge badge-success">Completed</span>
+                                            @elseif($order->status == 3)
+                                            <span class="badge badge-danger">Rejected</span>
+                                        @endif</td>
                                         <td>{{$order->total_price}}</td>
                                         <td> <a href="{{route('customer.OrderTracking',Crypt::encrypt($order->id))}}" class="btn btn-success">Order Tracking <i class="fa fa-eye"></i> </a> </td>
                                     </tr>
