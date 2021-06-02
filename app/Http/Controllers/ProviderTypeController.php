@@ -85,17 +85,20 @@ class ProviderTypeController extends Controller
     {
         $providerType->name  = $request->name;
         $providerType->description = $request->description;
+        // dd("/public/".$providerType->image);
         if ($request->hasFile('image')) {
+
             if($providerType->image != null){
-                unlink(public_path().$providerType->image);
-            }
-            $random = Str::random(40);
+         
+                $random = Str::random(40);
             $file = $request->file('image');     
             $filename = $file->getClientOriginalName();
             $avatar = explode('.',$filename);
             $avatar = $random.'.'.$file->extension();
             $fil= $file->move(public_path(), $avatar);
-            $type->image = $avatar;
+            $providerType->image = $avatar;
+            }
+            
         }
         if ($providerType->save()) {
             return redirect()->route('admin.categories');
@@ -110,8 +113,8 @@ class ProviderTypeController extends Controller
      */
     public function destroy(ProviderType $providerType)
     {
-        if (unlink($providerType->image)) {
-            $providerType->delete();
+        if ($providerType->delete()) {
+            
         }
         return redirect()->route('admin.categories');
 
