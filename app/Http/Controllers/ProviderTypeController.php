@@ -89,6 +89,7 @@ class ProviderTypeController extends Controller
             if($providerType->image != null){
                 unlink($providerType->image);
             }
+            $random = Str::random(40);
             $file = $request->file('image');     
             $filename = $file->getClientOriginalName();
             $avatar = explode('.',$filename);
