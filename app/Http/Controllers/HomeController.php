@@ -1,5 +1,4 @@
 <?php
- ini_set('upload_max_filesize','10M');
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
