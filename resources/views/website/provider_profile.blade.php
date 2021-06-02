@@ -85,7 +85,7 @@
 
 
                                 <label class="btn btn-outline-dark">
-                                    <input type="radio" onclick="select_service({{$service->Service->id}},this)" name="service_id" value="{{$service->Service->id}}"
+                                    <input type="radio" class="service_select"  name="service_id" value="{{$service->Service->id}}"
                                         id="option{{$service->Service->id}}"> {{$service->Service->name}}
                                 </label>
                                 @endforeach
@@ -215,18 +215,7 @@
     <script>
 
       
-         function select_service(service_id,e) {
-              $.ajax({
-                  url:"{{route('service_check')}}",
-                  type:"GET",
-                data:{service_id:service_id},
-                  success : function (re) {
-                      $(".price").html(re.price + " USD");
-                      $("#price").val(re.price);
-                  }
-              });
-                $("#"+e.id).parent().toggleClass('active');
-            }
+         
         $(document).ready(function () {
            
             $('.freelance-slider').slick({
@@ -240,9 +229,21 @@
 
             });
 
-           
+            $(".service_select").click(function(){
+                $.ajax({
+                  url:"{{route('service_check')}}",
+                  type:"GET",
+                data:{service_id:this.value},
+                  success : function (re) {
+                      $(".price").html(re.price + " USD");
+                      $("#price").val(re.price);
+                  }
+              });
+               $('#'+this.id).parent().toggleClass('active');
+            });
 
-        })
+        });
+     
         //   freelance-slider
         function playVideo(id) {
             var vid =$("#v-"+id); 
