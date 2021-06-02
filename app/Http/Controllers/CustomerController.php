@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Order;
+use Crypt;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -17,6 +19,12 @@ class CustomerController extends Controller
        $user = auth()->user();
        $orders = $user->orders;
        return view('website.customer.orders',compact('orders'));
+   }
+   public function OrderTracking($id)
+   {
+    $order_id =  Crypt::decrypt($id);
+    $order = Order::find($order_id);
+    return view('website.customer.order_tracking',compact('order'));
    }
 
    public function videos()

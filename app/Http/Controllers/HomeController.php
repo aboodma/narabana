@@ -104,7 +104,7 @@ class HomeController extends Controller
       $file = $request->file('avatar');     
       $filename = $file->getClientOriginalName();
       $avatar = explode('.',$filename);
-      $avatar = $random.'.'.$file->extension();
+      $avatar = $random.'.'.$file->extension(); 
       
     if ($fil= $file->move(public_path(), $avatar)) {
         // File is saved successfully

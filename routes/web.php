@@ -39,6 +39,7 @@ Route::get('service_check','ProviderServiceController@service_check')->name('ser
 Route::group(['prefix'=>'customer','as'=>'customer.','middleware'=>'customer'], function(){
 Route::get('profile','CustomerController@profile')->name('profile');
 Route::get('myOrders','CustomerController@orders')->name('orders');
+Route::get('OrderTracking/{id}','CustomerController@OrderTracking')->name('OrderTracking');
 Route::get('videos','CustomerController@videos')->name('videos');
 });
 

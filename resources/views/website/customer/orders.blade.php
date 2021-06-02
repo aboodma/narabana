@@ -35,6 +35,7 @@
                                         <th>Provider Name</th>
                                         <th>Status</th>
                                         <th>Total Price</th>
+                                        <th>Options</th>
         
                                     </tr>                                   
                                 </thead>
@@ -46,6 +47,7 @@
                                         <td>{{$order->provider->user->name}}</td>
                                         <td>{{$order->status}}</td>
                                         <td>{{$order->total_price}}</td>
+                                        <td> <a href="{{route('customer.OrderTracking',Crypt::encrypt($order->id))}}" class="btn btn-success">Order Tracking <i class="fa fa-eye"></i> </a> </td>
                                     </tr>
                                        @endforeach
                                    </tbody>
