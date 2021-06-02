@@ -118,7 +118,7 @@ class HomeController extends Controller
      ]);
    }
      if ($user) {
-         
+      $provider = new Provider();
       if($request->hasFile('video')){
          $random = Str::random(40);
          $file = $request->file('video');     
@@ -131,10 +131,11 @@ class HomeController extends Controller
          // ->export()
          // ->save("provider/".$random.'.webm');
          // unlink($path.'/'.$newName);
+         $provider->video = $newName;
      }
-        $provider = new Provider();
+   
         $provider->user_id = $user->id;
-        $provider->video = $newName;
+      
         $provider->about_me = $request->about_me;
         $provider->provider_type_id = $request->provider_type_id;
         $provider->country_id = $request->country_id;
