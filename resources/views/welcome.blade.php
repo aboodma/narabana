@@ -116,7 +116,7 @@
                             style="font-size: 13px ; font-weight:700">See all </small></a>
                 </p>
                 <div class="row ">
-                    @foreach (\App\Provider::where('provider_type_id',2)->take(4)->get() as $provider)
+                    @foreach (\App\Provider::where('provider_type_id',4)->take(4)->get() as $provider)
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
                         <a href="{{route('provider_profile',$provider->id)}}">
                             <div class="freelancer">
@@ -206,25 +206,7 @@
             ]
 
         });
-        $(document).ready(function() {
-  //change the integers below to match the height of your upper div, which I called
-  //banner.  Just add a 1 to the last number.  console.log($(window).scrollTop())
-  //to figure out what the scroll position is when exactly you want to fix the nav
-  //bar or div or whatever.  I stuck in the console.log for you.  Just remove when
-  //you know the position.
-  $(window).scroll(function () { 
-
-    console.log($(window).scrollTop());
-
-    if ($(window).scrollTop() > 550) {
-      $('#nav_bar').addClass('fixed-top');
-    }
-
-    if ($(window).scrollTop() < 551) {
-      $('#nav_bar').removeClass('fixed-top');
-    }
-  });
-});
+  
       
         // $('.main-slider').slick({
         //     infinite: true,

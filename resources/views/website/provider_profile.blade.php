@@ -41,8 +41,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
+                <img style="position: absolute;
+                width: 30%;
+                align-self: center;
+                top: 90%;" src="http://localhost/celebrate/narabana/public/images/logo.png" alt="">
 
-                <video id="v-{{$provider->id}}" style="width: 100%" loop preload="false" autoplay   tabindex="0">
+                <video id="v-{{$provider->id}}" style="width: 100%" loop preload="false" autoplay="true"   tabindex="0">
                     <source src="{{asset($provider->video)}}" type="video/mp4">
                 </video>
                 <span id="play-{{$provider->id}}" onclick="playVideo('{{$provider->id}}')" class="fa fa-play" style="position: absolute;
