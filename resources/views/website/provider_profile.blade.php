@@ -44,7 +44,8 @@
                 <img style="position: absolute;
                 width: 30%;
                 align-self: center;
-                top: 90%;" src="http://localhost/celebrate/narabana/public/images/logo.png" alt="">
+                top: 90%;
+                filter: brightness(100);" src="http://localhost/celebrate/narabana/public/images/logo.png" alt="">
 
                 <video id="v-{{$provider->id}}" style="width: 100%" loop preload="false" autoplay="true"   tabindex="0">
                     <source src="{{asset($provider->video)}}" type="video/mp4">
