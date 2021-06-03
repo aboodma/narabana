@@ -84,7 +84,9 @@
                         <span class="pb-2 mb-2">{{$provider->Country->name}} / {{$provider->ProviderType->name}}</span>
                         <p class="pt-2">{{$provider->about_me}}</p>
                         <p><i class="fa fa-clock-o"></i> Replies in 5 days</p>
-                            <p> <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 1) text-warning @endif"></i> 
+                            
+                        @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->count() != 0)
+                        <p> <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 1) text-warning @endif"></i> 
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 2) text-warning @endif"></i>
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 3) text-warning @endif"></i> 
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 4) text-warning @endif"></i>
@@ -96,7 +98,7 @@
                       
                     
                         <p class="font-weight-bold" style="text-decoration:underline; font-size:14px; color:black"><a style="color:black" href="">Show More Reviews ({{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->count()}})</a></p>
-                
+                            @endif
                     </div>
                 </div>
                 <div class="row">
