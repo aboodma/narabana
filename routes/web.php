@@ -41,6 +41,7 @@ Route::get('profile','CustomerController@profile')->name('profile');
 Route::get('myOrders','CustomerController@orders')->name('orders');
 Route::get('OrderTracking/{id}','CustomerController@OrderTracking')->name('OrderTracking');
 Route::get('videos','CustomerController@videos')->name('videos');
+Route::post('rate','OrderReviewController@rateOrder')->name('rate_order');
 });
 
 //Admin Routes

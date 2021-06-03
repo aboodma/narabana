@@ -40,6 +40,13 @@
 <div class="services-wrapper bg-white py-5">
     <div class="container">
         <div class="row">
+            <ol class="breadcrumb bg-white">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">{{$provider->ProviderType->name}}</a></li>
+                <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$provider->user->name}}</li>
+              </ol>
+        </div>
+        <div class="row">
             <div class="col-md-3">
                 <img style="position: absolute;
                 width: 30%;
@@ -72,11 +79,24 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>{{$provider->user->name}}</h2>
-                        <span>{{$provider->Country->name}} / {{$provider->ProviderType->name}}</span>
-                        <p>{{$provider->about_me}}</p>
+                        <h2 class="mb-0 pb-0
+                        ">{{$provider->user->name}}</h2>
+                        <span class="pb-2 mb-2">{{$provider->Country->name}} / {{$provider->ProviderType->name}}</span>
+                        <p class="pt-2">{{$provider->about_me}}</p>
                         <p><i class="fa fa-clock-o"></i> Replies in 5 days</p>
-
+                            <p> <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 1) text-warning @endif"></i> 
+                                <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 2) text-warning @endif"></i>
+                                <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 3) text-warning @endif"></i> 
+                                <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 4) text-warning @endif"></i>
+                                <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate == 5) text-warning @endif"></i>
+                                / <span class="font-weight-bold">{{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate}} Star </span>
+                           
+                            </p>
+                           <p><b>Last Review</b>  : <span> {{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->massage}}</span></p>
+                      
+                    
+                        <p class="font-weight-bold" style="text-decoration:underline; font-size:14px; color:black"><a style="color:black" href="">Show More Reviews ({{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->count()}})</a></p>
+                
                     </div>
                 </div>
                 <div class="row">
@@ -147,33 +167,31 @@
                 </div>
             </div>
         </div>
-        <div class="services-wrapper bg-white py-5">
+        
+        {{-- <div class="services-wrapper bg-white py-5">
             <div class="container">
                 <h2>Recent Feedback</h2>
                 <div class="list-group">
+                    @foreach ($provider->orders as $order)
+                    @if(isset($order->rate))
+
                     <a href="#" class="list-group-item list-group-item-action active btn-big-pink ">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">List group item heading</h5>
+                            <h5 class="mb-1">{{$order->rate->user->name}}</h5>
                             <small>3 days ago</small>
                         </div>
-                        <p class="mb-1 text-white">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam
-                            eget risus varius blandit.</p>
-                        <small>Donec id elit non mi porta.</small>
+                        <p class="mb-1 text-white">{{$order->rate->massage}}</p>
+               
                     </a>
-                    <hr class="btn-big-pink p-0 m-1">
-                    <a href="#" class="list-group-item list-group-item-action active btn-big-pink ">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">List group item heading</h5>
-                            <small>3 days ago</small>
-                        </div>
-                        <p class="mb-1 text-white">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam
-                            eget risus varius blandit.</p>
-                        <small>Donec id elit non mi porta.</small>
-                    </a>
+                    @endif
+               
+                    
+                    @endforeach
+                   
                   
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="freelance-projects bg-white py-5">
             <div class="container">
                 <h1>Singers</h1>

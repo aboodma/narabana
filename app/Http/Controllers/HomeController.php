@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Provider;
 use App\Order;
 use App\OrderDetail;
+use App\OrderReview;
 use App\ProviderType;
 use Crypt;
 use App\User;
