@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light topbar static-top shadow-sm bg-white osahan-nav-top px-0">
+    <nav class="navbar navbar-expand-lg navbar-light topbar fixed-top shadow-sm bg-white osahan-nav-top px-0">
         <div class="container">
 
             <a class="navbar-brand" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
