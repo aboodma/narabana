@@ -38,13 +38,13 @@
                 <div class="col-md-12">
                     <div class="service">
                         <img src="images/banner.png">
-                        <h3 style="position: absolute;
+                        {{-- <h3 style="position: absolute;
                         left: 41%;
                         top: 50%;
                         font-size: 36px;
                         font-weight: bold;
                         text-transform: capitalize;
-                        color: #fff;"><span>Build Your Brand</span> Logo Design</h3>
+                        color: #fff;"><span>Build Your Brand</span> Logo Design</h3> --}}
                     </div>
                 </div>
 

@@ -83,11 +83,15 @@
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 @foreach ($provider->services as $service)
 
-
-                                <label class="btn btn-outline-dark">
+                          
+                                    <label class="btn btn-outline-dark service_select" id="{{$service->Service->id}}">
+                                      <input type="radio" class="service_select"  value="{{$service->Service->id}}" name="service_id" id="{{$service->Service->id}}"  > {{$service->Service->name}}
+                                    </label>
+                                  
+                                {{-- <label class="btn btn-outline-dark">
                                     <input type="radio" class="service_select"  name="service_id" value="{{$service->Service->id}}"
-                                        id="option{{$service->Service->id}}"> {{$service->Service->name}}
-                                </label>
+                                        id="service"> {{$service->Service->name}}
+                                </label> --}}
                                 @endforeach
                             </div>
                             <br>
@@ -233,13 +237,13 @@
                 $.ajax({
                   url:"{{route('service_check')}}",
                   type:"GET",
-                data:{service_id:this.value},
+                data:{service_id:this.id},
                   success : function (re) {
                       $(".price").html(re.price + " USD");
                       $("#price").val(re.price);
                   }
               });
-               $('#'+this.id).parent().toggleClass('active');
+            //    $('#'+this.id).parent().toggleClass('active');
             });
 
         });
