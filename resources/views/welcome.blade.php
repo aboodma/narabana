@@ -37,14 +37,14 @@
                 
                 <div class="col-md-12">
                     <div class="service">
-                        <img src="images/banner.png">
-                        {{-- <h3 style="position: absolute;
+                        <img src="images/banner-1.png" style="height: 75%" >
+                        <h3 style="position: absolute;
                         left: 41%;
                         top: 50%;
                         font-size: 36px;
                         font-weight: bold;
                         text-transform: capitalize;
-                        color: #fff;"><span>Build Your Brand</span> Logo Design</h3> --}}
+                        color: #fff;"><span>Build Your Brand</span> Logo Design</h3>
                     </div>
                 </div>
 
@@ -53,12 +53,12 @@
     </div>
 
 
-    <div class="services-wrapper bg-white py-5">
+    <div class="services-wrapper bg-white py-3">
         <div class="container">
-            <h2>Categories
-                <a href="{{route('categories')}}" class="float-right"> <small style="font-size: 18px">See All </small></a>
+            <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-1">Categories
 
-            </h2>
+                <a href="{{route('categories')}}" style="color:#d47fa6; font-weight:800" class="float-right"> <small style="font-size: 13px ; font-weight:700">See all </small></a>
+            </p>
             <div class="row service-slider">
                 @foreach (App\ProviderType::all() as $providerType)
     
@@ -82,35 +82,28 @@
 
 
 
-    <div class="freelance-projects bg-white py-5">
+    <div class="freelance-projects bg-white py-3">
         <div class="container">
-            <h1>Featured</h1>
-            <div class="row freelance-slider">
-                @foreach (\App\Provider::where('is_approved',true)->take(10)->get() as $provider)
+            <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-1">Featured
+
+                <a href="{{route('categories')}}" style="color:#d47fa6; font-weight:800" class="float-right"> <small style="font-size: 13px ; font-weight:700">See all </small></a>
+            </p>
+            <div class="row ">
+                @foreach (\App\Provider::where('is_approved',true)->take(4)->get() as $provider)
 
 
-                <div class="col">
+                <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
                     <a href="{{route('provider_profile',$provider->id)}}">
                         <div class="freelancer">
                             <img src="{{asset($provider->user->avatar)}}">
-                            <h3 style="position: absolute;
-                            left: 27px;
-                            bottom: 68px;
-                            font-size: 14px;
-                            font-weight: bold;
-                            text-transform: capitalize;
-                            color: #3c3c3c;
-                            background-color: #dfeaea;
-                            padding: 3px;
-                            border-radius: 3px;">1000 TL <i class="fa fa-video-camera"></i> </h3>
+                            
                             <div class="freelancer-footer">
     
                                 <h5 style="padding: 0px;">{{$provider->user->name}}
-                                    <span style="font-size: 12px">{{$provider->ProviderType->name}} ,
-                                        {{$provider->Country->name}}</span>
+                                    <span style="font-size: 12px">{{ucfirst(strtolower($provider->ProviderType->name))}} <br>
+                                        {{ucfirst(strtolower($provider->Country->name))}}</span>
                                 </h5>
-                                <button class="btn btn-default"><i style="font-size: 21px"
-                                        class="fa fa-heart-o"></i></button>
+                                
                             </div>
                         </div>
                     </a>
@@ -119,20 +112,23 @@
             </div>
         </div>
     </div>
-    <div class="freelance-projects bg-white py-5">
+    <div class="freelance-projects bg-white py-3">
         <div class="container">
           <div class="row">
               <div class="col-md-12">
-                <h1>Sport Player</h1>
-                <div class="row freelance-category">
-                    @foreach (\App\Provider::where('provider_type_id',1)->take(10)->get() as $provider)
+                <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-1">Sport Player
+                    <a href="{{route('categories')}}" style="color:#d47fa6; font-weight:800" class="float-right"> <small style="font-size: 13px ; font-weight:700">See all </small></a>
+                </p>
+               
+                <div class="row ">
+                    @foreach (\App\Provider::where('provider_type_id',1)->take(4)->get() as $provider)
     
     
-                    <div class="col">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
                         <a href="{{route('provider_profile',$provider->id)}}">
                             <div class="freelancer">
                                 <img src="{{asset($provider->user->avatar)}}">
-                                <h3 style="position: absolute;
+                                {{-- <h3 style="position: absolute;
                                 left: 27px;
                                 bottom: 68px;
                                 font-size: 14px;
@@ -141,15 +137,14 @@
                                 color: #3c3c3c;
                                 background-color: #dfeaea;
                                 padding: 3px;
-                                border-radius: 3px;">1000 TL <i class="fa fa-video-camera"></i> </h3>
+                                border-radius: 3px;">1000 TL <i class="fa fa-video-camera"></i> </h3> --}}
                                 <div class="freelancer-footer">
         
                                     <h5 style="padding: 0px;">{{$provider->user->name}}
-                                        <span style="font-size: 12px">{{$provider->ProviderType->name}} ,
-                                            {{$provider->Country->name}}</span>
+                                        <span style="font-size: 12px">{{$provider->ProviderType->name}} <br>
+                                            <small>{{$provider->Country->name}}</small></span>
                                     </h5>
-                                    <button class="btn btn-default"><i style="font-size: 21px"
-                                            class="fa fa-heart-o"></i></button>
+                                    
                                 </div>
                             </div>
                         </a>
@@ -158,33 +153,26 @@
                 </div>
               </div>
               <div class="col-md-12">
-                <h1>Singer</h1>
-                <div class="row freelance-category">
+                <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-1">Singer
+                    <a href="{{route('categories')}}" style="color:#d47fa6; font-weight:800" class="float-right"> <small style="font-size: 13px ; font-weight:700">See all </small></a>
+                </p>
+                <div class="row ">
                     @foreach (\App\Provider::where('provider_type_id',2)->take(10)->get() as $provider)
     
     
-                    <div class="col">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
                         <a href="{{route('provider_profile',$provider->id)}}">
                             <div class="freelancer">
+                              
                                 <img src="{{asset($provider->user->avatar)}}">
-                                <h3 style="position: absolute;
-                                left: 27px;
-                                bottom: 68px;
-                                font-size: 14px;
-                                font-weight: bold;
-                                text-transform: capitalize;
-                                color: #3c3c3c;
-                                background-color: #dfeaea;
-                                padding: 3px;
-                                border-radius: 3px;">1000 TL <i class="fa fa-video-camera"></i> </h3>
+                               
                                 <div class="freelancer-footer">
         
                                     <h5 style="padding: 0px;">{{$provider->user->name}}
-                                        <span style="font-size: 12px">{{$provider->ProviderType->name}} ,
-                                            {{$provider->Country->name}}</span>
+                                        <span style="font-size: 12px">{{$provider->ProviderType->name}} <br>
+                                            <small>{{$provider->Country->name}}</small></span>
                                     </h5>
-                                    <button class="btn btn-default"><i style="font-size: 21px"
-                                            class="fa fa-heart-o"></i></button>
+                                    
                                 </div>
                             </div>
                         </a>
@@ -226,7 +214,7 @@
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
+        slidesToShow:2,
         slidesToScroll: 1
       }
     }
@@ -260,7 +248,7 @@
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1
       }
     }
@@ -294,7 +282,7 @@
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1
       }
     }

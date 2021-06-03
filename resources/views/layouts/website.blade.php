@@ -182,8 +182,7 @@
                 
             </div>
             <div class="copyright">
-                
-                <p>© Copyright 2022 Miver. All Rights Reserved
+                <p>© Copyright 2022 Narabana. All Rights Reserved
                 </p>
                 <ul class="social">
                     <li>
