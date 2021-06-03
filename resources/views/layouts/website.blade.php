@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light topbar fixed-top shadow-sm bg-white osahan-nav-top px-0">
+    <nav class="navbar navbar-expand-lg navbar-light topbar  shadow-sm bg-white osahan-nav-top px-1  ">
         <div class="container">
 
             <a class="navbar-brand" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
@@ -79,21 +79,21 @@
                 @guest
                 <li class="nav-item dropdown no-arrow no-caret mr-3 ">
                     <a class="btn btn-outline-danger pink-btn" id="navbarDropdownAlerts" href="{{route('login')}}"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        role="button" >
                         Login
                     </a>
 
                 </li>
                 <li class="nav-item dropdown no-arrow no-caret mr-3 ">
                     <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="{{route('register')}}"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        role="button" >
                         Sign Up
                     </a>
 
                 </li>
                 <li class="nav-item dropdown no-arrow no-caret mr-3 ">
-                    <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="{{route('be_our_partner')}}"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn btn-outline-secondary sec-btn"  href="{{route('be_our_partner')}}"
+                        role="button"  >
                         Be Our Partner
                     </a>
 
@@ -102,7 +102,7 @@
                 @auth
                 <li class="nav-item dropdown no-arrow no-caret mr-3 ">
                     <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="@if(auth()->user()->user_type == 1){{route('provider.dashboard')}} @elseif(auth()->user()->user_type == 0){{route('customer_dashboard')}} @else {{route('admin.home')}}  @endif" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        >
                         Dashboard
                     </a>
 
@@ -228,7 +228,27 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     @yield('script')
     <script src="{{asset('js/custom.js')}}" type="3ebbb932e316a3ee2377425e-text/javascript"></script>
+        <script>
+            $(document).ready(function() {
+            //change the integers below to match the height of your upper div, which I called
+            //banner.  Just add a 1 to the last number.  console.log($(window).scrollTop())
+            //to figure out what the scroll position is when exactly you want to fix the nav
+            //bar or div or whatever.  I stuck in the console.log for you.  Just remove when
+            //you know the position.
+            $(window).scroll(function () { 
 
+            console.log($(window).scrollTop());
+
+            if ($(window).scrollTop() > 200) {
+            $('.navbar').addClass('fixed-top');
+            }
+
+            if ($(window).scrollTop() < 201) {
+            $('.navbar').removeClass('fixed-top');
+            }
+        });
+        });
+</script>
 </body>
 
 
