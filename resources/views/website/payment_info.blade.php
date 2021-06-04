@@ -34,6 +34,30 @@
     .rd-in {
         border-radius: 20px;
     }
+    input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 5px;
+  border: 1px solid #dfdfdf;
+  border-radius: 2px;
+  
+  padding: 1rem;
+  padding-right: 2rem;
+}
 
 </style>
 @endsection
@@ -55,9 +79,9 @@
                             <input type="hidden" name="customer_message" value="{{$request->customer_message}}">
 
                             @csrf
-                            <div class="form-group">
-                                <legend>Payment Inforamtions</legend>
-                            <small>Your card will not get charged until the video is complete <br></small>
+                            <div class="form-group mb-4">
+                                <legend class="mb-0"><b>Payment Inforamtions</b></legend>
+                            <small><b>Your card will not get charged until the video is complete </b><br></small>
                             </div>
                             
                             <div class="form-group">
@@ -65,7 +89,7 @@
                                     Card Holder Name
                                 </label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control " placeholder="Smith John" name="card_holder_name">
+                                    <input type="text" class="form-control " required placeholder="Smith John" name="card_holder_name">
                                     <div class="input-group-btn">
                                           <span class="btn btn-default">
                                             <i class="fa fa-user-o"></i>
@@ -77,8 +101,7 @@
                             <div class="form-group">
                                 <label for="">Card Number</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control " placeholder="xxxx-xxxx-xxxx-xxxx-xxxx" name="card_number">
-
+                                    <input type="number"  class="form-control " minlength="16" maxlength="16" placeholder="xxxx-xxxx-xxxx-xxxx-xxxx" name="card_number">
                                     <div class="input-group-btn">
                                         <span class="btn btn-default">
                                           <i class="fa fa-credit-card"></i>
@@ -94,7 +117,7 @@
                                             Exp.Month
                                         </label>
                                         <div class="input-group">
-                                            <select class="form-control " name="exp_month" id="">
+                                            <select class="form-control " name="exp_month" id="" required>
                                                 @for ($i = 1; $i <= 12; $i++)
                                                     <option value="{{$i}}">{{$i}}</option>
                                                 @endfor
@@ -114,7 +137,7 @@
                                             Exp.Year
                                         </label>
                                         <div class="input-group">
-                                            <select class="form-control " name="exp_month" id="">
+                                            <select class="form-control " name="exp_month" id="" required>
                                                 @for ($i = 2021; $i <= 2035; $i++)
                                                     <option value="{{$i}}">{{$i}}</option>
                                                 @endfor
@@ -133,7 +156,7 @@
                                             CVC
                                         </label>
                                         <div class="input-group">
-                                            <input type="number" name="cvc" class="form-control " maxlength="3" id="">
+                                            <input type="number" name="cvc" class="form-control " required maxlength="3" id="">
                                         <div class="input-group-btn">
                                             <span class="btn btn-default">
                                               <i class="fa fa-credit-card-alt"></i>
@@ -144,24 +167,24 @@
                                 </div>
                             </div>
                             <hr>
-                                <div class="row justify-content-between form-group ml-1 mr-1">
-                                    <h5>Sub Total</h5>
-                                    <p><b>100$</b></p>
+                                <div class="row justify-content-between form-group ml-1 mr-1 mb-0">
+                                    <p style="font-size: initial">Sub Total</p>
+                                    <p><b>{{$request->price}} USD</b></p>
                                 </div>
-                                <div class="row justify-content-between form-group ml-1 mr-1">
-                                    <h5>Tax Fee</h5>
-                                    <p><b>10$</b></p>
+                                <div class="row justify-content-between form-group ml-1 mr-1 mb-0">
+                                    <p style="font-size: initial;color:#E30C5F"><b>Tax Fee</b></p>
+                                    <p style="color:#E30C5F"><b>10 USD</b></p>
                                 </div>
-                                <hr>
-                                <div class="row justify-content-between form-group ml-1 mr-1">
-                                    <h3>Total</h3>
-                                    <p><b>110$</b></p>
+                                <hr class="mt-0 pt-0">
+                                <div class="row justify-content-between form-group ml-1 mr-1 mb-0">
+                                    <h5><b>Total</b></h5>
+                                    <h5><b>{{$request->price + 10}} USD</b></h5>
                                 </div>
                             
                               <br>
                               <div class="form-group">
                                   <button class="btn btn-success  btn-lg btn-block" type="submit">Pay</button>
-                                  <p>By Booking up you agree to Narabana <a href="">terms of service and Privacy Policy</a></p>
+                                  <p style="font-size: smaller " class="pt-2">By Booking up you agree to Narabana <a style="text-decoration: underline;color:#000" href=""><b>terms of service and Privacy Policy</b></a></p>
                                     <img src="{{asset('images/bank.png')}}" alt="">
                                 </div>
                         </form>

@@ -1,48 +1,14 @@
 @extends('layouts.website')
 @section('style')
-<style>
-    .bak {
-        background: #2a4d6c69;
-        width: 100%;
-        background-size: cover;
-        height: 100%;
-        position: absolute;
-    }
 
-    .pink-btn {
-        color: #d47fa6;
-        border-color: #d47fa6;
-        border-radius: 20px;
-    }
-
-    .pink-btn:hover {
-        color: #fff !important;
-        background-color: #d47fa6 !important;
-        border-color: #d47fa6 !important;
-    }
-
-    .btn-big-pink {
-        background-color: #d47fa6 !important;
-        border-color: #d47fa6 !important;
-
-    }
-
-
-    .sec-btn {
-        border-radius: 20px;
-    }
-
-</style>
 @endsection
 @section('content')
-
-
 <div class="services-wrapper bg-white py-5">
     <div class="container">
         <div class="row">
             <ol class="breadcrumb bg-white">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">{{$provider->ProviderType->name}}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('welcome')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('FilterByType',$provider->ProviderType->id)}}">{{$provider->ProviderType->name}}</a></li>
                 <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$provider->user->name}}</li>
               </ol>
         </div>
@@ -57,24 +23,8 @@
                 <video id="v-{{$provider->id}}" style="width: 100%" loop preload="false" autoplay="true"   tabindex="0">
                     <source src="{{asset($provider->video)}}" type="video/mp4">
                 </video>
-                <span id="play-{{$provider->id}}" onclick="playVideo('{{$provider->id}}')" class="fa fa-play" style="position: absolute;
-                bottom: 50%;
-                left: 50%;
-                display:block;
-                transform: translate(-50%,50%);
-                font-size: 50px;
-                opacity: .8;
-                transition: opacity,font-size .4s;
-                color: #fff;"></span>
-                <span id="pause-{{$provider->id}}" onclick="pauseVideo('{{$provider->id}}')" class="fa fa-pause" style="position: absolute;
-                    display:none;
-                    bottom: 50%;
-                    left: 50%;
-                    transform: translate(-50%,50%);
-                    font-size: 50px;
-                    opacity: .8;
-                    transition: opacity,font-size .4s;
-                    color: #fff;"></span>
+                <span id="play-{{$provider->id}}" onclick="playVideo('{{$provider->id}}')" class="fa fa-play play-btn" ></span>
+                <span id="pause-{{$provider->id}}" onclick="pauseVideo('{{$provider->id}}')" class="fa fa-pause pause-btn" ></span>
             </div>
             <div class="col-md-6">
                 <div class="row">
@@ -83,57 +33,78 @@
                         ">{{$provider->user->name}}</h2>
                         <span class="pb-2 mb-2">{{$provider->Country->name}} / {{$provider->ProviderType->name}}</span>
                         <p class="pt-2">{{$provider->about_me}}</p>
-                        <p><i class="fa fa-clock-o"></i> Replies in 5 days</p>
-                            
+                        <p style="font-weight: bold;color: #ba6089;"><i class="fa fa-clock-o" style="color: #ba6089;font-size: initial;"></i> Replies in 5 days</p>
                         @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->count() != 0)
                         <p> <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 1) text-warning @endif"></i> 
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 2) text-warning @endif"></i>
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 3) text-warning @endif"></i> 
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 4) text-warning @endif"></i>
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate == 5) text-warning @endif"></i>
-                                / <span class="font-weight-bold">{{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate}} Star </span>
-                           
+                                / <span class="font-weight-bold">{{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate}} Star </span>    
                             </p>
-                           <p><b>Last Review</b>  : <span> {{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->massage}}</span></p>
-                      
-                    
-                        <p class="font-weight-bold" style="text-decoration:underline; font-size:14px; color:black"><a style="color:black" href="">Show More Reviews ({{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->count()}})</a></p>
-                            @endif
+                        <p class="font-weight-bold" style="text-decoration:underline; font-size:14px; color:black"><a style="color:black" href="#" data-toggle="modal" data-target="#exampleModal">Show More Reviews ({{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->count()}})</a></p>
+                            @else 
+                            <p> <i class="fa fa-star "></i> 
+                                <i class="fa fa-star "></i>
+                                <i class="fa fa-star "></i> 
+                                <i class="fa fa-star "></i>
+                                <i class="fa fa-star "></i>
+                                / <span class="font-weight-bold">0 Star </span>    
+                            </p>
+                        <p class="font-weight-bold" style="text-decoration:underline; font-size:14px; color:black"><a style="color:black" href="#">Show More Reviews (0)</a></p>
+
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 copyright p-2 pb-3" >
+                        <ul class="social " style="margin-left: 0">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <form action="{{route('checkout')}}" method="POST">
                             <input type="hidden" name="price" id="price">
-                            <input type="hidden" name="provider_id" value="{{$provider->id}}">
+                            <input type="hidden" id="provider_id" name="provider_id" value="{{$provider->id}}">
                             @csrf
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <div class=" btn-group-toggle" data-toggle="buttons">
                                 @foreach ($provider->services as $service)
-
-                          
-                                    <label class="btn btn-outline-dark service_select" id="{{$service->Service->id}}">
+                                    <label class="btn btn-outline-success service_select" id="{{$service->Service->id}}">
                                       <input type="radio" class="service_select"  value="{{$service->Service->id}}" name="service_id" id="{{$service->Service->id}}"  > {{$service->Service->name}}
                                     </label>
-                                  
-                                {{-- <label class="btn btn-outline-dark">
-                                    <input type="radio" class="service_select"  name="service_id" value="{{$service->Service->id}}"
-                                        id="service"> {{$service->Service->name}}
-                                </label> --}}
                                 @endforeach
                             </div>
                             <br>
                             <div class="form-group mt-2">
                                 <button type="submit"
-                                    class="btn  btn-primary  btn-xlg form-control btn-big-pink p-2">Book Now <i class="price"></i> </button>
+                                @if($provider->services->count()  == 0) disabled @endif
+                                    class="btn  btn-success  btn-xlg form-control rd-in  p-2 @if($provider->services->count()  == 0) disabled @endif ">Book Now <i class="price"></i> </button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        @if($provider->orders->count() != 0)
         <div class="services-wrapper bg-white py-5">
             <div class="container">
-                <h2>Anthony Videos</h2>
+                <h2>{{$provider->user->name}} Videos</h2>
                 <div class="row freelance-slider">
                     @foreach ($provider->orders->where('status',2) as $order)
                     @if ($order->service->is_video) 
@@ -169,60 +140,35 @@
                 </div>
             </div>
         </div>
-        
-        {{-- <div class="services-wrapper bg-white py-5">
-            <div class="container">
-                <h2>Recent Feedback</h2>
-                <div class="list-group">
-                    @foreach ($provider->orders as $order)
-                    @if(isset($order->rate))
-
-                    <a href="#" class="list-group-item list-group-item-action active btn-big-pink ">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{$order->rate->user->name}}</h5>
-                            <small>3 days ago</small>
-                        </div>
-                        <p class="mb-1 text-white">{{$order->rate->massage}}</p>
-               
-                    </a>
-                    @endif
-               
-                    
-                    @endforeach
-                   
-                  
-                </div>
-            </div>
-        </div> --}}
+        @endif
         <div class="freelance-projects bg-white py-5">
             <div class="container">
                 <h1>Singers</h1>
                 <div class="row freelance-slider">
                     @foreach (\App\Provider::all()->take(10) as $provider)
-    
-    
                     <div class="col">
                         <a href="{{route('provider_profile',$provider->id)}}">
                             <div class="freelancer">
-                                <img src="{{asset($provider->user->avatar)}}">
-                                <h3 style="position: absolute;
-                                left: 27px;
-                                bottom: 68px;
-                                font-size: 14px;
-                                font-weight: bold;
-                                text-transform: capitalize;
-                                color: #3c3c3c;
-                                background-color: #dfeaea;
-                                padding: 3px;
-                                border-radius: 3px;">1000 TL <i class="fa fa-video-camera"></i> </h3>
+                                <div>
+                                    <div class="top-right p-1 text-center">
+                                        <span class="fa fa-heart-o"></span>
+                                    </div>
+                                    @if($provider->services()->exists())
+                                    <div class="bottom-left p-1">
+                                        <span>{{$provider->services->first()->price}} USD</span> <i class="fa fa-video-camera"></i>
+            
+                                    </div>
+                                    @endif
+                                    <img src="{{asset($provider->user->avatar)}}">
+                                </div>
+        
                                 <div class="freelancer-footer">
         
                                     <h5 style="padding: 0px;">{{$provider->user->name}}
-                                        <span style="font-size: 12px">{{$provider->ProviderType->name}} ,
-                                            {{$provider->Country->name}}</span>
+                                        <span style="font-size: 12px">{{ucfirst(strtolower($provider->ProviderType->name))}}
+                                            <br>
+                                            {{ucfirst(strtolower($provider->Country->name))}}</span>
                                     </h5>
-                                    <button class="btn btn-default"><i style="font-size: 21px"
-                                            class="fa fa-heart-o"></i></button>
                                 </div>
                             </div>
                         </a>
@@ -233,18 +179,41 @@
         </div>
     </div>
 
-
-
-
-
-
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-0">
+              <h5 class="modal-title" id="exampleModalLabel">Reviews</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body border-0" id="modal_body">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+          </div>
+        </div>
+      </div>
     @endsection
     @section('script')
     <script>
 
-      
-         
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            $.ajax({
+                url:"{{route('reviews')}}",
+                type:"POST",
+                data:{"_token":"{{csrf_token()}}","provider_id":$("#provider_id").val()},
+                success : function(res){
+                    $("#modal_body").html("");
+
+                    $("#modal_body").html(res);
+                }
+            });
+        })
         $(document).ready(function () {
            
             $('.freelance-slider').slick({
@@ -255,14 +224,38 @@
                 centerMode: true,
                 centerPadding: '60px',
                 // adaptiveHeight: true,
-
+                responsive:[
+                    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+                ]
             });
 
             $(".service_select").click(function(){
                 $.ajax({
                   url:"{{route('service_check')}}",
                   type:"GET",
-                data:{service_id:this.id},
+                data:{service_id:this.id,provider_id:$("#provider_id").val()},
                   success : function (re) {
                       $(".price").html(re.price + " USD");
                       $("#price").val(re.price);

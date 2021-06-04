@@ -51,22 +51,22 @@
                             <input type="hidden" name="provider_id" value="{{$request->provider_id}}">
                             <input type="hidden" name="price" value="{{$request->price}}">
                             @csrf
-                            <legend>Request a Order from {{App\Provider::find($request->provider_id)->user->name}} to :</legend>
+                            <legend><b style="font-size: smaller;">Request an Order from {{App\Provider::find($request->provider_id)->user->name}} to :</b></legend>
                             <div class="form-group">
                                 <label for="">
                                     From
                                 </label>
-                                <input type="text" class="form-control " name="from">
+                                <input type="text" class="form-control " name="from" required>
              
                             </div>
                             <div class="form-group">
                                 <label for="">To</label>
-                                <input type="text" class="form-control " name="to">
+                                <input type="text" class="form-control " name="to" required>
              
                             </div>
                             <div class="form-group">
                                 <label for="">Message</label>
-                                <textarea name="customer_message" class="form-control " id="" cols="30" rows="5"></textarea>
+                                <textarea name="customer_message" class="form-control " id="" cols="30" rows="5" minlength="50" maxlength="250" required></textarea>
              
                             </div>
                             <hr>

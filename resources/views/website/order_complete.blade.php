@@ -43,10 +43,24 @@
 <div class="services-wrapper bg-white py-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 offset-md-1">
+            <div class="col-md-6 offset-md-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{route('welcome')}}" class="btn btn-success btn-block btn-lg"> Back To Home Page</a>
+                        <div class="d-flex justify-content-center">
+                            <p>
+                                <img style="width: 81px" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xMiAwYzYuNjIzIDAgMTIgNS4zNzcgMTIgMTJzLTUuMzc3IDEyLTEyIDEyLTEyLTUuMzc3LTEyLTEyIDUuMzc3LTEyIDEyLTEyem0wIDFjNi4wNzEgMCAxMSA0LjkyOSAxMSAxMXMtNC45MjkgMTEtMTEgMTEtMTEtNC45MjktMTEtMTEgNC45MjktMTEgMTEtMTF6bTcgNy40NTdsLTkuMDA1IDkuNTY1LTQuOTk1LTUuODY1Ljc2MS0uNjQ5IDQuMjcxIDUuMDE2IDguMjQtOC43NTIuNzI4LjY4NXoiLz48L3N2Zz4=">
+                                </p>
+                            
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <p class="text-center" style="font-weight: 600; ">Your Request has been completed we will send you an email with all the details You can track your order from the website or with the link below</p>
+
+
+                        </div>
+                        <div class="d-flex justify-content-center">
+                        <a href="{{route('customer.OrderTracking',$d_order_id)}}" class="btn btn-success dark "> Track your Order</a>
+
+                        </div>
                     </div>
                 </div>
             </div>

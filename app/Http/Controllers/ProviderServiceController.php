@@ -84,6 +84,6 @@ class ProviderServiceController extends Controller
     }
     public function service_check(Request $request)
     {
-      return ProviderService::where('service_id',$request->service_id)->first();
+      return ProviderService::where(['service_id'=>$request->service_id,'provider_id'=>$request->provider_id])->first();
     }
 }

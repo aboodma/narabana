@@ -35,7 +35,8 @@
 
     <div class="services-wrapper bg-white py-5">
         <div class="container">
-            <h2>Categories</h2>
+          <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-3">Categories
+          </p>
             <div class="row">
                 @foreach ($categories as $category)
                 <div class="col-md-3">

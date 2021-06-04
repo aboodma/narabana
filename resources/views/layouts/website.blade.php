@@ -14,8 +14,7 @@
 
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{asset('/vendor/fontawesome/css/font-awesome.min.css')}}">
     <link href="{{asset('vendor/icons/css/materialdesignicons.min.css')}}" media="all" rel="stylesheet" type="text/css">
 
     <link href="{{asset('vendor/slick-master/slick/slick.css')}}" rel="stylesheet" type="text/css">

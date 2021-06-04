@@ -31,6 +31,8 @@ Route::post('provider_request','HomeController@provider_request')->name('provide
 Route::get('request_submited/{user}','HomeController@request_submited')->name('request_submited');
 Route::get('category/{providerType}','HomeController@FilterByType')->name('FilterByType');
 Route::get('categories','HomeController@categories')->name('categories');
+Route::get('featured','HomeController@featured')->name('featured');
+Route::post('reviews','HomeController@reviews')->name('reviews');
 
 //ws routes
 Route::get('service_check','ProviderServiceController@service_check')->name('service_check');

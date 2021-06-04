@@ -29,6 +29,12 @@ class HomeController extends Controller
         return view('website.provider_profile',compact('provider'));
      }
 
+     public function featured()
+     {
+        $providers = Provider::where('is_approved',true)->get();
+        return view('website.featured',compact('providers'));
+     }
+
      public function FilterByType(ProviderType $providerType)
      {
         $providers = $providerType->provider;
@@ -73,11 +79,11 @@ class HomeController extends Controller
         $order_id =  Crypt::encrypt($order->id);
         return redirect()->route('order_complete',$order_id);
      }
-     public function order_complete($order_id)
+     public function order_complete($d_order_id)
      {
-      $order_id =  Crypt::decrypt($order_id);
+      $order_id =  Crypt::decrypt($d_order_id);
       $order = Order::find($order_id);
-      return view('website.order_complete');
+      return view('website.order_complete',compact('d_order_id'));
      }
      public function categories()
      {
@@ -151,5 +157,11 @@ class HomeController extends Controller
     public function request_submited(User $user)
     {
        return view('website.request_submited',compact('user'));
+    }
+
+    public function reviews(Request $request)
+    {
+       $provider = Provider::find($request->provider_id);
+       return view('parts.reviews',compact('provider'));
     }
 }
