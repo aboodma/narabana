@@ -85,8 +85,8 @@
                             @csrf
                             <div class=" btn-group-toggle" data-toggle="buttons">
                                 @foreach ($provider->services as $service)
-                                    <label class="btn btn-outline-success service_select" id="{{$service->Service->id}}">
-                                      <input type="radio" class="service_select"  value="{{$service->Service->id}}" name="service_id" id="{{$service->Service->id}}"  > {{$service->Service->name}}
+                                    <label class="btn btn-outline-success service_select @if($loop->first) active @endif" id="{{$service->Service->id}}">
+                                      <input type="radio" class="service_select" @if($loop->first) checked @endif value="{{$service->Service->id}}" name="service_id" id="{{$service->Service->id}}"  > {{$service->Service->name}}
                                     </label>
                                 @endforeach
                             </div>
@@ -213,6 +213,7 @@
         })
         $(document).ready(function () {
            
+            checkers();
             $('.freelance-slider').slick({
                 infinite: true,
                 slidesToShow: 5,
@@ -247,6 +248,18 @@
     }
                 ]
             });
+            
+            function checkers() {
+                $.ajax({
+                  url:"{{route('service_check')}}",
+                  type:"GET",
+                data:{service_id:$('input[name="service_id"]:checked').val(),provider_id:$("#provider_id").val()},
+                  success : function (re) {
+                      $(".price").html(re.price + " USD");
+                      $("#price").val(re.price);
+                  }
+              });
+            }
 
             $(".service_select").click(function(){
                 $.ajax({
