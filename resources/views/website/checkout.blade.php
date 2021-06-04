@@ -66,7 +66,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Message</label>
-                                <textarea name="customer_message" class="form-control " id="" cols="30" rows="5" minlength="50" maxlength="250" required></textarea>
+                                <textarea name="customer_message" class="form-control " id="" cols="30" rows="5" minlength="10" maxlength="250" required></textarea>
              
                             </div>
                             <hr>
