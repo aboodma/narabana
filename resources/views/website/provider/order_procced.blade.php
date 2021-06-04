@@ -50,15 +50,19 @@
                                             <tbody>
                                                 <tr>
                                                     <th>Customer Name</th>
-                                                    <td>Test Test</td>
+                                                    <td>{{$order->user->name}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>To</th>
+                                                    <td>{{$order->details->to}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Message</th>
+                                                    <td>{{$order->details->customer_message}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Total Price</th>
-                                                    <td>Test Test</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Total Price</th>
-                                                    <td>Test Test</td>
+                                                    <td>{{$order->total_price}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
