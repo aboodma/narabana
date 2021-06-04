@@ -1,6 +1,10 @@
 @extends('layouts.website')
 @section('style')
-
+<style>
+    .slick-track{
+        float: left;
+    }
+</style>
 @endsection
 @section('content')
 <div class="services-wrapper bg-white py-5">
@@ -17,8 +21,11 @@
                 <img style="position: absolute;
                 width: 30%;
                 align-self: center;
-                top: 90%;
-                filter: brightness(100);" src="http://localhost/celebrate/narabana/public/images/logo.png" alt="">
+                top: 84%;
+                filter: brightness(100);
+                float: right;
+                right: 7%;
+                " src="{{asset('images/logo.png')}}" alt="">
 
                 <video id="v-{{$provider->id}}" style="width: 100%" loop preload="false" autoplay="true"   tabindex="0">
                     <source src="{{asset($provider->video)}}" type="video/mp4">
@@ -219,8 +226,8 @@
                 slidesToShow: 5,
                 slidesToScroll: 3,
                 dir: "ltr",
-                centerMode: true,
-                centerPadding: '60px',
+                centerMode: false,
+                // centerPadding: '60px',
                 // adaptiveHeight: true,
                 responsive:[
                     {
