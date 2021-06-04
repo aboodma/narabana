@@ -32,7 +32,7 @@
                                     <a href="#">
                                         <div class="freelancer" >
                                             <video style="width: 100%" controls>
-                                                <source src="{{$order->details->provider_message}}" type="video/webm">
+                                                <source src="{{$order->details->provider_message}}" type="video/mp4">
                                             </video>
                                             
                                             <div class="freelancer-footer">
