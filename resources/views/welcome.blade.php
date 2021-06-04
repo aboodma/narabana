@@ -14,7 +14,7 @@
                 <div class="service">
                     <img class="d-block d-sm-block d-xs-block d-lg-none " src="images/banner-small.png" >
                     <img class="d-none d-sm-block " src="images/banner-web.png" >
-                    <h3 class="text-center d-block d-sm-block d-xs-block d-lg-none banner-text" >Get messages from <br> your favorite star <br>
+                    <h3 class="text-center d-block d-sm-block d-xs-block d-lg-none banner-text" style="font-size: 1rem !important;" >Get messages from <br> your favorite star <br>
                        @guest
                        <a href="{{route('register')}}" class="btn btn-lg btn-light rd-in mt-3 primary-color-rev"> Get Started </a>
                        @endguest
