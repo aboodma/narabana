@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Provider;
 use Illuminate\Http\Request;
 use App\User;
+use App\Notification;
 use App\Order;
 use App\Service;
 use App\ProviderService;
@@ -69,6 +70,17 @@ class ProviderController extends Controller
         $order_details->save();
         $order->status = 2;
         $order->save();
+            $Providernotify = new Notification;
+            $Providernotify->user_id = auth()->user()->id;
+            $Providernotify->msg = "Order Status Updated";
+            $Providernotify->type = 1;
+            $Providernotify->save();
+
+            $Customernotify = new Notification;
+            $Customernotify->user_id = $order->user_id;
+            $Customernotify->msg = "Order Status Updated";
+            $Customernotify->type = 1;
+            $Customernotify->save();
         return redirect()->route('provider.orders',"onGoing");
 
     }
@@ -77,6 +89,17 @@ class ProviderController extends Controller
     {
        $order->status = $status;
        if ($order->save()) {
+        $Providernotify = new Notification;
+        $Providernotify->user_id = auth()->user()->id;
+        $Providernotify->msg = "Order Status Updated";
+        $Providernotify->type = 1;
+        $Providernotify->save();
+
+        $Customernotify = new Notification;
+        $Customernotify->user_id = $order->user_id;
+        $Customernotify->msg = "Order Status Updated";
+        $Customernotify->type = 1;
+        $Customernotify->save();
         return redirect()->route('provider.orders',"onGoing");
        }
     }
@@ -88,6 +111,17 @@ class ProviderController extends Controller
         $order_details->save();
         $order->status = 2;
         $order->save();
+        $Providernotify = new Notification;
+            $Providernotify->user_id = auth()->user()->id;
+            $Providernotify->msg = "Order Status Updated";
+            $Providernotify->type = 1;
+            $Providernotify->save();
+
+            $Customernotify = new Notification;
+            $Customernotify->user_id = $order->user_id;
+            $Customernotify->msg = "Order Status Updated";
+            $Customernotify->type = 1;
+            $Customernotify->save();
         return redirect()->route('provider.orders',"onGoing");
 
     }

@@ -33,6 +33,7 @@ Route::get('category/{providerType}','HomeController@FilterByType')->name('Filte
 Route::get('categories','HomeController@categories')->name('categories');
 Route::get('featured','HomeController@featured')->name('featured');
 Route::post('reviews','HomeController@reviews')->name('reviews');
+Route::post('notify/read','NotificationController@read')->name('notify_read');
 
 //ws routes
 Route::get('service_check','ProviderServiceController@service_check')->name('service_check');

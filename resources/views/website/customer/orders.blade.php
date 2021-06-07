@@ -147,9 +147,7 @@
 <div class="main-page second py-5">
     <div class="container">
         <div class="row">
-           <div class="col-lg-4">
-                @include('parts.provider_sidebar')
-            </div>
+            @include('parts.customer_sidebar')
             <div class="col-lg-9 right">
 
                 <div class="p-4 bg-white rounded shadow-sm mb-3">

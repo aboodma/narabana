@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Provider;
+use App\Notification;
 use App\Order;
 use App\OrderDetail;
 use App\OrderReview;
@@ -74,9 +75,22 @@ class HomeController extends Controller
             $order_details->customer_message = $request->customer_message;
             $order_details->provider_message = " ";
             $order_details->save();
+            $Customernotify = new Notification;
+            $Customernotify->user_id = auth()->user()->id;
+            $Customernotify->msg = "New Order Placed";
+            $Customernotify->type = 0;
+            $Customernotify->save();
+
+            $Providernotify = new Notification;
+            $Providernotify->user_id = Provider::find($request->provider_id)->user_id;
+            $Providernotify->msg = "New Order Placed";
+            $Providernotify->type = 0;
+            $Providernotify->save();
+
         }
 
         $order_id =  Crypt::encrypt($order->id);
+        
         return redirect()->route('order_complete',$order_id);
      }
      public function order_complete($d_order_id)
