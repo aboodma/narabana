@@ -17,58 +17,57 @@
         <div class="row">
             @include('parts.customer_sidebar')
             <div class="col-lg-8 right">
-                <div class="d-flex align-items-center p-3 bg-white rounded shadow-sm h5 m-0">
-                    <b>Active orders</b>
-                    <div class="ml-auto d-flex align-items-center h5 m-0 text-muted">
-                        15 ($5000)
+                <div class="bg-white rounded shadow-sm sidebar-page-right">
+                    <div>
+                    <div class="p-3">
+                    <p class="text-muted font-weight-bold h6 mb-3">Your Account Balance</p>
+                    <p class="text-muted font-weight-bold mb-0">When available, we use your funds and credits as your primary payment method for new orders.</p>
+                    <div class="border my-4 rounded">
+                    <div class="bg-light d-flex border-bottom">
+                    <div class="p-3">
+                     <p class="text-muted font-weight-bold mb-0">MIVER BALANCE</p>
                     </div>
-                </div>
-                <div class="p-4 bg-white rounded shadow-sm my-3">
-                    <h6 class="mb-2 font-weight-bold">How to build your success on Miver in 3 steps
-                    </h6>
-                    <p class="m-0">The key to your success on Miver is the brand you build for yourself through your
-                        Miver reputation. We gathered some tips and resources to help you become a leading seller on
-                        Miver.
-                    </p>
-                </div>
-                <div class="p-4 bg-white rounded shadow-sm mb-3">
-                    <h5 class="mb-4 font-weight-bold text-center">Take these steps to become a top seller on Miver
-                    </h5>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="display-4 my-2">
-                                <i class="fa fa-volume-up text-success" aria-hidden="true"></i>
-                            </div>
-                            <h6 class="font-weight-bold">Get noticed</h6>
-                            <p class="text-muted">Hone your skills and expand your knowledge with online courses. You’ll
-                                be able to offer more services and <b>gain more exposure</b> with every course
-                                completed.
-                            </p>
-                            <button class="btn btn-outline-success" type="submit"> Share Your Gigs </button>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="display-4 my-2">
-                                <i class="fa fa-book text-success" aria-hidden="true"></i>
-                            </div>
-                            <h6 class="font-weight-bold">Get more skills &amp; exposure</h6>
-                            <p class="text-muted">Watch this free online course to learn how to create an outstanding
-                                service experience for your buyer and grow your career as an online freelancer.
-                            </p>
-                            <button class="btn btn-outline-success" type="submit"> Explore Learn </button>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="display-4 my-2">
-                                <i class="fa fa-star text-success" aria-hidden="true"></i>
-                            </div>
-                            <h6 class="font-weight-bold">Become a successful seller!</h6>
-                            <p class="text-muted">Hone your skills and expand your knowledge with online courses. You’ll
-                                be able to offer more services and <b>gain more exposure</b> with every course
-                                completed.
-                            </p>
-                            <button class="btn btn-outline-success" type="submit"> Watch Free Course </button>
-                        </div>
+                    <div class="border-left p-3 ml-auto">
+                    <p class="text-muted font-weight-bold mb-0">TOTAL ₹0.00</p>
                     </div>
-                </div>
+                    </div>
+                    <div class="d-flex border-bottom">
+                    <div class="p-3">
+                    <p class="text-muted font-weight-bold mb-0">Your Earnings</p>
+                    </div>
+                    <div class="p-3 ml-auto">
+                    <p class="text-muted font-weight-bold mb-0">₹0.00</p>
+                    </div>
+                    </div>
+                    <div class="d-flex">
+                    <div class="p-3">
+                    <p class="text-muted font-weight-bold mb-0">Your Reimbursements <span data-toggle="tooltip" data-placement="right" title="" data-original-title="Funds credited back to your account for canceled orders."><i class="fa fa-question-circle" aria-hidden="true"></i></span></p>
+                    <p class="mb-0 text-muted">Funds that were credited back to your account for canceled orders.</p>
+                    </div>
+                    <div class="p-3 ml-auto">
+                    <p class="text-muted font-weight-bold mb-0">₹0.00</p>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="border my-4 rounded">
+                    <div class="bg-light d-flex border-bottom">
+                    <div class="p-3">
+                    <p class="text-muted font-weight-bold mb-0">MIVER CREDITS <span data-toggle="tooltip" data-placement="right" title="" data-original-title="Miver Credits are funds you can only use for buying services on Miver, within a limited period of time. Please note credits data is updated every few minutes"><i class="fa fa-question-circle" aria-hidden="true"></i></span></p>
+                    </div>
+                    <div class="border-left p-3 ml-auto">
+                    <p class="text-muted font-weight-bold mb-0">TOTAL ₹0.00</p>
+                    </div>
+                    </div>
+                    <div class="text-center py-5">
+                    <p class="font-weight-bold h6">No Credits Yet</p>
+                    <p class="text-muted font-weight-bold">Refer a friend to Miver and get credits to buy the freelance services you need.</p>
+                    <a href="#" class="btn btn-success btn-lg my-3">Get Miver Credits</a>
+                    </div>
+                    </div>
+                    <p class="text-muted">Please note it may take a few minutes to update new Miver Credits in your account balance.</p>
+                    </div>
+                    </div>
+                    </div>
             </div>
         </div>
     </div>

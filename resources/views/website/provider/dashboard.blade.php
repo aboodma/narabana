@@ -1,84 +1,93 @@
 @extends('layouts.website')
 @section('style')
-    <style>
-        .menu-item{
-            color:#000;
-            font-size: 14px;
-        }
-        .active-menu{
-            font-weight: bolder;
-            color:#d47fa6 !important;
-        }
-    </style>
+<style>
+    .menu-item {
+        color: #000;
+        font-size: 14px;
+    }
+
+    .active-menu {
+        font-weight: bolder;
+        color: #d47fa6 !important;
+    }
+
+</style>
 @endsection
 @section('content')
 <div class="main-page second py-5">
     <div class="container">
         <div class="row">
-            @include('parts.provider_sidebar')
+            <div class="col-lg-4">
+                @include('parts.provider_sidebar')
+            </div>
             <div class="col-lg-8 right">
-                @if(!auth()->user()->provider->is_approved)
-                <div class="d-flex align-items-center p-3 bg-white rounded shadow-sm h5 m-0">
-                    <b>Un Approved Account</b>
-                    <div class="ml-auto d-flex align-items-center h5 m-0 text-muted">
-                        Your Account not Approved yet Please Wait until Approvement
-                    </div>
-                </div>
-                @else
-                
-                <div class="d-flex align-items-center p-3 bg-white rounded shadow-sm h5 m-0">
-                    <b>Active orders</b>
-                    <div class="ml-auto d-flex align-items-center h5 m-0 text-muted">
-                        15 ($5000)
-                    </div>
-                </div>
-                <div class="p-4 bg-white rounded shadow-sm my-3">
-                    <h6 class="mb-2 font-weight-bold">How to build your success on Miver in 3 steps
-                    </h6>
-                    <p class="m-0">The key to your success on Miver is the brand you build for yourself through your
-                        Miver reputation. We gathered some tips and resources to help you become a leading seller on
-                        Miver.
-                    </p>
-                </div>
-                <div class="p-4 bg-white rounded shadow-sm mb-3">
-                    <h5 class="mb-4 font-weight-bold text-center">Take these steps to become a top seller on Miver
-                    </h5>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="display-4 my-2">
-                                <i class="fa fa-volume-up text-success" aria-hidden="true"></i>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="bg-white rounded shadow-sm sidebar-page-right">
+                            <div>
+                                <div class="card-body">
+                                    <div class="row justify-content-around">
+        
+                                        <div class="col-md-3 text-center border-box">
+                                            <p>Total Orders</p>
+                                            <h1 class="font-weight-bold m-0">$1,00.50</h1>
+                                        </div>
+                                       
+                                        <div class="col-md-3 text-center border-box">
+                                            <p> Wallet Balance </p>
+                                            <h1 class="font-weight-bold m-0">$5.00</h1>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h6 class="font-weight-bold">Get noticed</h6>
-                            <p class="text-muted">Hone your skills and expand your knowledge with online courses. You’ll
-                                be able to offer more services and <b>gain more exposure</b> with every course
-                                completed.
-                            </p>
-                            <button class="btn btn-outline-success" type="submit"> Share Your Gigs </button>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="display-4 my-2">
-                                <i class="fa fa-book text-success" aria-hidden="true"></i>
-                            </div>
-                            <h6 class="font-weight-bold">Get more skills &amp; exposure</h6>
-                            <p class="text-muted">Watch this free online course to learn how to create an outstanding
-                                service experience for your buyer and grow your career as an online freelancer.
-                            </p>
-                            <button class="btn btn-outline-success" type="submit"> Explore Learn </button>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="display-4 my-2">
-                                <i class="fa fa-star text-success" aria-hidden="true"></i>
-                            </div>
-                            <h6 class="font-weight-bold">Become a successful seller!</h6>
-                            <p class="text-muted">Hone your skills and expand your knowledge with online courses. You’ll
-                                be able to offer more services and <b>gain more exposure</b> with every course
-                                completed.
-                            </p>
-                            <button class="btn btn-outline-success" type="submit"> Watch Free Course </button>
                         </div>
                     </div>
                 </div>
-                @endif
+
+                <div class="row pt-3">
+                    <div class="col-md-12">
+                        <div class="bg-white rounded shadow-sm sidebar-page-right ">
+                            <div>
+                                <div class="card-body">
+                                   <div class="table-responsive">
+                                    <table id="example" class="table  " style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Service Name / Customer Name</th>
+                                                <th>Status</th>
+                                                <th>Option</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (auth()->user()->provider->orders->where('status',0)->take(5) as $order)
+                                            <tr>
+                                                <td>{{$order->service->name}} / {{$order->user->name}}</td>
+                                                <td>@if ($order->status == 0)
+                                                    <span class="badge badge-warning">Pending</span>
+                                                    @elseif($order->status == 1)
+                                                    <span class="badge badge-warning">Accepted</span>
+                                                    @elseif($order->status == 2)
+                                                    <span class="badge badge-success">Completed</span>
+                                                    @elseif($order->status == 3)
+                                                    <span class="badge badge-danger">Rejected</span>
+                                                    @endif</td>
+                                                <td><a href="{{route('provider.orders',"onGoing")}}"
+                                                    class="btn btn-info"> View Orders <i class="fa fa-eye"></i>
+                                                </a></td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                        </table>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
