@@ -30,6 +30,29 @@ class ProviderController extends Controller
     {
         return view('website.provider.profile');
     }
+
+    public function update_profile(Request $request)
+    {
+       $provider = auth()->user()->provider;
+       $provider->about_me = $request->about_me;
+       $provider->provider_type_id = $request->provider_type;
+       $provider->country_id = $request->country_id;
+       if ($provider->save()) {
+           $user = auth()->user();
+           $user->name = $request->name;
+           if ($request->has('avatar')) {
+            $random = Str::random(40);
+            $file = $request->file('avatar');     
+            $filename = $file->getClientOriginalName();
+            $avatar = explode('.',$filename);
+            $avatar = $random.'.'.$file->extension(); 
+            if($fil= $file->move(public_path(), $avatar)){
+                $user->avatar = $avatar;
+                $user->save();
+            }
+           }
+       }
+    }
     public function services()
     {
         return view('website.provider.services');

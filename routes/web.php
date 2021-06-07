@@ -96,6 +96,7 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::post('/orders/procced/other','ProviderController@other_order_upload')->name('other_order_upload');
   Route::get('/service/add/{service}','ProviderController@add_service')->name('add_service');
   Route::post('/service/store','ProviderController@store_service')->name('store_service');
+  Route::post('/provider/update/profile','ProviderController@update_profile')->name('update_profile');
   
 });
 
