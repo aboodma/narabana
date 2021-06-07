@@ -1,17 +1,17 @@
 <div class="row">
     <div class="col-lg-12 pb-3">
-        <div class="bg-white  shadow-sm p-3 ">
+        <div class="bg-white  shadow-sm pr-3 pl-3 pt-2 pb-2  " style="background-color: #241332 !important">
             <div class="dropdown-menu-show clearfix ">
                 <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
                     aria-controls="collapseExample" style="font-weight: 600
-         " class=" text-dark">
+         " class=" text-white">
                     <p class="float-left m-0" style="font-size: larger"><b> <i class="fa fa-bars"></i> Menu</b> </p>
                     
                 </a>
 
             </div>
         </div>
-        <div id="collapseExample" class="bg-white rounded shadow-sm sidebar-fix collapse  pb-2">
+        <div id="collapseExample" class="bg-white rounded shadow-sm sidebar-fix collapse  pb-2" >
 
             <div class="dropdown-menu-show">
                 <a class="dropdown-item py-2 @if (Route::is('provider.dashboard')) active   @endif"
