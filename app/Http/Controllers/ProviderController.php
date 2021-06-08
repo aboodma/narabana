@@ -125,6 +125,11 @@ class ProviderController extends Controller
             $Customernotify->msg = "Order Status Updated";
             $Customernotify->type = 1;
             $Customernotify->save();
+        $wallet = new Wallet();
+        $wallet->user_id = auth()->user()->id;
+        $wallet->transaction_type = 0 ;
+        $wallet->amount = $order->total_price;
+        $wallet->save();
         return redirect()->route('provider.orders',"onGoing");
 
     }
