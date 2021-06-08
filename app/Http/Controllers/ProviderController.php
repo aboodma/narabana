@@ -6,6 +6,7 @@ use App\Provider;
 use Illuminate\Http\Request;
 use App\User;
 use App\Notification;
+use App\Wallet;
 use App\Order;
 use App\Service;
 use App\ProviderService;
