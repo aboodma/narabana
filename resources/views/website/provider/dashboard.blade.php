@@ -32,12 +32,12 @@
         
                                         <div class="col-md-3 text-center border-box">
                                             <p>Total Orders</p>
-                                            <h1 class="font-weight-bold m-0">$1,00.50</h1>
+                                            <h1 class="font-weight-bold m-0">{{auth()->user()->wallets->where('transaction_type',0)->sum('amount')}} USD</h1>
                                         </div>
                                        
                                         <div class="col-md-3 text-center border-box">
                                             <p> Wallet Balance </p>
-                                            <h1 class="font-weight-bold m-0">$5.00</h1>
+                                            <h1 class="font-weight-bold m-0">{{auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')}} USD</h1>
                                         </div>
                                     </div>
                                 </div>

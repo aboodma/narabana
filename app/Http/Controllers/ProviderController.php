@@ -37,6 +37,12 @@ class ProviderController extends Controller
        $provider->about_me = $request->about_me;
        $provider->provider_type_id = $request->provider_type;
        $provider->country_id = $request->country_id;
+       $provider->links_tiktok = $request->tiktok;
+       $provider->links_fb = $request->fb;
+       $provider->links_ig = $request->ig;
+       $provider->links_snap = $request->snap;
+       $provider->links_tweet = $request->tweet;
+       $provider->links_youtube = $request->youtube;
        if ($provider->save()) {
            $user = auth()->user();
            $user->name = $request->name;
@@ -52,6 +58,21 @@ class ProviderController extends Controller
             }
            }
        }
+       return redirect()->route('provider.profile');
+    }
+
+    public function payment_settings()
+    {
+       return view('website.provider.payment_settings');
+    }
+    public function update_payment_settings(Request $request)
+    {
+        $provider = auth()->user()->provider;
+        $provider->account_name = $request->account_name;
+        $provider->iban = $request->iban;
+        if ($provider->save()) {
+            return redirect()->route('provider.payment_settings');
+        }
     }
     public function services()
     {

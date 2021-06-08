@@ -1742,7 +1742,7 @@ p.help-block li {
  .table-package table tr td.boolean-pricing-factor::after {
      content: "\f00c";
      color: #dadbdd;
-     font-family: FontAwesome;
+     font-family: "Font Awesome 5 Free";
 }
  .view_slider.recommended {
      position: relative;
@@ -2325,7 +2325,7 @@ p.help-block li {
      padding-left: 25px;
 }
  .seller-card .user-stats li::before {
-     font-family: FontAwesome;
+     font-family: "Font Awesome 5 Free";
      position: absolute;
      z-index: 1;
      left: 0;
@@ -2334,7 +2334,7 @@ p.help-block li {
      content: "\f007";
 }
  .seller-card .user-stats li.location::before {
-     content: "\f041";
+    content: "\f0ac";
      font-size: 15px;
      left: 1px;
 }
@@ -2389,7 +2389,7 @@ p.help-block li {
      content: "";
      display: inline-block;
      width: 15px;
-     font-family: FontAwesome;
+     font-family: "Font Awesome 5 Free";
      font-size: 16px;
      margin-right: 10px;
 }
@@ -2567,7 +2567,7 @@ p.help-block li {
  .dropdown-filters .dropdown .dropdown-toggle::after {
      content: "\f107";
      display: inline-block;
-     font: 400 18px/18px FontAwesome;
+     font: 400 18px/18px "Font Awesome 5 Free";
      color: inherit;
      margin-left: 12px;
      position: relative;

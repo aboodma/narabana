@@ -178,4 +178,5 @@ class HomeController extends Controller
        $provider = Provider::find($request->provider_id);
        return view('parts.reviews',compact('provider'));
     }
+    
 }

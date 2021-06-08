@@ -66,21 +66,31 @@
                 <div class="row">
                     <div class="col-md-12 copyright p-2 pb-3" >
                         <ul class="social " style="margin-left: 0">
+                            @if($provider->links_fb != null)
                             <li>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="{{$provider->links_fb}}"><i class="fab fa-facebook" aria-hidden="true"></i></a>
                             </li>
+                            @endif
+                            @if($provider->links_tweet != null)
                             <li>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="{{$provider->links_tweet}}"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                             </li>
+                            @endif
+                            @if($provider->links_youtube != null)
                             <li>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                <a href="{{$provider->links_youtube}}"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                             </li>
+                            @endif
+                            @if($provider->links_tiktok != null)
                             <li>
-                                <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+                                <a href="{{$provider->links_tiktok}}"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
                             </li>
+                            @endif
+                            @if($provider->links_ig != null)
                             <li>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="{{$provider->links_ig}}"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </div>

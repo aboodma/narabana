@@ -6,6 +6,7 @@ use App\Customer;
 use App\Order;
 use Crypt;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -33,5 +34,15 @@ class CustomerController extends Controller
     $orders = $user->orders->where('status',2);
     return view('website.customer.videos',compact('orders'));
    
+   }
+
+   public function UpdatePrfoile(Request $request)
+   {
+       $user  = auth()->user();
+       $user->name = $request->name;
+       if($request->password != null){
+        $user->password = Hash::make($request->password);
+       }
+       $user->save();
    }
 }

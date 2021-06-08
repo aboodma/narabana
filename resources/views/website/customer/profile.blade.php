@@ -20,16 +20,17 @@
             @include('parts.customer_sidebar')
             <div class="col-lg-8 right">
                 <div class="p-4 bg-white rounded shadow-sm mb-3">
-                    <h5 class="mb-4 font-weight-bold text-center">My Profile
+                    <h5 class="mb-4 font-weight-bold text-center">Edit Profile
                     </h5>
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="">
+                            <form action="{{route('customer.UpdatePrfoile')}}" method="POST" >
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">Name</label>
-                                            <input type="text" name="name" class="form-control"
+                                            <input type="text" value="{{auth()->user()->name}}" name="name" class="form-control"
                                                 placeholder="Enter Name ">
                                         </div>
                                     </div>
@@ -37,7 +38,7 @@
                                         <div class="form-group">
                                             <label>Email address
                                                 <span class="text-danger">*</span></label>
-                                            <input type="email" name="email" class="form-control"
+                                            <input type="email" disabled value="{{auth()->user()->email}}" name="email" class="form-control"
                                                 placeholder="Enter email">
                                             <span class="form-text text-muted">We'll never share your email with anyone
                                                 else.</span>
@@ -51,33 +52,9 @@
                                         id="exampleInputPassword1" placeholder="Password">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">About Me</label>
-                                    <textarea name="about_me" class="form-control" id="" cols="30" rows="5"></textarea>
+                                    <button type="submit" class="btn btn-success btn-block">Save Changes</button>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Country</label>
-                                            <select name="country_id" class="form-control" id="">
-                                                <option value="">Select Country</option>
-                                                @foreach (\App\Country::all() as $country)
-                                                <option value="{{$country->id}}">{{$country->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Provider Type</label>
-                                            <select name="provider_type" class="form-control" id="">
-                                                <option value="">Select Provider Type</option>
-                                                @foreach (\App\ProviderType::all() as $type)
-                                                <option value="{{$type->id}}">{{$type->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </form>
                         </div>
                     </div>

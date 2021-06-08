@@ -41,6 +41,7 @@ Route::get('service_check','ProviderServiceController@service_check')->name('ser
 //customer routes
 Route::group(['prefix'=>'customer','as'=>'customer.','middleware'=>'customer'], function(){
 Route::get('profile','CustomerController@profile')->name('profile');
+Route::post('UpdatePrfoile','CustomerController@UpdatePrfoile')->name('UpdatePrfoile');
 Route::get('myOrders','CustomerController@orders')->name('orders');
 Route::get('OrderTracking/{id}','CustomerController@OrderTracking')->name('OrderTracking');
 Route::get('videos','CustomerController@videos')->name('videos');
@@ -96,7 +97,13 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::post('/orders/procced/other','ProviderController@other_order_upload')->name('other_order_upload');
   Route::get('/service/add/{service}','ProviderController@add_service')->name('add_service');
   Route::post('/service/store','ProviderController@store_service')->name('store_service');
-  Route::post('/provider/update/profile','ProviderController@update_profile')->name('update_profile');
+  Route::post('/update/profile','ProviderController@update_profile')->name('update_profile');
+  Route::get('/wallet','WalletController@provider_wallet')->name('wallet');
+  Route::get('/payouts','PayoutRequestController@provider_payouts')->name('payouts');
+  Route::post('/payouts/request','PayoutRequestController@provider_payouts_request')->name('payouts_request');
+  Route::get('/payment_settings','ProviderController@payment_settings')->name('payment_settings');
+  Route::post('/payment_settings/update','ProviderController@update_payment_settings')->name('update_payment_settings');
+
   
 });
 

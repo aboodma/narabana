@@ -98,6 +98,51 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                
+                                    <legend>Social Links</legend>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">TikTiok</label>
+                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="tiktok" value="{{auth()->user()->provider->links_tiktok}}" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Sanpchat</label>
+                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="snap" value="{{auth()->user()->provider->links_snap}}" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Youtube</label>
+                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="youtube" value="{{auth()->user()->provider->links_youtube}}" >
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Facebook</label>
+                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="fb" value="{{auth()->user()->provider->links_fb}}" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Instagram</label>
+                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="ig" value="{{auth()->user()->provider->links_ig}}" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">twitter</label>
+                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="tweet" value="{{auth()->user()->provider->links_tweet}}" >
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-block btn-success"> Save Changes </button>

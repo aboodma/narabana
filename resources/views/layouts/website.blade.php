@@ -14,7 +14,7 @@
 
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('/vendor/fontawesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="{{asset('vendor/icons/css/materialdesignicons.min.css')}}" media="all" rel="stylesheet" type="text/css">
 
     <link href="{{asset('vendor/slick-master/slick/slick.css')}}" rel="stylesheet" type="text/css">
@@ -228,19 +228,19 @@
                 </p>
                 <ul class="social">
                     <li>
-                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                     </li>
                 </ul>
             </div>

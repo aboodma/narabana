@@ -24,7 +24,7 @@
                     Profile Settings
                 </a>
 
-                <a class="dropdown-item py-2" href="edit-billing.html">
+                <a class="dropdown-item py-2" href="{{route('provider.payment_settings')}}">
                     Payment Settings
                 </a>
                 <a class="dropdown-item py-2 @if (Route::is('provider.services')) active   @endif"
@@ -44,8 +44,11 @@
                     @endif>
                     My Services
                 </a>
-                <a class="dropdown-item py-2" href="edit-billing.html">
+                <a class="dropdown-item py-2" href="{{route('provider.wallet')}}">
                     My Wallet
+                </a>
+                <a class="dropdown-item py-2" href="{{route('provider.payouts')}}">
+                    Payout Requests
                 </a>
 
 
@@ -87,13 +90,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="buttons-wrapper">
+                <div class="buttons-wrapper  justify-content-around" style="display:block ">
                     <a href="{{route('provider_profile',auth()->user()->provider->id)}}" target="_blank" class="btn btn-success btn-contact-me js-contact-me js-open-popup-join">Show Profile</a>
-                    <div class="btn-lrg-standard btn-white btn-custom-order"><a href="{{route('provider.profile')}}" class="">Edit Profile</a></div>
+                   <a href="{{route('provider.profile')}}" class="btn btn-outline-secondary">Edit Profile</a>
                 </div>
                 <div class="user-stats-desc">
                     <ul class="user-stats">
-                        <li class="location">From<strong> {{ucfirst(strtolower(auth()->user()->provider->country->name))}}</strong></li>
+                        <li class="location">  From<strong> {{ucfirst(strtolower(auth()->user()->provider->country->name))}}</strong></li>
                         <li class="member-since">Member since<strong>{{\Carbon\Carbon::createFromTimeStamp(strtotime(auth()->user()->created_at))->diffForHumans()}}</strong></li>
                         <li class="response-time">Avg. Response Time<strong>2 h</strong></li>
                         

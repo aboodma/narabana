@@ -47,20 +47,7 @@
             <legend>Be Our Prtner</legend>
             <form method="POST" action="{{ route('provider_request') }}" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">Profile Video</label>
-
-                    <div class="col-md-6">
-                        <input type="file" name="video" class="form-control rd-in" accept="video/*" id="">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right">Profile Picture</label>
-
-                <div class="col-md-6">
-                    <input type="file" name="avatar" class="form-control rd-in" accept="image/*" id="">
-            </div>
-        </div>
+               
                 <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -141,6 +128,21 @@
                         <textarea name="about_me" class="form-control" id="" cols="30" rows="5"></textarea>
                     </div>
                 </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Profile Video</label>
+
+                    <div class="col-md-6">
+                        <input type="file" name="video" class="form-control rd-in" accept="video/*" id="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="name" class="col-md-4 col-form-label text-md-right">Profile Picture</label>
+
+                <div class="col-md-6">
+                    <input type="file" name="avatar" class="form-control rd-in" accept="image/*" id="">
+            </div>
+        </div>
 
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
