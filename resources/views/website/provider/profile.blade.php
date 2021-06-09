@@ -22,7 +22,7 @@
             </div>
             <div class="col-lg-8 right">
                 <div class="p-4 bg-white rounded shadow-sm mb-3">
-                    <h5 class="mb-4 font-weight-bold text-center">Edit Profile
+                    <h5 class="mb-4 font-weight-bold text-center">{{__('Edit Profile')}}
                     </h5>
                     <div class="row">
                         <div class="col-md-12">
@@ -31,38 +31,37 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Name</label>
+                                            <label for="">{{__('Name')}}</label>
                                             <input type="text" name="name" class="form-control"
                                                 placeholder="Enter Name " value="{{auth()->user()->name}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Email address
+                                            <label>{{__('Email address')}}
                                                 <span class="text-danger">*</span></label>
                                             <input type="email" name="email" disabled class="form-control"
                                                 placeholder="Enter email" value="{{auth()->user()->email}}">
-                                            <span class="form-text text-muted">We'll never share your email with anyone
-                                                else.</span>
+                                            <span class="form-text text-muted">{{__('We ll never share your email with anyone else.')}}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password
+                                    <label for="exampleInputPassword1">{{__('Password')}}
                                         <span class="text-danger">*</span></label>
                                     <input type="password" name="password" class="form-control"
                                         id="exampleInputPassword1" placeholder="Password" value="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">About Me</label>
+                                    <label for="">{{__('About Me')}}</label>
                                     <textarea name="about_me" class="form-control" id="" cols="30" rows="5">{{auth()->user()->provider->about_me}}</textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Country</label>
+                                            <label for="">{{__('Country')}}</label>
                                             <select name="country_id" class="form-control" id="">
-                                                <option value="">Select Country</option>
+                                                <option value="">{{__('Select Country')}}</option>
                                                 @foreach (\App\Country::all() as $country)
                                                 <option @if(auth()->user()->provider->country->id == $country->id) selected @endif value="{{$country->id}}">{{$country->name}}</option>
                                                 @endforeach
@@ -71,9 +70,9 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Provider Type</label>
+                                            <label for="">{{__('Provider Type')}}</label>
                                             <select name="provider_type" class="form-control" id="">
-                                                <option value="">Select Provider Type</option>
+                                                <option value="">{{__('Select Provider Type')}}</option>
                                                 @foreach (\App\ProviderType::all() as $type)
                                                 <option @if(auth()->user()->provider->providerType->id == $type->id) selected @endif value="{{$type->id}}">{{$type->name}}</option>
                                                 @endforeach
@@ -84,7 +83,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Profile Picture</label>
+                                            <label for="">{{__('Profile Picture')}}</label>
                                             <input type="file" class="form-control" name="avatar" id="" >
                                         </div>
                                     </div>
@@ -92,30 +91,30 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Profile Video</label>
+                                            <label for="">{{__('Profile Video')}}</label>
                                             <input type="file" class="form-control" name="video" id="" >
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                 
-                                    <legend>Social Links</legend>
+                                    <legend>{{__('Social Links')}}</legend>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">TikTiok</label>
-                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="tiktok" value="{{auth()->user()->provider->links_tiktok}}" >
+                                            <label for="">{{__('TikTiok')}}</label>
+                                            <input type="text" class="form-control" placeholder="{{__('Please Insert Link')}}" name="tiktok" value="{{auth()->user()->provider->links_tiktok}}" >
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Sanpchat</label>
-                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="snap" value="{{auth()->user()->provider->links_snap}}" >
+                                            <label for="">{{__('Sanpchat')}}</label>
+                                            <input type="text" class="form-control" placeholder="{{__('Please Insert Link')}}" name="snap" value="{{auth()->user()->provider->links_snap}}" >
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Youtube</label>
-                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="youtube" value="{{auth()->user()->provider->links_youtube}}" >
+                                            <label for="">{{__('Youtube')}}</label>
+                                            <input type="text" class="form-control" placeholder="{{__('Please Insert Link')}}" name="youtube" value="{{auth()->user()->provider->links_youtube}}" >
                                         </div>
                                     </div>
                                     
@@ -123,20 +122,20 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Facebook</label>
-                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="fb" value="{{auth()->user()->provider->links_fb}}" >
+                                            <label for="">{{__('Facebook')}}</label>
+                                            <input type="text" class="form-control" placeholder="{{__('Please Insert Link')}}" name="fb" value="{{auth()->user()->provider->links_fb}}" >
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Instagram</label>
-                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="ig" value="{{auth()->user()->provider->links_ig}}" >
+                                            <label for="">{{__('Instagram')}}</label>
+                                            <input type="text" class="form-control" placeholder="{{__('Please Insert Link')}}" name="ig" value="{{auth()->user()->provider->links_ig}}" >
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">twitter</label>
-                                            <input type="text" class="form-control" placeholder="Please Insert Link" name="tweet" value="{{auth()->user()->provider->links_tweet}}" >
+                                            <label for="">{{__('twitter')}}</label>
+                                            <input type="text" class="form-control" placeholder="{{__('Please Insert Link')}}" name="tweet" value="{{auth()->user()->provider->links_tweet}}" >
                                         </div>
                                     </div>
                                     
@@ -145,7 +144,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-block btn-success"> Save Changes </button>
+                                            <button type="submit" class="btn btn-block btn-success"> {{__('Save Changes')}} </button>
                                         </div>
                                     </div>
                                 </div>

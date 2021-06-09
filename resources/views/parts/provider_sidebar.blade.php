@@ -5,7 +5,7 @@
                 <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
                     aria-controls="collapseExample" style="font-weight: 600
          " class=" text-white">
-                    <p class="float-left m-0" style="font-size: larger"><b> <i class="fa fa-bars"></i> Menu</b> </p>
+                    <p class="float-left m-0" style="font-size: larger"><b> <i class="fa fa-bars"></i> {{__('Menu')}}</b> </p>
                     
                 </a>
 
@@ -16,46 +16,46 @@
             <div class="dropdown-menu-show">
                 <a class="dropdown-item py-2 @if (Route::is('provider.dashboard')) active   @endif"
                     href="{{route('provider.dashboard')}} ">
-                    Profile
+                    {{__('Profile')}}
                 </a>
                 <a class="dropdown-item py-2" @if (auth()->user()->provider->is_approved)
                     href="{{route('provider.profile')}}"
                     @endif>
-                    Profile Settings
+                    {{__('Profile Settings')}}
                 </a>
 
                 <a class="dropdown-item py-2" href="{{route('provider.payment_settings')}}">
-                    Payment Settings
+                    {{__('Payment Settings')}}
                 </a>
                 <a class="dropdown-item py-2 @if (Route::is('provider.services')) active   @endif"
                     @if(auth()->user()->provider->is_approved)
                     href="{{route('provider.orders',"onGoing")}}"
                     @endif>
-                    On Going Orders
+                    {{__('On Going Orders')}}
                 </a>
                 <a class="dropdown-item py-2 @if (Route::is('provider.services')) active   @endif"
                     @if(auth()->user()->provider->is_approved)
                     href="{{route('provider.orders',"history")}}"
                     @endif>
-                    Order History
+                    {{__('Order History')}}
                 </a>
                 <a class="dropdown-item py-2" @if(auth()->user()->provider->is_approved)
                     href="{{route('provider.services')}}"
                     @endif>
-                    My Services
+                    {{__('My Services')}}
                 </a>
                 <a class="dropdown-item py-2" href="{{route('provider.wallet')}}">
-                    My Wallet
+                    {{__('My Wallet')}}
                 </a>
                 <a class="dropdown-item py-2" href="{{route('provider.payouts')}}">
-                    Payout Requests
+                    {{__('Payout Requests')}}
                 </a>
 
 
 
 
                 <a class="dropdown-item py-2 " href="edit-payment.html">
-                    Log Out
+                    {{__('Log Out')}}
                 </a>
             </div>
         </div>
@@ -91,14 +91,14 @@
                     </div>
                 </div>
                 <div class="buttons-wrapper  justify-content-around" style="display:block ">
-                    <a href="{{route('provider_profile',auth()->user()->provider->id)}}" target="_blank" class="btn btn-success btn-contact-me js-contact-me js-open-popup-join">Show Profile</a>
-                   <a href="{{route('provider.profile')}}" class="btn btn-outline-secondary">Edit Profile</a>
+                    <a href="{{route('provider_profile',auth()->user()->provider->id)}}" target="_blank" class="btn btn-success btn-contact-me js-contact-me js-open-popup-join">{{__('Show Profile')}}</a>
+                   <a href="{{route('provider.profile')}}" class="btn btn-outline-secondary">{{__('Edit Profile')}}</a>
                 </div>
                 <div class="user-stats-desc">
                     <ul class="user-stats">
-                        <li class="location">  From<strong> {{ucfirst(strtolower(auth()->user()->provider->country->name))}}</strong></li>
-                        <li class="member-since">Member since<strong>{{\Carbon\Carbon::createFromTimeStamp(strtotime(auth()->user()->created_at))->diffForHumans()}}</strong></li>
-                        <li class="response-time">Avg. Response Time<strong>2 h</strong></li>
+                        <li class="location">  {{__('From')}}<strong> {{ucfirst(strtolower(auth()->user()->provider->country->name))}}</strong></li>
+                        <li class="member-since">{{__('Member since')}}<strong>{{\Carbon\Carbon::createFromTimeStamp(strtotime(auth()->user()->created_at))->diffForHumans()}}</strong></li>
+                        <li class="response-time">{{__('Avg. Response Time')}}<strong>2 h</strong></li>
                         
                     </ul>
                 </div>

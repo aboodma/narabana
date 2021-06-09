@@ -63,4 +63,8 @@ class User extends Authenticatable
    {
        return $this->hasMany(PayoutRequest::class);
    }
+   public function favorits()
+   {
+       return $this->hasMany(Favorit::class);
+   }
 }

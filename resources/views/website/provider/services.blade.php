@@ -23,7 +23,7 @@
             </div>
             <div class="col-lg-8 right">
                 <div class="p-4 bg-white rounded shadow-sm my-3">
-                    <h6 class="mb-2 font-weight-bold">Add New Service
+                    <h6 class="mb-2 font-weight-bold">{{__('Add New Service')}}
                     </h6>
 
                     <div class="row">
@@ -56,7 +56,7 @@
 
                 </div>
                 <div class="p-4 bg-white rounded shadow-sm mb-3">
-                    <h5 class="mb-4 font-weight-bold text-center">My Services
+                    <h5 class="mb-4 font-weight-bold text-center">{{__('My Services')}}
                     </h5>
                     <div class="row">
                         <div class="col-md-12">

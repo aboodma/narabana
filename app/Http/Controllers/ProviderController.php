@@ -34,6 +34,7 @@ class ProviderController extends Controller
 
     public function update_profile(Request $request)
     {
+      
        $provider = auth()->user()->provider;
        $provider->about_me = $request->about_me;
        $provider->provider_type_id = $request->provider_type;

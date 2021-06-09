@@ -116,11 +116,13 @@
 <div class="main-page second py-5">
     <div class="container">
         <div class="row">
+          <div class="col-md-4">
             @include('parts.customer_sidebar')
+        </div>
             <div class="col-lg-8 right">
                 
                 <div class="p-4 bg-white rounded shadow-sm mb-3">
-                    <h5 class="mb-4 font-weight-bold text-center">My Orders
+                    <h5 class="mb-4 font-weight-bold text-center">{{__('My Orders')}}
                     </h5>
                     <div class="row">
                         <div class="col-md-12">
@@ -134,7 +136,7 @@
                                   
                                 </div>
                                 <div class="status">
-                                  <p> Get The order </p>
+                                  <p> {{__('Get The order')}} </p>
                                 </div>
                               </li>
                              @if($order->status != 3)
@@ -144,7 +146,7 @@
                                   
                                 </div>
                                 <div class="status">
-                                  <p> Order Accepted </p>
+                                  <p> {{__('Order Accepted')}} </p>
                                 </div>
                               </li>
                               @else 
@@ -154,7 +156,7 @@
                                   
                                 </div>
                                 <div class="status">
-                                  <p> Order Rejected </p>
+                                  <p> {{__('Order Rejected')}} </p>
                                 </div>
                               </li>
                               @endif
@@ -164,7 +166,7 @@
                                   
                                 </div>
                                 <div class="status">
-                                  <p class=" @if( $order->status == 3) gray @endif"> In Process </p>
+                                  <p class=" @if( $order->status == 3) gray @endif"> {{__('In Process')}} </p>
                                 </div>
                               </li>
                               <li class="li @if( $order->status == 2) complete @elseif($order->status == 3) disabled @endif">
@@ -172,44 +174,44 @@
                              
                                 </div>
                                 <div class="status">
-                                  <p class=" @if( $order->status == 3) gray @endif" > Completed </p>
+                                  <p class=" @if( $order->status == 3) gray @endif" > {{__('Completed')}} </p>
                                 </div>
                               </li>
                              </ul>      
                         </div>
                         <div class="col-md-12 mt-5">
-                          <p><b class="title">Order Status : </b>  <span class="desc">The Star Received Your order</span></p>
+                          <p><b class="title">{{__('Order Status :')}} </b>  <span class="desc">{{__('The Star Received Your order')}}</span></p>
                         </div>
                     </div> <hr>
                     <br>
 
                     <div class="row">
                       <div class="col-md-12">
-                        <legend>Order Details</legend>
+                        <legend>{{__('Order Details')}}</legend>
 
                         <div class="row">
-                          <div class="col-md-3"><p class="title">From :</p> </div>
+                          <div class="col-md-3"><p class="title">{{__('From :')}}</p> </div>
                           <div class="col-md-6"><p class="desc">{{$order->details->from}}</p></div>
                         </div>
                         <div class="row">
-                          <div class="col-md-3"><p class="title">To :</p> </div>
+                          <div class="col-md-3"><p class="title">{{__('To :')}}</p> </div>
                           <div class="col-md-6"><p class="desc">{{$order->details->to}}</p></div>
                         </div>
                         <div class="row">
-                          <div class="col-md-3"><p class="title">Message  :</p> </div>
+                          <div class="col-md-3"><p class="title">{{__('Message  :')}}</p> </div>
                           <div class="col-md-6"><p class="desc">{{$order->details->customer_message}}</p></div>
                         </div>
                         <div class="row">
-                          <div class="col-md-3"><p class="title">Date  :</p> </div>
+                          <div class="col-md-3"><p class="title">{{__('Date  :')}}</p> </div>
                           <div class="col-md-6"><p class="desc">{{$order->details->created_at}}</p></div>
                         </div>
                         <hr>
                         <div class="row">
-                          <div class="col-md-3"><p class="title">Service Name  :</p> </div>
+                          <div class="col-md-3"><p class="title">{{__('Service Name  :')}}</p> </div>
                           <div class="col-md-6"><p class="desc">{{$order->service->name}}</p></div>
                         </div>
                         <div class="row">
-                          <div class="col-md-3"><p class="title">Provider Name  :</p> </div>
+                          <div class="col-md-3"><p class="title">{{__('Provider Name  :')}}</p> </div>
                           <div class="col-md-6"><p class="desc">{{$order->provider->user->name}}</p></div>
                         </div>
                         <hr>

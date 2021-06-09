@@ -121,6 +121,14 @@ class HomeController extends Controller
     }
     public function provider_request(Request $request)
     {
+      $validated = $request->validate([
+         'name' => 'required',
+         'email' => 'required|unique:users',
+         'password' => 'required',
+         'about_me' => 'required',
+         'provider_type_id' => 'required',
+         'country_id' => 'required',
+     ]);
       $random = Str::random(40);
       $file = $request->file('avatar');     
       $filename = $file->getClientOriginalName();

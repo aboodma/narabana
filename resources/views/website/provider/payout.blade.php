@@ -23,7 +23,7 @@
             </div>
             <div class="col-lg-8 right">
                 <div class="p-4 bg-white rounded shadow-sm my-3">
-                    <h6 class="mb-2 font-weight-bold">Payout Requests
+                    <h6 class="mb-2 font-weight-bold">{{__('Payout Requests')}}
                     </h6>
 
                     <div class="row">
@@ -33,9 +33,9 @@
                                 <table class="table ">
                                     <thead>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                            <th>Amount</th>
+                                            <th>{{__('Date')}}</th>
+                                            <th>{{__('Status')}}</th>
+                                            <th>{{__('Amount')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -53,13 +53,13 @@
                                                  @endif "> 
                                                  <b>
                                                 @if($payout->status == 0)
-                                                 Reviewing 
+                                                 {{__('Reviewing')}} 
                                                  @elseif($payout->status == 1)
-                                                 Confirmed
+                                                 {{__('Confirmed')}}
                                                  @elseif($payout->status == 2)
-                                                 Paid
+                                                 {{__('Paid')}}
                                                  @elseif($payout->status == 3)
-                                                 Rejected
+                                                 {{__('Rejected')}}
                                                   @endif 
                                                 </b>
                                                 </td>
@@ -85,28 +85,28 @@
         <form action="{{route('provider.payouts_request')}}" method="POST">
             @csrf
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Request a Payout</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{__('Request a Payout')}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
               <div class="form-group">
-                  <label for="">Amount (USD)</label>
+                  <label for="">{{__('Amount')}} (USD)</label>
                   <input type="number" name="amount" class="form-control" required>
               </div>
               <div class="form-group">
-                <label for="">Account Owner Name </label>
+                <label for="">{{__('Account Owner Name')}} </label>
                 <input type="text" name="account_name" disabled value="{{auth()->user()->provider->account_name}}" class="form-control" required>
             </div>
               <div class="form-group">
-                <label for="">IBAN</label>
+                <label for="">{{__('IBAN')}}</label>
                 <input type="text" name="iban" disabled value="{{auth()->user()->provider->iban}}" class="form-control" required>
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-success">Send Request</button>
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">{{__('Close')}}</button>
+          <button type="submit" class="btn btn-success">{{__('Send Request')}}</button>
         </div>
         </form>
 

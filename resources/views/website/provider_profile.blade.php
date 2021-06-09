@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <ol class="breadcrumb bg-white">
-                <li class="breadcrumb-item"><a href="{{route('welcome')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('welcome')}}">{{__('Home')}}</a></li>
                 <li class="breadcrumb-item"><a href="{{route('FilterByType',$provider->ProviderType->id)}}">{{$provider->ProviderType->name}}</a></li>
                 <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$provider->user->name}}</li>
               </ol>
@@ -40,25 +40,25 @@
                         ">{{$provider->user->name}}</h2>
                         <span class="pb-2 mb-2">{{$provider->Country->name}} / {{$provider->ProviderType->name}}</span>
                         <p class="pt-2">{{$provider->about_me}}</p>
-                        <p style="font-weight: bold;color: #ba6089;"><i class="fa fa-clock-o" style="color: #ba6089;font-size: initial;"></i> Replies in 5 days</p>
+                        <p style="font-weight: bold;color: #ba6089;"><i class="fa fa-clock-o" style="color: #ba6089;font-size: initial;"></i> {{__('Replies in 5 days')}}</p>
                         @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->count() != 0)
                         <p> <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 1) text-warning @endif"></i> 
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 2) text-warning @endif"></i>
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 3) text-warning @endif"></i> 
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 4) text-warning @endif"></i>
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate == 5) text-warning @endif"></i>
-                                / <span class="font-weight-bold">{{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate}} Star </span>    
+                                / <span class="font-weight-bold">{{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate}} {{__('Star')}} </span>    
                             </p>
-                        <p class="font-weight-bold" style="text-decoration:underline; font-size:14px; color:black"><a style="color:black" href="#" data-toggle="modal" data-target="#exampleModal">Show More Reviews ({{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->count()}})</a></p>
+                        <p class="font-weight-bold" style="text-decoration:underline; font-size:14px; color:black"><a style="color:black" href="#" data-toggle="modal" data-target="#exampleModal">{{__('Show More Reviews')}} ({{$provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->count()}})</a></p>
                             @else 
                             <p> <i class="fa fa-star "></i> 
                                 <i class="fa fa-star "></i>
                                 <i class="fa fa-star "></i> 
                                 <i class="fa fa-star "></i>
                                 <i class="fa fa-star "></i>
-                                / <span class="font-weight-bold">0 Star </span>    
+                                / <span class="font-weight-bold">{{__('0 Star')}} </span>    
                             </p>
-                        <p class="font-weight-bold" style="text-decoration:underline; font-size:14px; color:black"><a style="color:black" href="#">Show More Reviews (0)</a></p>
+                        <p class="font-weight-bold" style="text-decoration:underline; font-size:14px; color:black"><a style="color:black" href="#">{{__('Show More Reviews (0)')}}</a></p>
 
                         @endif
                     </div>
@@ -111,7 +111,7 @@
                             <div class="form-group mt-2">
                                 <button type="submit"
                                 @if($provider->services->count()  == 0) disabled @endif
-                                    class="btn  btn-success  btn-xlg form-control rd-in  p-2 @if($provider->services->count()  == 0) disabled @endif ">Book Now <i class="price"></i> </button>
+                                    class="btn  btn-success  btn-xlg form-control rd-in  p-2 @if($provider->services->count()  == 0) disabled @endif ">{{__('Book Now')}} <i class="price"></i> </button>
                             </div>
                         </form>
                     </div>
@@ -121,7 +121,7 @@
         @if($provider->orders->count() != 0)
         <div class="services-wrapper bg-white py-5">
             <div class="container">
-                <h2>{{$provider->user->name}} Videos</h2>
+                <h2>{{$provider->user->name}} {{__('Videos')}}</h2>
                 <div class="row freelance-slider">
                     @foreach ($provider->orders->where('status',2) as $order)
                     @if ($order->service->is_video) 
@@ -200,7 +200,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header border-0">
-              <h5 class="modal-title" id="exampleModalLabel">Reviews</h5>
+              <h5 class="modal-title" id="exampleModalLabel">{{__('Reviews')}}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

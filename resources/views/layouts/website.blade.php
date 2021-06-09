@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Gurdeep singh osahan">
     <meta name="author" content="Gurdeep singh osahan">
-    <title>Miver - LMS & Freelance Services Marketplace for Businesses HTML Template</title>
+    <title>{{__('website_title')}}</title>
 
     <link rel="icon" type="image/png" href="images/fav.svg">
 
@@ -36,10 +36,13 @@
         .readed{
             background-color: silver;
         }
+
     </style>
 </head>
 
 <body>
+  
+  
     <nav class="navbar navbar-expand-lg navbar-light topbar  shadow-sm bg-white osahan-nav-top px-1  ">
         <div class="container">
 
@@ -48,7 +51,7 @@
             <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" style="border-top-left-radius:20px;border-bottom-left-radius:20px;padding:20px"
-                        class="form-control bg-white small" placeholder="Find Services..." aria-label="Search"
+                        class="form-control bg-white small" placeholder="{{__('Find Services...')}}" aria-label="Search"
                         aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-dark"
@@ -71,7 +74,7 @@
                         <form class="form-inline mr-auto w-100 navbar-search">
                             <div class="input-group">
                                 <input type="text" class="form-control bg-light border-0 small"
-                                    placeholder="Find Services..." aria-label="Search" aria-describedby="basic-addon2">
+                                    placeholder="{{__('Find Services...')}}" aria-label="Search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="button">
                                         <i class="fa fa-search fa-sm"></i>
@@ -85,20 +88,20 @@
                 <li class="nav-item dropdown no-arrow no-caret mr-3 ">
                     <a class="btn btn-outline-danger pink-btn" id="navbarDropdownAlerts" href="{{route('login')}}"
                         role="button">
-                        Login
+                        {{__('Login')}}
                     </a>
 
                 </li>
                 <li class="nav-item dropdown no-arrow no-caret mr-3 ">
                     <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="{{route('register')}}"
                         role="button">
-                        Sign Up
+                        {{__('Sign Up')}}
                     </a>
 
                 </li>
                 <li class="nav-item dropdown no-arrow no-caret mr-3 ">
                     <a class="btn btn-outline-secondary sec-btn" href="{{route('be_our_partner')}}" role="button">
-                        Be Our Partner
+                        {{__('Be Our Partner')}}
                     </a>
 
                 </li>
@@ -108,7 +111,7 @@
                     <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts"
                         href="@if(auth()->user()->user_type == 1){{route('provider.dashboard')}} @elseif(auth()->user()->user_type == 0){{route('customer_dashboard')}} @else {{route('admin.home')}}  @endif"
                         role="button">
-                        Profile
+                        {{__('Profile')}}
                     </a>
 
                 </li>
@@ -158,7 +161,7 @@
                             </div>
                         </a>
                         @endforeach
-                        <a class="dropdown-item dropdown-notifications-footer" href="alerts.html">View All Alerts</a>
+                        <a class="dropdown-item dropdown-notifications-footer" href="#">{{__('View All Alerts')}}</a>
                     </div>
 
                 </li>
@@ -207,24 +210,24 @@
                 <div class="footer-list">
 
                     <ul class="list">
-                        <li><a href="#">How we work </a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">{{__('How we work')}} </a></li>
+                        <li><a href="#">{{__('About Us')}}</a></li>
+                        <li><a href="#">{{__('Contact Us')}}</a></li>
                     </ul>
                 </div>
                 <div class="footer-list">
 
                     <ul class="list">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">{{__('FAQ')}}</a></li>
+                        <li><a href="#">{{__('Privacy Policy')}}</a></li>
+                        <li><a href="#">{{__('Terms & Conditions')}}</a></li>
 
                     </ul>
                 </div>
 
             </div>
             <div class="copyright">
-                <p>© Copyright 2022 Narabana. All Rights Reserved
+                <p>{{__('© Copyright 2022 Narabana. All Rights Reserved')}}
                 </p>
                 <ul class="social">
                     <li>
@@ -278,6 +281,7 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     @yield('script')
     <script src="{{asset('js/custom.js')}}" type="3ebbb932e316a3ee2377425e-text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(document).ready(function () {
             //change the integers below to match the height of your upper div, which I called
@@ -307,6 +311,60 @@
                 
             })
         }
+        function manageFavorit(id) {
+            if ($("#heart_"+id).hasClass("favorit")) {
+                $("#heart_"+id).removeClass("favorit");
+                removeFromFavorit(id);
+            }else{
+                $("#heart_"+id).addClass("favorit");
+                addToFavorit(id);
+
+            }
+        }
+    function addToFavorit(id) {
+        
+        $.ajax({
+            url:"{{route('customer.addToFavorit')}}",
+            type:"POST",
+            data:{
+                "_token":"{{csrf_token()}}",
+                "id":id
+            },
+            success:function(){
+                $("#heart_"+id).effect("puff",function(){
+            setTimeout(function() {
+                $("#heart_"+id).removeAttr( "style" ).hide().fadeIn();
+        $("#heart_"+id).css('color',"#d47fa6");
+
+      }, 100 );
+            return false;
+        });
+            }
+        })
+
+    }
+    function removeFromFavorit(id) {
+        
+        $.ajax({
+            url:"{{route('customer.removeFromFavorit')}}",
+            type:"POST",
+            data:{
+                "_token":"{{csrf_token()}}",
+                "id":id
+            },
+            success:function(){
+                $("#heart_"+id).effect("puff",function(){
+            setTimeout(function() {
+                $("#heart_"+id).removeAttr( "style" ).hide().fadeIn();
+        $("#heart_"+id).css('color',"white");
+
+      }, 100 );
+            return false;
+        });
+            }
+        })
+
+    }
 
     </script>
 </body>

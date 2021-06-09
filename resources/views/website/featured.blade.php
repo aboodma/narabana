@@ -10,11 +10,11 @@
         <div class="container">
           <div class="row">
             <ol class="breadcrumb bg-white">
-                <li class="breadcrumb-item"><a href="{{route('welcome')}}">Home</a></li>
-                <li class="breadcrumb-item active font-weight-bold" aria-current="page">Featured</li>
+                <li class="breadcrumb-item"><a href="{{route('welcome')}}">{{__('Home')}}</a></li>
+                <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{__('Featured')}}</li>
               </ol>
         </div>
-        <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-3">Featured
+        <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-3">{{__('Featured')}}
         </p>
             <div class="row">
            @if($providers->count() != 0)

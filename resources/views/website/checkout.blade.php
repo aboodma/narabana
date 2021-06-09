@@ -51,21 +51,21 @@
                             <input type="hidden" name="provider_id" value="{{$request->provider_id}}">
                             <input type="hidden" name="price" value="{{$request->price}}">
                             @csrf
-                            <legend><b style="font-size: smaller;">Request an Order from {{App\Provider::find($request->provider_id)->user->name}} to :</b></legend>
+                            <legend><b style="font-size: smaller;">{{__('Request an Order from')}} {{App\Provider::find($request->provider_id)->user->name}}{{__(' to :')}}</b></legend>
                             <div class="form-group">
                                 <label for="">
-                                    From
+                                    {{__('From')}}
                                 </label>
                                 <input type="text" class="form-control " name="from" required>
              
                             </div>
                             <div class="form-group">
-                                <label for="">To</label>
+                                <label for="">{{__('To')}}</label>
                                 <input type="text" class="form-control " name="to" required>
              
                             </div>
                             <div class="form-group">
-                                <label for="">Message</label>
+                                <label for="">{{__('Message')}}</label>
                                 <textarea name="customer_message" class="form-control " id="" cols="30" rows="5" minlength="10" maxlength="250" required></textarea>
              
                             </div>
@@ -73,12 +73,12 @@
                             <div class="form-check">
                                 <input class="form-check-input" name="is_public" type="checkbox" value="1" id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault">
-                                    Make this video public on our platform
+                                    {{__('Make this video public on our platform')}}
                                 </label>
                               </div>
                               <br>
                               <div class="form-group">
-                                  <button class="btn btn-success  btn-lg btn-block" type="submit">Proceed to payment</button>
+                                  <button class="btn btn-success  btn-lg btn-block" type="submit">{{__('Proceed to payment')}}</button>
                               </div>
                         </form>
                     </div>

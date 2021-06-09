@@ -46,6 +46,9 @@ Route::get('myOrders','CustomerController@orders')->name('orders');
 Route::get('OrderTracking/{id}','CustomerController@OrderTracking')->name('OrderTracking');
 Route::get('videos','CustomerController@videos')->name('videos');
 Route::post('rate','OrderReviewController@rateOrder')->name('rate_order');
+Route::get('myFavoritList','FavoritController@favorits')->name('myFavoritList');
+Route::post('addToFavorit','FavoritController@addToFavorit')->name('addToFavorit');
+Route::post('removeFromFavorit','FavoritController@removeFromFavorit')->name('removeFromFavorit');
 });
 
 //Admin Routes

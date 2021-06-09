@@ -37,7 +37,7 @@
         <div class="container">
           <div class="row">
             <ol class="breadcrumb bg-white">
-                <li class="breadcrumb-item"><a href="{{route('welcome')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('welcome')}}">{{__('Home')}}</a></li>
                 <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$providerType->name}}</li>
               </ol>
         </div>

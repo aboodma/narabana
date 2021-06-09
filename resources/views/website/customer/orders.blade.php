@@ -147,11 +147,13 @@
 <div class="main-page second py-5">
     <div class="container">
         <div class="row">
-            @include('parts.customer_sidebar')
-            <div class="col-lg-9 right">
+            <div class="col-md-4">
+                @include('parts.customer_sidebar')
+            </div>
+            <div class="col-lg-8 right">
 
                 <div class="p-4 bg-white rounded shadow-sm mb-3">
-                    <h5 class="mb-4 font-weight-bold text-center">My Orders
+                    <h5 class="mb-4 font-weight-bold text-center">{{__('My Orders')}}
                     </h5>
                     <div class="row">
                         <div class="col-md-12">
@@ -159,12 +161,12 @@
                                 <table class="table  table-hover table-bordered">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Service Name</th>
-                                            <th>Provider Name</th>
-                                            <th>Status</th>
-                                            <th>Total Price</th>
-                                            <th>Options</th>
+                                            <th>{{__('ID')}}</th>
+                                            <th>{{__('Service Name')}}</th>
+                                            <th>{{__('Provider Name')}}</th>
+                                            <th>{{__('Status')}}</th>
+                                            <th>{{__('Total Price')}}</th>
+                                            <th>{{__('Options')}}</th>
 
                                         </tr>
                                     </thead>
@@ -175,25 +177,25 @@
                                             <td>{{$order->service->name}}</td>
                                             <td>{{$order->provider->user->name}}</td>
                                             <td>@if ($order->status == 0)
-                                                <span class="badge badge-warning">Pending</span>
+                                                <span class="badge badge-warning">{{__('Pending')}}</span>
                                                 @elseif($order->status == 1)
-                                                <span class="badge badge-warning">Accepted</span>
+                                                <span class="badge badge-warning">{{__('Accepted')}}</span>
                                                 @elseif($order->status == 2)
-                                                <span class="badge badge-success">Completed</span>
+                                                <span class="badge badge-success">{{__('Completed')}}</span>
                                                 @elseif($order->status == 3)
-                                                <span class="badge badge-danger">Rejected</span>
+                                                <span class="badge badge-danger">{{__('Rejected')}}</span>
                                                 @endif</td>
                                             <td>{{$order->total_price}}</td>
                                             <td>
                                                <div class="btn-group">
                                                 <a href="{{route('customer.OrderTracking',Crypt::encrypt($order->id))}}"
-                                                    class="btn btn-info"> Order Tracking <i class="fa fa-eye"></i>
+                                                    class="btn btn-info"> {{__('Order Tracking')}} <i class="fa fa-eye"></i>
                                                 </a>
                                                 
                                                 @if ($order->status == 2 && !isset($order->rate) )
                                                 <button type="button" data-toggle="modal"
                                                 data-order="{{$order->id}}"
-                                                    data-target="#exampleModalCenter" class="btn btn-success"> Review <i
+                                                    data-target="#exampleModalCenter" class="btn btn-success"> {{__('Review')}} <i
                                                         class="fa fa-star"></i> </button>
                                                 @endif
                                                </div>
@@ -228,8 +230,8 @@
                                     <div class="p-3">
                                         <div class="first text-center"> <img src="https://i.imgur.com/KCcF6WN.png"
                                                 width="80">
-                                            <h3 class="mt-2 font-weight-bold">Thanks you</h3>
-                                            <p class="text-black-50">Thanks for been a great customer <i style="color:#FFD452; font-size:18px" class="fa fa-crown"></i> <br> if you like the video please rate the service  </p>
+                                            <h3 class="mt-2 font-weight-bold">{{__('Thanks you')}}</h3>
+                                            <p class="text-black-50">{{__('Thanks for been a great customer')}} <i style="color:#FFD452; font-size:18px" class="fa fa-crown"></i> <br> {{__('if you like the video please rate the service')}}  </p>
                                             <div class="">
                                                 <div class="stars">
                                                     <label class="rate">
@@ -264,7 +266,7 @@
                                     </div>
                                     <div class="form-group">
                                        
-                                        <textarea placeholder="Please Write Your Massage Review" name="message" class="form-control rd-in message" id="meassage" cols="30"
+                                        <textarea placeholder="{{__('Please Write Your Massage Review')}}" name="message" class="form-control rd-in message" id="meassage" cols="30"
                                             rows="5"></textarea>
                                     </div>
                        
@@ -273,8 +275,8 @@
                 </div>
             </div>
             <div class="modal-footer border-0">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Rate Later</button>
-                <button type="submit" class="btn btn-success">Rate Now</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">{{__('Rate Later')}}</button>
+                <button type="submit" class="btn btn-success">{{__('Rate Now')}}</button>
             </div>
         </form>
         </div>

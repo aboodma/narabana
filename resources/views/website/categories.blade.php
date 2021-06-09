@@ -35,7 +35,7 @@
 
     <div class="services-wrapper bg-white py-5">
         <div class="container">
-          <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-3">Categories
+          <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-3">{{__('Categories')}}
           </p>
             <div class="row">
                 @foreach ($categories as $category)

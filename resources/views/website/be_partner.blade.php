@@ -38,14 +38,27 @@
 </style>
 @endsection
 @section('content')
+
 <div class="services-wrapper bg-white py-5">
 
 
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-12">
+            @if ($errors->any())
+    
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
         <div class="col-md-8">
-            <legend>Be Our Prtner</legend>
-            <form method="POST" action="{{ route('provider_request') }}" enctype="multipart/form-data">
+            <legend>Be Our Partner</legend>
+            <form method="POST" action="{{ route('provider_request') }}" id="be_our_partner" enctype="multipart/form-data">
                 @csrf
                
                 <div class="form-group row">
@@ -99,19 +112,24 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="" class="col-md-4 col-form-label text-md-right"> Select Your Job Title</label>
+                    <label for="" class="col-md-4 col-form-label text-md-right"> {{__('Select Your Job Title')}}</label>
                     <div class="col-md-6">
                         <select name="provider_type_id" class="form-control" id="">
-                            <option value="">Please Select </option>
+                            <option value="">{{__('Please Select')}} </option>
                             @foreach (\App\ProviderType::all() as $type)
 
                             <option value="{{$type->id}}">{{$type->name}}</option>
                             @endforeach
                         </select>
+                        @error('provider_type_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-md-4 col-form-label text-md-right"> Select Your Country</label>
+                    <label for="" class="col-md-4 col-form-label text-md-right"> {{__('Select Your Country')}}</label>
                     <div class="col-md-6">
                         <select name="country_id" class="form-control" id="">
                             <option value="">Please Select </option>
@@ -120,33 +138,50 @@
                             <option value="{{$country->id}}">{{$country->name}}</option>
                             @endforeach
                         </select>
+                        @error('country_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-md-4 col-form-label text-md-right"> About You </label>
+                    <label for="" class="col-md-4 col-form-label text-md-right"> {{__('About You')}} </label>
                     <div class="col-md-6">
                         <textarea name="about_me" class="form-control" id="" cols="30" rows="5"></textarea>
+                        @error('about_me')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">Profile Video</label>
+                    <label for="name" class="col-md-4 col-form-label text-md-right">{{__('Profile Video')}}</label>
 
                     <div class="col-md-6">
                         <input type="file" name="video" class="form-control rd-in" accept="video/*" id="">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right">Profile Picture</label>
+                <label for="name" class="col-md-4 col-form-label text-md-right">{{__('Profile Picture')}}</label>
 
                 <div class="col-md-6">
                     <input type="file" name="avatar" class="form-control rd-in" accept="image/*" id="">
             </div>
         </div>
-
+        <div class="form-group row ">
+            <div class="col-md-6 offset-md-4">
+                <div class="progress" id="progress" style="display: none;">
+                    <div class="progress-bar" id="progress-bar"  role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                  </div>
+            </div>
+        </div>
+        <div id="status"></div>
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-success rd-in btn-block">
+                        <button type="submit" id="btn_submit" class="btn btn-success rd-in btn-block">
                             {{ __('Send Request') }}
                         </button>
                     </div>
@@ -156,4 +191,25 @@
     </div>
 </div>
 </div>
+@endsection
+
+@section('script')
+
+<script>
+//    $(document).ready(function(){
+//     $( "#be_our_partner" ).submit(function( event ) {
+//         var data = new FormData();
+//             jQuery.each(jQuery('#file')[0].files, function(i, file) {
+//                 data.append('file-'+i, file);
+//             });
+//         event.preventDefault();
+//         $.ajax({
+//             url:this.attr('action'),
+//             type:"POST",
+
+//         })
+//     });
+//    })
+ 
+</script>
 @endsection

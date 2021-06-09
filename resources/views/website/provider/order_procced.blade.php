@@ -24,7 +24,7 @@
             <div class="col-lg-8 right">
                 
                 <div class="p-4 bg-white rounded shadow-sm mb-3">
-                    <h5 class="mb-4 font-weight-bold text-center">Order Procced
+                    <h5 class="mb-4 font-weight-bold text-center">{{__('Order Procced')}}
                     </h5>
                     <div class="row">
                         <div class="col-md-12">
@@ -43,7 +43,7 @@
                         <div class="col-md-6">
                             <div class="card bg-light">
                                 <div class="card-header bg-white">
-                                    Order Inforamtions
+                                    {{__('Order Inforamtions')}}
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -51,19 +51,19 @@
                                             
                                             <tbody>
                                                 <tr>
-                                                    <th>Customer Name</th>
+                                                    <th>{{__('Customer Name')}}</th>
                                                     <td>{{$order->user->name}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>To</th>
+                                                    <th>{{__('To')}}</th>
                                                     <td>{{$order->details->to}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Message</th>
+                                                    <th>{{__('Message')}}</th>
                                                     <td>{{$order->details->customer_message}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Total Price</th>
+                                                    <th>{{__('Total Price')}}</th>
                                                     <td>{{$order->total_price}}</td>
                                                 </tr>
                                             </tbody>
@@ -75,7 +75,7 @@
                         <div class="col-md-6">
                             <div class="card bg-light">
                                 <div class="card-header bg-white">
-                                    Order Procced
+                                    {{__('Order Procced')}}
                                 </div>
                                 <div class="card-body">
                                    @if ($order->service->is_video)
@@ -84,12 +84,12 @@
                                     <input type="hidden" name="order_id" value="{{$order->id}}">
                                     <div class="form-group">
                                         <label for="">
-                                            Video Upload
+                                            {{__('Video Upload')}}
                                         </label>
                                         <input type="file" name="video" accept="video/*" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="form-control btn btn-success">Upload</button>
+                                        <button type="submit" class="form-control btn btn-success">{{__('Upload')}}</button>
                                     </div>
                                 </form>
                                 @else
@@ -99,12 +99,12 @@
 
                                         <div class="form-group">
                                             <label for="">
-                                                    Provider Note
+                                                    {{__('Provider Note')}}
                                             </label>
                                             <textarea name="provider_note" class="form-control" id="" cols="30" rows="5"></textarea>
                                         </div>
                                         <div class="form-group row ">
-                                            <button class="btn btn-primary rd-in btn-block">Procced</button>
+                                            <button class="btn btn-primary rd-in btn-block">{{__('Procced')}}</button>
                                         </div>
 
                                     </form>

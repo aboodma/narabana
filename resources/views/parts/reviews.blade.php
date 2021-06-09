@@ -22,7 +22,7 @@ function star_replace($string){
                 <i class="fa fa-star @if($order->rate->rate >= 3) text-warning @endif"></i> 
                 <i class="fa fa-star @if($order->rate->rate >= 4) text-warning @endif"></i>
                 <i class="fa fa-star @if($order->rate->rate == 5) text-warning @endif"></i>
-                / <span class="font-weight-bold">{{$order->rate->rate}} Star </span>    
+                / <span class="font-weight-bold">{{$order->rate->rate}} {{__('Star')}} </span>    
             </p>
         </div>
             <div class="col-md-8">{{$order->rate->massage}}</div>

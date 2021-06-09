@@ -44,10 +44,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <legend>Request Submited </legend>
-                <p>Thank you {{$user->name}} <br>
-                Your Request Is in progrress Our Support Will Contact with you To confirm and Aprrove Your Account</p>
-                <a href="{{route('welcome')}}" class="btn btn-success btn-block btn-lg"> Back To Home Page</a>
+            <legend>{{__('Request Submited')}} </legend>
+                <p>{{__('Thank you')}} {{$user->name}} <br>
+               {{__(' Your Request Is in progrress Our Support Will Contact with you To confirm and Aprrove Your Account')}}</p>
+                <a href="{{route('welcome')}}" class="btn btn-success btn-block btn-lg"> {{__('Back To Home Page')}}</a>
             </div>  
     </div>
 </div>

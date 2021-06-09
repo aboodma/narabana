@@ -31,12 +31,12 @@
                                     <div class="row justify-content-around">
         
                                         <div class="col-md-3 text-center border-box">
-                                            <p>Total Orders</p>
+                                            <p>{{__('Total Orders')}}</p>
                                             <h1 class="font-weight-bold m-0">{{auth()->user()->wallets->where('transaction_type',0)->sum('amount')}} USD</h1>
                                         </div>
                                        
                                         <div class="col-md-3 text-center border-box">
-                                            <p> Wallet Balance </p>
+                                            <p> {{__('Wallet Balance')}} </p>
                                             <h1 class="font-weight-bold m-0">{{auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')}} USD</h1>
                                         </div>
                                     </div>
@@ -55,9 +55,9 @@
                                     <table id="example" class="table  " style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Service Name / Customer Name</th>
-                                                <th>Status</th>
-                                                <th>Option</th>
+                                                <th>{{__('Service Name / Customer Name')}}</th>
+                                                <th>{{__('Status')}}</th>
+                                                <th>{{__('Option')}}</th>
                                                 
                                             </tr>
                                         </thead>
@@ -66,16 +66,16 @@
                                             <tr>
                                                 <td>{{$order->service->name}} / {{$order->user->name}}</td>
                                                 <td>@if ($order->status == 0)
-                                                    <span class="badge badge-warning">Pending</span>
+                                                    <span class="badge badge-warning">{{__('Pending')}}</span>
                                                     @elseif($order->status == 1)
-                                                    <span class="badge badge-warning">Accepted</span>
+                                                    <span class="badge badge-warning">{{__('Accepted')}}</span>
                                                     @elseif($order->status == 2)
-                                                    <span class="badge badge-success">Completed</span>
+                                                    <span class="badge badge-success">{{__('Completed')}}</span>
                                                     @elseif($order->status == 3)
-                                                    <span class="badge badge-danger">Rejected</span>
+                                                    <span class="badge badge-danger">{{__('Rejected')}}</span>
                                                     @endif</td>
                                                 <td><a href="{{route('provider.orders',"onGoing")}}"
-                                                    class="btn btn-info"> View Orders <i class="fa fa-eye"></i>
+                                                    class="btn btn-info"> {{__('View Orders')}} <i class="fa fa-eye"></i>
                                                 </a></td>
                                             </tr>
                                             @endforeach

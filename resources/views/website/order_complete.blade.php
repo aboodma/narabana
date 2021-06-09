@@ -53,12 +53,12 @@
                             
                         </div>
                         <div class="d-flex justify-content-center">
-                            <p class="text-center" style="font-weight: 600; ">Your Request has been completed we will send you an email with all the details You can track your order from the website or with the link below</p>
+                            <p class="text-center" style="font-weight: 600; ">{{__('Your Request has been completed we will send you an email with all the details You can track your order from the website or with the link below')}}</p>
 
 
                         </div>
                         <div class="d-flex justify-content-center">
-                        <a href="{{route('customer.OrderTracking',$d_order_id)}}" class="btn btn-success dark "> Track your Order</a>
+                        <a href="{{route('customer.OrderTracking',$d_order_id)}}" class="btn btn-success dark "> {{__('Track your Order')}}</a>
 
                         </div>
                     </div>
