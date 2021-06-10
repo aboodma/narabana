@@ -121,6 +121,7 @@ class HomeController extends Controller
     }
     public function provider_request(Request $request)
     {
+      //  return $request->all();
       $validated = $request->validate([
          'name' => 'required',
          'email' => 'required|unique:users',

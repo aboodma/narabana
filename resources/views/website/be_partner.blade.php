@@ -173,12 +173,13 @@
         </div>
         <div class="form-group row ">
             <div class="col-md-6 offset-md-4">
-                <div class="progress" id="progress" style="display: none;">
-                    <div class="progress-bar" id="progress-bar"  role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                <div class="progress" id="progress" >
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
                   </div>
+                  
             </div>
         </div>
-        <div id="status"></div>
+        
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" id="btn_submit" class="btn btn-success rd-in btn-block">
@@ -196,20 +197,34 @@
 @section('script')
 
 <script>
-//    $(document).ready(function(){
-//     $( "#be_our_partner" ).submit(function( event ) {
-//         var data = new FormData();
-//             jQuery.each(jQuery('#file')[0].files, function(i, file) {
-//                 data.append('file-'+i, file);
-//             });
-//         event.preventDefault();
-//         $.ajax({
-//             url:this.attr('action'),
-//             type:"POST",
+    $(function() {
+         $(document).ready(function()
+         {
 
-//         })
-//     });
-//    })
+            var progress_bar = $(".progress-bar");
  
+      $('form').ajaxForm({
+        beforeSend: function() {
+            var percentVal = '0%';
+
+            progress_bar.width(percentVal)
+            progress_bar.html(percentVal);
+            progress_bar.css('width',percentVal)
+            progress_bar.attr('aria-valuenow',percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+
+            progress_bar.css('width',percentVal)
+            progress_bar.html(percentVal);
+            progress_bar.attr('aria-valuenow',percentVal);
+        },
+        complete: function(xhr) {
+            alert('File Has Been Uploaded Successfully');
+           
+        }
+      });
+   }); 
+ });
 </script>
 @endsection
