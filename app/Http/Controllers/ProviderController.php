@@ -10,6 +10,7 @@ use App\Wallet;
 use App\Order;
 use App\Service;
 use App\ProviderService;
+use VideoThumbnail;
 use Illuminate\Support\Facades\Hash;
 use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 use FFMpeg\Filters\Video\VideoFilters;
@@ -110,6 +111,8 @@ class ProviderController extends Controller
             // ->save($random.'.webm');
             // unlink($path.'/'.$newName);
         }
+        $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
+     
         $order = Order::find($request->order_id);
         $order_details = $order->details;
         $order_details->provider_message = $newName;

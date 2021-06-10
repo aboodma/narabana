@@ -27,7 +27,10 @@
                 right: 7%;
                 " src="{{asset('images/logo.png')}}" alt="">
 
-                <video id="v-{{$provider->id}}" style="width: 100%" loop preload="false" autoplay="true"   tabindex="0">
+                <video
+               
+                id="v-{{$provider->id}}" style="width: 100%" loop preload="false" autoplay="true"   tabindex="0">
+                    
                     <source src="{{asset($provider->video)}}" type="video/mp4">
                 </video>
                 <span id="play-{{$provider->id}}" onclick="playVideo('{{$provider->id}}')" class="fa fa-play play-btn" ></span>
@@ -128,7 +131,16 @@
                     <div class="col">
                    
                             <div class="freelancer">
-                                <video id="v-{{$order->id}}" style="width: 100%" >
+                                <video id="v-{{$order->id}}" style="width: 100%"
+                                        @php 
+                                        $file_name= explode('.',$order->details->provider_message);
+                                        $poster_path = public_path("uploads/thumbs/").$file_name[0].".jpg";
+                                        @endphp
+                                        @if(file_exists(public_path("uploads/thumbs/".$file_name[0].".jpg")))
+                                        poster="{{asset("uploads/thumbs/".$file_name[0].".jpg")}}"
+
+                                        @endif
+                                    >
                                     <source src="{{asset($order->details->provider_message)}}" type="video/mp4">
                                 </video>
                                 <span id="play-{{$order->id}}" onclick="playVideo('{{$order->id}}')" class="fa fa-play" style="position: absolute;

@@ -16,6 +16,7 @@
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.4",
+        "pawlox/video-thumbnail": "^1.0",
         "pbmedia/laravel-ffmpeg": "^7.5",
         "php-ffmpeg/php-ffmpeg": "^0.18.0"
     },

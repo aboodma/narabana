@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7646fa7bb0397040fe23e739feec4da",
+    "content-hash": "c0607a17cb30f3bf83dcb7d936b95c5e",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -1960,6 +1960,55 @@
                 "source": "https://github.com/opis/closure/tree/3.6.2"
             },
             "time": "2021-04-09T13:42:10+00:00"
+        },
+        {
+            "name": "pawlox/video-thumbnail",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pawlox/video-thumbnail.git",
+                "reference": "9afd30a6ae52f3b4c970b651d6d934bee180ef38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pawlox/video-thumbnail/zipball/9afd30a6ae52f3b4c970b651d6d934bee180ef38",
+                "reference": "9afd30a6ae52f3b4c970b651d6d934bee180ef38",
+                "shasum": ""
+            },
+            "require": {
+                "php-ffmpeg/php-ffmpeg": "~0.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pawlox\\VideoThumbnail\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sukhil S S",
+                    "email": "emailtosukhil@gmail.com"
+                },
+                {
+                    "name": "Paweł Marciniak",
+                    "email": "pawmarci@gmail.com"
+                }
+            ],
+            "description": "Video thumbnails",
+            "keywords": [
+                "Laravel video thumbnail",
+                "Video Thumbnails",
+                "laravel 5"
+            ],
+            "support": {
+                "issues": "https://github.com/pawlox/video-thumbnail/issues",
+                "source": "https://github.com/pawlox/video-thumbnail/tree/master"
+            },
+            "time": "2017-08-29T13:40:20+00:00"
         },
         {
             "name": "pbmedia/laravel-ffmpeg",
