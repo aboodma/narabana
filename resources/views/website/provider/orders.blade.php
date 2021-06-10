@@ -58,6 +58,7 @@
                                         @endif</td>
                                         <td>{{$order->total_price}}</td>
                                         <td>
+                                            <button class="btn btn-primary" data-order="{{$order->id}}" data-toggle="modal" data-target="#exampleModal" type="button"> <i class="fas fa-eye"></i> View </button>
                                             @if($order->status == 0)
                                             <a href="{{route('provider.OrderChangeStatus',[1,$order->id])}}" class="btn btn-success">{{__('Accept')}}</a>
                                             <a href="{{route('provider.OrderChangeStatus',[3,$order->id])}}" class="btn btn-danger">{{__('Reject')}}</a>
@@ -80,6 +81,13 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="modal-content">
+       
+      </div>
+    </div>
+  </div>
 @endsection
 @section('script')
 <script>
@@ -96,6 +104,22 @@
         });
     })
     //   freelance-slider
-
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('order') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        $.ajax({
+            url:"{{route('provider.showOrderDetails')}}",
+            type:"POST",
+            data:{
+                "_token":"{{csrf_token()}}",
+                "order_id":recipient
+            },
+            success : function(res){
+                $("#modal-content").html(res);
+            }
+        })
+        })
 </script>
 @endsection

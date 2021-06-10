@@ -34,7 +34,7 @@ Route::get('categories','HomeController@categories')->name('categories');
 Route::get('featured','HomeController@featured')->name('featured');
 Route::post('reviews','HomeController@reviews')->name('reviews');
 Route::post('notify/read','NotificationController@read')->name('notify_read');
-
+Route::get('setLocale/{locale}','HomeController@changeLocale')->name('ChangeLocale');
 //ws routes
 Route::get('service_check','ProviderServiceController@service_check')->name('service_check');
 
@@ -49,6 +49,7 @@ Route::post('rate','OrderReviewController@rateOrder')->name('rate_order');
 Route::get('myFavoritList','FavoritController@favorits')->name('myFavoritList');
 Route::post('addToFavorit','FavoritController@addToFavorit')->name('addToFavorit');
 Route::post('removeFromFavorit','FavoritController@removeFromFavorit')->name('removeFromFavorit');
+
 });
 
 //Admin Routes
@@ -106,7 +107,7 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::post('/payouts/request','PayoutRequestController@provider_payouts_request')->name('payouts_request');
   Route::get('/payment_settings','ProviderController@payment_settings')->name('payment_settings');
   Route::post('/payment_settings/update','ProviderController@update_payment_settings')->name('update_payment_settings');
-
+  Route::post('showOrderDetails','OrderController@showOrderDetails')->name('showOrderDetails');
   
 });
 

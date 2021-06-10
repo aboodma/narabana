@@ -16,6 +16,9 @@ use FFMpeg\Filters\Video\VideoFilters;
 use Illuminate\Support\Str;
 use ProtoneMedia\LaravelFFMpeg\FFMpeg\CopyFormat;
 use Buglinjo\LaravelWebp\Facades\Webp;
+use Session;
+use Config;
+use App;
 class HomeController extends Controller
 {
   
@@ -24,7 +27,17 @@ class HomeController extends Controller
      *
      * @return void
      */
-    
+
+      public function changeLocale($locale)
+      {
+         App()->setLocale($locale);
+         //store the locale in session so that the middleware can register it
+         session()->put('locale', $locale);
+         // return app()->getLocale();
+         return  redirect()->route('welcome');
+      }
+
+
      public function provider_profile(Provider $provider)
      {
         return view('website.provider_profile',compact('provider'));
@@ -130,6 +143,7 @@ class HomeController extends Controller
          'provider_type_id' => 'required',
          'country_id' => 'required',
      ]);
+     if ($validated) {
       $random = Str::random(40);
       $file = $request->file('avatar');     
       $filename = $file->getClientOriginalName();
@@ -171,8 +185,11 @@ class HomeController extends Controller
         $provider->country_id = $request->country_id;
         $provider->is_approved = false;
         if ($provider->save()) {
-           return redirect()->route('request_submited',$user->id);
+           return route('request_submited',$user->id);
         }
+     }
+     }else{
+        return 0;
      }
        
     }

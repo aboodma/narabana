@@ -135,7 +135,7 @@ class ProviderController extends Controller
         $wallet->transaction_type = 0 ;
         $wallet->amount = $order->total_price;
         $wallet->save();
-        return redirect()->route('provider.orders',"onGoing");
+        return route('provider.orders',"onGoing");
 
     }
 

@@ -12,9 +12,11 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showOrderDetails(Request $request)
     {
-        //
+        // return $request->all();
+        $order = Order::find($request->order_id);
+        return view('parts.order_details',compact('order'));
     }
 
     /**

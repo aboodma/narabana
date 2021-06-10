@@ -89,9 +89,15 @@
                                         <input type="file" name="video" accept="video/*" class="form-control">
                                     </div>
                                     <div class="form-group">
+                                        <div class="progress" id="progress" >
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
                                         <button type="submit" class="form-control btn btn-success">{{__('Upload')}}</button>
                                     </div>
                                 </form>
+                                
                                 @else
                                     <form action="{{route('provider.other_order_upload')}}" method="POST">
                                         @csrf
@@ -136,4 +142,53 @@
     //   freelance-slider
 
 </script>
+@if ($order->service->is_video)
+<script>
+    $(function() {
+         $(document).ready(function()
+         {
+
+            var progress_bar = $(".progress-bar");
+ 
+      $('form').ajaxForm({
+        beforeSend: function() {
+            var percentVal = '0%';
+            $("#btn_submit").attr('disabled',true);
+            progress_bar.width(percentVal)
+            progress_bar.html(percentVal);
+            progress_bar.css('width',percentVal)
+            progress_bar.attr('aria-valuenow',percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+
+            progress_bar.css('width',percentVal)
+            progress_bar.html(percentVal);
+            progress_bar.attr('aria-valuenow',percentVal);
+        },
+        complete: function(xhr) {
+            $("#btn_submit").attr('disabled',false);
+            // console.log(xhr.responseText);
+            
+        },
+        success : function(xhr){
+            console.log(xhr.responseText);
+        window.location.replace('{{route("provider.orders","onGoing")}}')
+        },
+        error:function(xhr){
+            const obj = JSON.parse(xhr.responseText);
+            $("#errors-warper").show();
+            // $("#errors").html(obj.message);
+            // for (let index = 0; index < obj.errors; index++) {
+            //     console.log(obj.errors[index]);
+                
+            // }
+        }
+       
+        
+      });
+   }); 
+ });
+</script>
+@endif
 @endsection

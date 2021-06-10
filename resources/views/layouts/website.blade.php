@@ -33,7 +33,7 @@
     @yield('style')
 
     <style>
-        .readed{
+        .readed {
             background-color: silver;
         }
 
@@ -41,8 +41,8 @@
 </head>
 
 <body>
-  
-  
+
+
     <nav class="navbar navbar-expand-lg navbar-light topbar  shadow-sm bg-white osahan-nav-top px-1  ">
         <div class="container">
 
@@ -74,7 +74,8 @@
                         <form class="form-inline mr-auto w-100 navbar-search">
                             <div class="input-group">
                                 <input type="text" class="form-control bg-light border-0 small"
-                                    placeholder="{{__('Find Services...')}}" aria-label="Search" aria-describedby="basic-addon2">
+                                    placeholder="{{__('Find Services...')}}" aria-label="Search"
+                                    aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="button">
                                         <i class="fa fa-search fa-sm"></i>
@@ -106,6 +107,37 @@
 
                 </li>
                 @endguest
+                <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle " style="background: #f1f2f500" id="navbarDropdownMessages"
+                        href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="fas fa-language "></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
+                        aria-labelledby="navbarDropdownMessages">
+                        
+                        <a class="dropdown-item dropdown-notifications-item" href="{{route('ChangeLocale','en')}}">
+                            <img class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_uk-flag.gif">
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-text">English</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item dropdown-notifications-item" href="{{route('ChangeLocale','ar')}}">
+                            <img class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_sa-flag.gif">
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-text">Arabic</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item dropdown-notifications-item" href="{{route('ChangeLocale','tr')}}">
+                            <img class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_tu-flag.gif">
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-text">Turkish</div>
+                            </div>
+                        </a>
+                        
+                     
+                    </div>
+                </li>
                 @auth
                 <li class="nav-item dropdown no-arrow no-caret mr-3 ">
                     <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts"
@@ -126,25 +158,26 @@
                             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                         </svg>
                         @if( auth()->user()->notifications->where('is_read',0)->count() != 0)
-                        <i style="font-size: smaller;color:#ba6089 !important" class="fa fa-circle text-success" ></i>
+                        <i style="font-size: smaller;color:#ba6089 !important" class="fa fa-circle text-success"></i>
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-right border-0 shadow  "
                         aria-labelledby="navbarDropdownAlerts">
-                        
+
 
                         @foreach(auth()->user()->notifications->sortBy('created_at') as $notification)
-                        <a @if(!$notification->is_read) onclick="MarkRead({{$notification->id}})" @endif  class="dropdown-item dropdown-notifications-item @if($notification->is_read) readed @endif" 
-                        @if($notification->type == 0  && auth()->user()->user_type == 1)
-                            href="{{route('provider.orders',"onGoing")}}" 
-                         @elseif($notification->type == 0  && auth()->user()->user_type == 0)
+                        <a @if(!$notification->is_read) onclick="MarkRead({{$notification->id}})" @endif
+                            class="dropdown-item dropdown-notifications-item @if($notification->is_read) readed @endif"
+                            @if($notification->type == 0 && auth()->user()->user_type == 1)
+                            href="{{route('provider.orders',"onGoing")}}"
+                            @elseif($notification->type == 0 && auth()->user()->user_type == 0)
                             href="{{route('customer.orders')}}"
-                          @elseif($notification->type == 1  && auth()->user()->user_type == 1)
+                            @elseif($notification->type == 1 && auth()->user()->user_type == 1)
                             href="{{route('provider.orders',"history")}}"
-                          @elseif($notification->type == 0  && auth()->user()->user_type == 0)
+                            @elseif($notification->type == 0 && auth()->user()->user_type == 0)
                             href="{{route('customer.orders')}}"
 
-                         @endif>
+                            @endif>
                             <div class="dropdown-notifications-item-icon bg-success">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -156,7 +189,8 @@
                                 </svg>
                             </div>
                             <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">{{$notification->created_at->diffForHumans()}}</div>
+                                <div class="dropdown-notifications-item-content-details">
+                                    {{$notification->created_at->diffForHumans()}}</div>
                                 <div class="dropdown-notifications-item-content-text">{{$notification->msg}}</div>
                             </div>
                         </a>
@@ -253,9 +287,9 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
- 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
@@ -288,7 +322,7 @@
             //you know the position.
             $(window).scroll(function () {
 
-                console.log($(window).scrollTop());
+                // console.log($(window).scrollTop());
 
                 if ($(window).scrollTop() > 200) {
                     $('.navbar').addClass('fixed-top');
@@ -302,66 +336,72 @@
 
         function MarkRead(id) {
             $.ajax({
-                url:"{{route('notify_read')}}",
-                type:"POST",
-                data:{"_token":"{{csrf_token()}}","id":id},
-                
+                url: "{{route('notify_read')}}",
+                type: "POST",
+                data: {
+                    "_token": "{{csrf_token()}}",
+                    "id": id
+                },
+
             })
         }
+
         function manageFavorit(id) {
-            if ($("#heart_"+id).hasClass("favorit")) {
-                $("#heart_"+id).removeClass("favorit");
+            if ($("#heart_" + id).hasClass("favorit")) {
+                $("#heart_" + id).removeClass("favorit");
                 removeFromFavorit(id);
-            }else{
-                $("#heart_"+id).addClass("favorit");
+            } else {
+                $("#heart_" + id).addClass("favorit");
                 addToFavorit(id);
 
             }
         }
-    function addToFavorit(id) {
-        
-        $.ajax({
-            url:"{{route('customer.addToFavorit')}}",
-            type:"POST",
-            data:{
-                "_token":"{{csrf_token()}}",
-                "id":id
-            },
-            success:function(){
-                $("#heart_"+id).effect("puff",function(){
-            setTimeout(function() {
-                $("#heart_"+id).removeAttr( "style" ).hide().fadeIn();
-        $("#heart_"+id).css('color',"#d47fa6");
 
-      }, 100 );
-            return false;
-        });
-            }
-        })
+        function addToFavorit(id) {
 
-    }
-    function removeFromFavorit(id) {
-        
-        $.ajax({
-            url:"{{route('customer.removeFromFavorit')}}",
-            type:"POST",
-            data:{
-                "_token":"{{csrf_token()}}",
-                "id":id
-            },
-            success:function(){
-                $("#heart_"+id).effect("puff",function(){
-            setTimeout(function() {
-                $("#heart_"+id).removeAttr( "style" ).hide().fadeIn();
-        $("#heart_"+id).css('color',"white");
+            $.ajax({
+                url: "{{route('customer.addToFavorit')}}",
+                type: "POST",
+                data: {
+                    "_token": "{{csrf_token()}}",
+                    "id": id
+                },
+                success: function () {
+                    $("#heart_" + id).effect("puff", function () {
+                        setTimeout(function () {
+                            $("#heart_" + id).removeAttr("style").hide().fadeIn();
+                            $("#heart_" + id).css('color', "#d47fa6");
 
-      }, 100 );
-            return false;
-        });
-            }
-        })
+                        }, 100);
+                        return false;
+                    });
+                }
+            })
 
-    }
+        }
+
+        function removeFromFavorit(id) {
+
+            $.ajax({
+                url: "{{route('customer.removeFromFavorit')}}",
+                type: "POST",
+                data: {
+                    "_token": "{{csrf_token()}}",
+                    "id": id
+                },
+                success: function () {
+                    $("#heart_" + id).effect("puff", function () {
+                        setTimeout(function () {
+                            $("#heart_" + id).removeAttr("style").hide().fadeIn();
+                            $("#heart_" + id).css('color', "white");
+
+                        }, 100);
+                        return false;
+                    });
+                }
+            })
+
+        }
 
     </script>
 </body>

@@ -45,16 +45,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            @if ($errors->any())
+         
     
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                <div class="alert alert-danger" id="errors-warper" style="display: none">
+                    <p id="errors">
+                       
+                    </p>
                 </div>
-            @endif
+           
         </div>
         <div class="col-md-8">
             <legend>Be Our Partner</legend>
@@ -206,7 +204,7 @@
       $('form').ajaxForm({
         beforeSend: function() {
             var percentVal = '0%';
-
+            $("#btn_submit").attr('disabled',true);
             progress_bar.width(percentVal)
             progress_bar.html(percentVal);
             progress_bar.css('width',percentVal)
@@ -220,9 +218,25 @@
             progress_bar.attr('aria-valuenow',percentVal);
         },
         complete: function(xhr) {
-            alert('File Has Been Uploaded Successfully');
-           
+            $("#btn_submit").attr('disabled',false);
+            console.log(xhr.responseText);
+            
+        },
+        success : function(xhr){
+            
+        window.location.replace(xhr.responseText)
+        },
+        error:function(xhr){
+            const obj = JSON.parse(xhr.responseText);
+            $("#errors-warper").show();
+            $("#errors").html(obj.message);
+            // for (let index = 0; index < obj.errors; index++) {
+            //     console.log(obj.errors[index]);
+                
+            // }
         }
+       
+        
       });
    }); 
  });
