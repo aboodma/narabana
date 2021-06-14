@@ -222,9 +222,9 @@
             console.log(xhr.responseText);
             
         },
-        success : function(xhr){
-            
-        window.location.replace(xhr.responseText)
+        success : function(data){
+            // console.log(data);
+        window.location.replace(data)
         },
         error:function(xhr){
             const obj = JSON.parse(xhr.responseText);

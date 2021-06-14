@@ -86,7 +86,20 @@ Route::get('/home', 'HomeController@index')->name('home');
   Route::post('/categories/update/{providerType}','ProviderTypeController@update')->name('categories_update');
   Route::delete('/categories/delete/{providerType}','ProviderTypeController@destroy')->name('categories_delete');
 
+
+  // Settings 
+  Route::get('/Languages','LanguageController@index')->name('language.index');
+  Route::get('/Languages/translate/{language}','LanguageController@translate')->name('language.translate');
+  Route::post('/Languages/update/{language}','LanguageController@update')->name('language.update');
+
+  Route::get('/HomePage/banners','HomePageBannerController@index')->name('homepage.banners');
+  Route::get('/HomePage/banners/create','HomePageBannerController@create')->name('homepage.banners.create');
+  Route::post('/HomePage/banners/store','HomePageBannerController@store')->name('homepage.banners.store');
+  Route::delete('/HomePage/banners/destroy/{HomePageBanner}','HomePageBannerController@destroy')->name('homepage.banners.destroy');
   
+  Route::get('/HomePage/categories','HomePageProviderTypeController@index')->name('homePage.categories');
+  Route::post('/HomePage/category/add','HomePageProviderTypeController@store')->name('homePage.categories.store');
+  Route::delete('/HomePage/category/destroy/{homePageProviderType}','HomePageProviderTypeController@destroy')->name('homePage.categories.destroy');
 });
  
 //Provider Routes
