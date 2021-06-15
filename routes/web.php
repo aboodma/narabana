@@ -56,13 +56,26 @@ Route::post('removeFromFavorit','FavoritController@removeFromFavorit')->name('re
 Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(){
 Route::get('/home', 'HomeController@index')->name('home');
   // User Model
-  Route::get('/users/{user_type}','AdminController@users')->name('users');
+  // Route::get('/users/{user_type}','AdminController@users')->name('users');
   Route::get('/user/edit/{user}','AdminController@user_edit')->name('user_edit');
   Route::get('user/view/{user}','AdminController@user_view')->name('user_view');
   Route::post('user/update/{user}','AdminController@user_update')->name('user_update');
   Route::get('user/create/{user_type}','AdminController@user_create')->name('user_create');
   Route::post('user/store/{user_type}','AdminController@user_store')->name('user_store');
   Route::delete('user/delete/{user}','AdminController@user_delete')->name('user_delete');
+
+  Route::get('/users/customers','AdminController@customers')->name('users.customers');
+  Route::get('/users/customers/{user}','AdminController@customers_show')->name('users.customers_show');
+  Route::get('/users/customers/edit/{user}','AdminController@customers_edit')->name('users.customers_edit');
+  Route::post('/users/customers/update/{user}','AdminController@customers_update')->name('users.customers_update');
+  Route::delete('/users/customers/delete/{user}','AdminController@customers_destroy')->name('users.customers_destroy');
+
+  Route::get('/users/providers','AdminController@providers')->name('users.providers');
+  Route::get('/users/providers/{user}','AdminController@providers_show')->name('users.providers_show');
+  Route::get('/users/providers/edit/{user}','AdminController@providers_edit')->name('users.providers_edit');
+  Route::post('/users/providers/update/{user}','AdminController@providers_update')->name('users.providers_update');
+  Route::delete('/users/providers/delete/{user}','AdminController@providers_destroy')->name('users.providers_destroy');
+  Route::get('/users/providers/approve/{provider}','AdminController@provider_approve')->name('users.providers_approve');
 
   // Provider Model
   Route::post('/provider/store/{user_type}','ProviderController@store')->name('provider_store');

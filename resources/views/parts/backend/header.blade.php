@@ -36,7 +36,7 @@
           <div class="menu-submenu menu-submenu-classic menu-submenu-left">
             <ul class="menu-subnav">
               <li class="menu-item" aria-haspopup="true">
-                <a  href="{{route('admin.users',0)}}" class="menu-link">
+                <a  href="{{route('admin.users.customers')}}" class="menu-link">
                   <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -51,7 +51,7 @@
                 </a>
               </li>
               <li class="menu-item" aria-haspopup="true">
-                <a  href="{{route('admin.users',1)}}" class="menu-link">
+                <a  href="{{route('admin.users.providers')}}" class="menu-link">
                   <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -66,7 +66,7 @@
                 </a>
               </li>
               <li class="menu-item" aria-haspopup="true">
-                <a  href="{{route('admin.users',2)}}" class="menu-link">
+                <a  href="" class="menu-link">
                   <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

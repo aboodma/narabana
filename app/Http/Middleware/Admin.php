@@ -17,10 +17,10 @@ class Admin
     public function handle($request, Closure $next)
     {
     //   dd(Auth::user()->user_type);
-        if (Auth::user()->user_type == 2) {
+        if (Auth::check() && Auth::user()->user_type == 2) {
             return $next($request);
         }else{
-            abort(404);
+            return redirect()->route('login');
         }
         
     }

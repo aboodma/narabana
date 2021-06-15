@@ -34,6 +34,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--begin::Layout Themes(used by all pages)-->
 		<!--end::Layout Themes-->
 		<link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+		@yield('style')
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -48,7 +49,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div id="kt_header_mobile" class="header-mobile">
 						<!--begin::Logo-->
 						<a href="index.html">
-							<img alt="Logo" src="{{asset('assets/media/logos/logo-default.png')}}" class="max-h-30px" />
+							<img alt="Logo" src="{{asset('/images/logo.png')}}" class="max-h-30px" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Toolbar-->
@@ -81,7 +82,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							<div class="d-none d-lg-flex align-items-center mr-3">
 								<!--begin::Logo-->
 								<a href="/" class="mr-20">
-									<img alt="Logo" src="{{asset('assets/media/logos/logo-default.png')}}" class="logo-default max-h-35px" />
+									<img alt="Logo" src="{{asset('/images/logo.png')}}" style="filter: brightness(100);" class="logo-default max-h-35px" />
 								</a>
 								<!--end::Logo-->
 							</div>
