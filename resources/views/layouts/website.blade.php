@@ -107,37 +107,7 @@
 
                 </li>
                 @endguest
-                <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle " style="background: #f1f2f500" id="navbarDropdownMessages"
-                        href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <i class="fas fa-language "></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
-                        aria-labelledby="navbarDropdownMessages">
-                        
-                        <a class="dropdown-item dropdown-notifications-item" href="{{route('ChangeLocale','en')}}">
-                            <img class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_uk-flag.gif">
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">English</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-notifications-item" href="{{route('ChangeLocale','ar')}}">
-                            <img class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_sa-flag.gif">
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Arabic</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-notifications-item" href="{{route('ChangeLocale','tr')}}">
-                            <img class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_tu-flag.gif">
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Turkish</div>
-                            </div>
-                        </a>
-                        
-                     
-                    </div>
-                </li>
+                
                 @auth
                 <li class="nav-item dropdown no-arrow no-caret mr-3 ">
                     <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts"
@@ -220,6 +190,37 @@
 
 
                 @endauth
+                <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle  " style="background: #f1f2f500" id="navbarDropdownMessages"
+                        href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="fas fa-globe " style="font-size: 1.2rem;color: #505355"></i>
+                    </a>
+                    <div style="min-width: 9.75rem;" class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
+                        aria-labelledby="navbarDropdownMessages">
+                        
+                        <a class="dropdown-item dropdown-notifications-item p-2" href="{{route('ChangeLocale','en')}}">
+                            <img style="max-width: 1.5rem;max-height: 1.5rem;" class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_uk-flag.gif">
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-text">English</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item dropdown-notifications-item p-2" href="{{route('ChangeLocale','ar')}}">
+                            <img style="max-width: 1.5rem;max-height: 1.5rem;" class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_sa-flag.gif">
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-text">Arabic</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item dropdown-notifications-item p-2" href="{{route('ChangeLocale','tr')}}">
+                            <img style="max-width: 1.5rem;max-height: 1.5rem;" class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_tu-flag.gif">
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-text">Turkish</div>
+                            </div>
+                        </a>
+                        
+                     
+                    </div>
+                </li>
 
 
             </ul>

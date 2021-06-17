@@ -12,7 +12,7 @@
                 <h3 class="card-label">Languages
                 </h3>
             </div>
-            
+           
         </div>
         <div class="card-body">
 
@@ -38,6 +38,9 @@
                         <div class="btn-group">
                             <a class="btn btn-primary" href="{{route('admin.language.translate',$language->id)}}">
                                 <i class="fas fa-language "></i>
+                            </a>
+                            <a class="btn btn-success" href="{{route('admin.language.inputs',$language->locale)}}">
+                                <i class="fas fa-globe "></i>
                             </a>
                         </div>
                         </td>

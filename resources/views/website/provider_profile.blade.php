@@ -12,7 +12,7 @@
         <div class="row">
             <ol class="breadcrumb bg-white">
                 <li class="breadcrumb-item"><a href="{{route('welcome')}}">{{__('Home')}}</a></li>
-                <li class="breadcrumb-item"><a href="{{route('FilterByType',$provider->ProviderType->id)}}">{{$provider->ProviderType->name}}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('FilterByType',$provider->ProviderType->id)}}">{{_ti($provider->ProviderType->name)}}</a></li>
                 <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$provider->user->name}}</li>
               </ol>
         </div>
@@ -41,7 +41,7 @@
                     <div class="col-md-12">
                         <h2 class="mb-0 pb-0
                         ">{{$provider->user->name}}</h2>
-                        <span class="pb-2 mb-2">{{$provider->Country->name}} / {{$provider->ProviderType->name}}</span>
+                        <span class="pb-2 mb-2">{{_ti($provider->Country->name)}} / {{_ti($provider->ProviderType->name)}}</span>
                         <p class="pt-2">{{$provider->about_me}}</p>
                         <p style="font-weight: bold;color: #ba6089;"><i class="fa fa-clock-o" style="color: #ba6089;font-size: initial;"></i> {{__('Replies in 5 days')}}</p>
                         @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->count() != 0)
@@ -106,7 +106,7 @@
                             <div class=" btn-group-toggle" data-toggle="buttons">
                                 @foreach ($provider->services as $service)
                                     <label class="btn btn-outline-success service_select @if($loop->first) active @endif" id="{{$service->Service->id}}">
-                                      <input type="radio" class="service_select" @if($loop->first) checked @endif value="{{$service->Service->id}}" name="service_id" id="{{$service->Service->id}}"  > {{$service->Service->name}}
+                                      <input type="radio" class="service_select" @if($loop->first) checked @endif value="{{$service->Service->id}}" name="service_id" id="{{$service->Service->id}}"  > {{_ti($service->Service->name)}}
                                     </label>
                                 @endforeach
                             </div>
@@ -172,9 +172,9 @@
         @endif
         <div class="freelance-projects bg-white py-5">
             <div class="container">
-                <h1>Singers</h1>
+                <h1>{{_ti($provider->ProviderType->name)}}</h1>
                 <div class="row freelance-slider">
-                    @foreach (\App\Provider::all()->take(10) as $provider)
+                    @foreach (\App\Provider::where('provider_type_id',$provider->ProviderType->id)->get()->take(10) as $provider)
                     <div class="col">
                         <a href="{{route('provider_profile',$provider->id)}}">
                             <div class="freelancer">
@@ -194,9 +194,9 @@
                                 <div class="freelancer-footer">
         
                                     <h5 style="padding: 0px;">{{$provider->user->name}}
-                                        <span style="font-size: 12px">{{ucfirst(strtolower($provider->ProviderType->name))}}
+                                        <span style="font-size: 12px">{{ucfirst(strtolower(_ti($provider->ProviderType->name)))}}
                                             <br>
-                                            {{ucfirst(strtolower($provider->Country->name))}}</span>
+                                            {{ucfirst(strtolower(_ti($provider->Country->name)))}}</span>
                                     </h5>
                                 </div>
                             </div>

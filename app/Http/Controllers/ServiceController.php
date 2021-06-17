@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use Illuminate\Http\Request;
-
+use App\InputTransaction;
 class ServiceController extends Controller
 {
     /**
@@ -42,6 +42,7 @@ class ServiceController extends Controller
         $service->description  = $request->description;
         $service->duration  = $request->duration ;
         if ($service->save()) {
+            App\InputTransaction::create_input($request->name);
             return redirect()->route('admin.service_list');
 
         }

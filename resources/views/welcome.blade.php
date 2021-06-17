@@ -53,7 +53,7 @@
 
 
                         <img width="100" src="{{asset($providerType->image)}}">
-                        <h3 class="text-center">{{$providerType->name}}</h3>
+                        <h3 class="text-center">{{_ti($providerType->name)}}</h3>
                     </div>
                 </a>
             </div>
@@ -108,9 +108,9 @@
                         <div class="freelancer-footer">
 
                             <h5 style="padding: 0px;">{{$provider->user->name}}
-                                <span style="font-size: 12px">{{ucfirst(strtolower($provider->ProviderType->name))}}
+                                <span style="font-size: 12px">{{ucfirst(strtolower(_ti($provider->ProviderType->name)))}}
                                     <br>
-                                    {{ucfirst(strtolower($provider->Country->name))}}</span>
+                                    {{ucfirst(strtolower(_ti($provider->Country->name)))}}</span>
                             </h5>
                         </div>
                     </a>
@@ -127,7 +127,7 @@
                 
             
             <div class="col-md-12">
-                <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-1">{{$category->providerType->name}}
+                <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-1">{{_ti($category->providerType->name)}}
                     <a href="{{route('FilterByType',$category->provider_type_id)}}" style="color:#d47fa6; font-weight:800" class="float-right">
                         <small style="font-size: 13px ; font-weight:700">{{__('See all')}} </small></a>
                 </p>
@@ -173,9 +173,9 @@
 
                                     <h5 style="padding: 0px;">{{$provider->user->name}}
                                         <span
-                                            style="font-size: 12px">{{ucfirst(strtolower($provider->ProviderType->name))}}
+                                            style="font-size: 12px">{{ucfirst(strtolower(_ti($provider->ProviderType->name)))}}
                                             <br>
-                                            {{ucfirst(strtolower($provider->Country->name))}}</span>
+                                            {{ucfirst(strtolower(_ti($provider->Country->name)))}}</span>
                                     </h5>
                                 </div>
                             </a>

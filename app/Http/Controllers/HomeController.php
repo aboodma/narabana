@@ -159,6 +159,7 @@ class HomeController extends Controller
          'password' => Hash::make($request->password),
          'user_type'=>1,
          'avatar'=>$avatar,
+         'api_token' => Str::random(60),
      ]);
    }
      if ($user) {

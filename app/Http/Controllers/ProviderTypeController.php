@@ -6,6 +6,7 @@ use App\ProviderType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Buglinjo\LaravelWebp\Facades\Webp;
+use App\InputTransaction;
 class ProviderTypeController extends Controller
 {
     /**
@@ -48,6 +49,7 @@ class ProviderTypeController extends Controller
       $fil= $file->move(public_path(), $avatar);
       $type->image = $avatar;
       if ($type->save()) {
+       InputTransaction::create_input($request->name);
           return redirect()->route('admin.categories');
       }
     }

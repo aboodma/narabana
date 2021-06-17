@@ -44,10 +44,11 @@
                                 <a href="{{route('provider.add_service',$service->id)}}" class="list-group-item list-group-item-action">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1">{{$service->name}}</h5>
+                                  
                                      
                                     </div>
                                     <p class="mb-1">{{$service->description}}</p>
-                               
+                                    
                                 </a>
                                 @endforeach
                             </div>
@@ -59,24 +60,51 @@
                     <h5 class="mb-4 font-weight-bold text-center">{{__('My Services')}}
                     </h5>
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="list-group">
+                        
+                           
                          
                                 @foreach (auth()->user()->provider->services as $provider_service)
                                     
-                             
-                                <a href="#" class="list-group-item list-group-item-action">
+                                <div class="col-md-4">
+                                   
+                                        <div class="card-body shadow p-3 mb-5 bg-white rounded">
+                                       
+                                            <h5 class="card-title">
+                                                {{$provider_service->service->name}}
+                                            </h5>
+                                            <p class="sub-title">
+                                                {{$provider_service->price}} USD
+                                            </p>
+                                            <p class="card-text">
+                                                {{Str::limit($provider_service->service->description,50,"...")}}
+                                            </p>
+                                            <div class="d-flex  justify-content-between">
+                                                <a href="{{route('provider.edit_service',$provider_service->id)}}" class="btn btn-outline-warning"><i class="fas fa-edit "></i></a>
+                                                <form action="{{route('provider.delete_service',$provider_service->id)}}" method="POST">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash "></i></button>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                        
+                                    
+                                </div>
+                                {{-- <a href="#" class="list-group-item list-group-item-action">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1">{{$provider_service->service->name}}</h5>
+                                        <div class="row">
                                         <span class="badge badge-success">{{$provider_service->price}} USD</span>
+                                          
+                                        </div>
                                      
                                     </div>
                                     <p class="mb-1">{{$provider_service->service->description}}</p>
                                
-                                </a>
+                                </a> --}}
                                 @endforeach
-                            </div>
-                        </div>
+                  
                     </div>
                 </div>
             </div>

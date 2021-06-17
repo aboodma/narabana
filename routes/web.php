@@ -104,6 +104,10 @@ Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/Languages','LanguageController@index')->name('language.index');
   Route::get('/Languages/translate/{language}','LanguageController@translate')->name('language.translate');
   Route::post('/Languages/update/{language}','LanguageController@update')->name('language.update');
+  Route::get('/Languages/inputs/{locale}','InputTransactionController@index')->name('language.inputs');
+  Route::post('/Languages/inputs/{locale}/update','InputTransactionController@update')->name('language.inputs.update');
+  Route::get('/Languages/inputs/{locale}/generate','InputTransactionController@generate')->name('language.inputs.generate');
+
 
   Route::get('/HomePage/banners','HomePageBannerController@index')->name('homepage.banners');
   Route::get('/HomePage/banners/create','HomePageBannerController@create')->name('homepage.banners.create');
@@ -134,7 +138,9 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::get('/payment_settings','ProviderController@payment_settings')->name('payment_settings');
   Route::post('/payment_settings/update','ProviderController@update_payment_settings')->name('update_payment_settings');
   Route::post('showOrderDetails','OrderController@showOrderDetails')->name('showOrderDetails');
-  
+  Route::get('/service/edit/{providerService}','ProviderServiceController@edit')->name('edit_service');
+  Route::post('/service/update/{providerService}','ProviderServiceController@update')->name('update_service');
+  Route::delete('service/delete/{providerService}','ProviderServiceController@destroy')->name('delete_service');
 });
 
  

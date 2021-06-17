@@ -57,7 +57,7 @@ class ProviderServiceController extends Controller
      */
     public function edit(ProviderService $providerService)
     {
-        //
+        return view('website.provider.edit_service',compact('providerService'));
     }
 
     /**
@@ -69,7 +69,10 @@ class ProviderServiceController extends Controller
      */
     public function update(Request $request, ProviderService $providerService)
     {
-        //
+        $providerService->price = $request->price;
+        if ($providerService->save()) {
+            return redirect()->route('provider.services');
+        }
     }
 
     /**
@@ -80,7 +83,9 @@ class ProviderServiceController extends Controller
      */
     public function destroy(ProviderService $providerService)
     {
-        //
+        if ($providerService->delete()) {
+            return redirect()->route('provider.services');
+        }
     }
     public function service_check(Request $request)
     {

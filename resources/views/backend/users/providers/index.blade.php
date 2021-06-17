@@ -125,7 +125,7 @@
                         <i class="flaticon-confetti icon-2x text-muted font-weight-bold"></i>
                     </span>
                     <div class="d-flex flex-column text-dark-75">
-                        <span class="font-weight-bolder font-size-sm">Draws</span>
+                        <span class="font-weight-bolder font-size-sm">Withdrawl</span>
                         <span class="font-weight-bolder font-size-h5">
                         <span class="text-dark-50 font-weight-bold"></span>{{$user->wallets->where('transaction_type',0)->sum('amount') - $user->wallets->where('transaction_type',1)->sum('amount')}} USD</span>
                     </div>
