@@ -30,12 +30,11 @@
                         <textarea name="description" class="form-control" id="" cols="30" rows="5">{{$service->description}}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="">Duration (Sec)</label>
-                        <input type="number" name="duration" value="{{$service->duration}}" min="60" value="60" id="" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Image</label>
-                        <input type="file" name="image" class="form-control" id="">
+                        <label for="">Is Video</label>
+                        <select class="form-control" name="is_video" id="">
+                            <option value="0">True</option>
+                            <option value="1">False</option>
+                        </select>
                     </div>
 
                     

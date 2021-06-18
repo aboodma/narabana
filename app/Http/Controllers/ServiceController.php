@@ -83,7 +83,8 @@ class ServiceController extends Controller
     {
        $service->name = $request->name ;
        $service->description = $request->description;
-       $service->duration = $request->duration ;
+       $service->duration  = 0 ;
+        $service->is_video  = $request->is_video ;
        if ($service->save()) {
            return  redirect()->route('admin.service_list');
        }

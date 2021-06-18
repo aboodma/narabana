@@ -207,11 +207,11 @@
                 <hr>
                 <div class="row">
                     @if($payoutRequest->status == 0)
-                    <div class="col-md-3"><a href="" class="btn btn-outline-primary" >Accept</a></div>
-                    <div class="col-md-3"><button class="btn btn-outline-danger" data-toggle="modal" data-target="#rejectModal">Reject</button></div>
+                    <div class="col-md-3"><a href="{{route('admin.payouts.accept',$payoutRequest->id)}}" class="btn btn-outline-primary" >Accept</a></div>
+                    <div class="col-md-3"><button class="btn btn-outline-danger" data-id="{{$payoutRequest->id}}" data-toggle="modal" data-target="#rejectModal">Reject</button></div>
                     @endif
                     @if($payoutRequest->status == 1)
-                    <div class="col-md-3"><button class="btn btn-outline-primary" data-toggle="modal" data-target="#paidModal">Mark As Paid</button></div>
+                    <div class="col-md-3"><button class="btn btn-outline-primary" data-id="{{$payoutRequest->id}}" data-toggle="modal" data-target="#paidModal">Mark As Paid</button></div>
                     @endif
           
                 </div>
@@ -231,13 +231,23 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <form action="{{route('admin.payouts.paid')}}" method="POST">
+            @csrf
         <div class="modal-body">
-          ...
+            
+              <div class="form-group">
+                  <label for="">Admin Note</label>
+                  <br>
+                  <input type="hidden" name="request_id" id="paid_request_id" value=""> 
+         
+                  <textarea name="admin_note" class="form-control" id="" cols="30" rows="5"></textarea>
+              </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-success">Mark As Paid</button>
         </div>
+    </form>
       </div>
     </div>
   </div>
@@ -251,20 +261,24 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <form action="{{route('admin.payouts.reject')}}" method="POST">
+            @csrf
         <div class="modal-body">
-          <form action="">
+            
               <div class="form-group">
                   <label for="">Admin Note</label>
                   <br>
+                  <input type="hidden" name="request_id" id="request_id" value=""> 
                   <small>Please Describe The Reject Reason</small>
                   <textarea name="admin_note" class="form-control" id="" cols="30" rows="5"></textarea>
               </div>
-          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-danger">Reject</button>
         </div>
+    </form>
+
       </div>
     </div>
   </div>
@@ -274,5 +288,22 @@
 
 @section('script')
 
-
+<script>
+    $('#rejectModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var id = button.data('id') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+ $("#request_id").val(id);
+  
+})
+$('#paidModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var id = button.data('id') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+ $("#paid_request_id").val(id);
+  
+})
+</script>
 @endsection

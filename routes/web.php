@@ -107,7 +107,9 @@ Route::get('/home', 'HomeController@index')->name('home');
   //Payout Requests 
   Route::get('payouts','PayoutRequestController@index')->name('payouts');
   Route::get('payouts/show/{payoutRequest}','PayoutRequestController@show')->name('payouts.show');
-
+  Route::get('payouts/accept/{payoutRequest}','PayoutRequestController@acceptRequest')->name('payouts.accept');
+  Route::post('payouts/reject/','PayoutRequestController@reject')->name('payouts.reject');
+  Route::post('payouts/paid/','PayoutRequestController@paid')->name('payouts.paid');
   // Settings 
   Route::get('/Languages','LanguageController@index')->name('language.index');
   Route::get('/Languages/translate/{language}','LanguageController@translate')->name('language.translate');

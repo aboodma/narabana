@@ -49,13 +49,14 @@ class ApiController extends Controller
     public function GetUserByToken($token)
     {
         $user = User::where('api_token',$token)->first();
-       $data = array(
-        'user'=>$user,
-        'provider'=>$user->provider,
-        'earnings'=>$user->wallets->where('transaction_type',0)->sum('amount'),
-        'withdrawl'=>($user->wallets->where('transaction_type',0)->sum('amount') - $user->wallets->where('transaction_type',1)->sum('amount')),
-        'orders'=>$user->provider->orders->count(),
-    );
+        $data = array(
+            'user'=>auth()->user(),
+            'earnings'=>auth()->user()->wallets->where('transaction_type',0)->sum('amount'),
+            'withdrawl'=>(auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')),
+            'orders'=>auth()->user()->provider->orders->count(),
+            'providerTypeName'=>auth()->user()->provider->ProviderType->name,
+            'country'=>auth()->user()->provider->country->name,
+        );
 
      return response()->json($data, 200);
     }

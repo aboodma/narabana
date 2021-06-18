@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\PayoutRequest;
+use App\Wallet;
 use Illuminate\Http\Request;
 
 class PayoutRequestController extends Controller
@@ -66,9 +67,36 @@ class PayoutRequestController extends Controller
      * @param  \App\PayoutRequest  $payoutRequest
      * @return \Illuminate\Http\Response
      */
-    public function acceptRequest(PayoutRequest $payoutRequest)
+    public function acceptRequest(Request $request , PayoutRequest $payoutRequest)
     {
-      
+      $payoutRequest->status = 1;
+      $payoutRequest->save();
+      return redirect()->back();
+    }
+
+    public function reject(Request $request)
+    {
+      $payout = PayoutRequest::find($request->request_id);
+      $payout->status = 3;
+      $payout->admin_msg = $request->admin_note;
+      $payout->save();
+      return redirect()->back();
+    }
+    public function paid(Request $request)
+    {
+
+      $payout = PayoutRequest::find($request->request_id);
+      $payout->status = 2;
+      $payout->admin_msg = $request->admin_note;
+      if ($payout->save()) {
+        $wallet  = new Wallet();
+        $wallet->user_id = $payout->user_id;
+        $wallet->amount = $payout->amount;
+        $wallet->transaction_type = 1;
+        $wallet->save();
+
+      }
+      return redirect()->back();
     }
     
 
