@@ -57,6 +57,7 @@ class HomePageBannerController extends Controller
          $homePageBanner->small_image = "/uploads/banners/". $newName_sm;
          $homePageBanner->locale = $request->locale;
          $homePageBanner->save();
+         return redirect()->back();
     }
 
     /**
