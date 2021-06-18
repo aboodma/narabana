@@ -48,14 +48,14 @@
 
             <a class="navbar-brand" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
 
-            <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
+            <form action="{{route('search')}}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" style="border-top-left-radius:20px;border-bottom-left-radius:20px;padding:20px"
-                        class="form-control bg-white small" placeholder="{{__('Find Services...')}}" aria-label="Search"
+                        class="form-control bg-white small"name="q" placeholder="{{__('Find Services...')}}" aria-label="Search"
                         aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-dark"
-                            style="border-top-right-radius:20px;border-bottom-right-radius:20px;" type="button">
+                            style="border-top-right-radius:20px;border-bottom-right-radius:20px;" type="submit">
                             <i class="fa fa-search fa-sm"></i>
                         </button>
                     </div>

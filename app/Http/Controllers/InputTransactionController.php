@@ -38,6 +38,11 @@ class InputTransactionController extends Controller
                 $input->transaction = $category->name;
                 $input->locale = $locale;
                 $input->save();
+                $input_1 = new InputTransaction();
+                $input_1->string = $category->description;
+                $input_1->transaction = $category->description;
+                $input_1->locale = $locale;
+                $input_1->save();
             }
             foreach ($services as $service) {
                 $input = new InputTransaction();
@@ -45,6 +50,11 @@ class InputTransactionController extends Controller
                 $input->transaction = $service->name;
                 $input->locale = $locale;
                 $input->save();
+                $input_1 = new InputTransaction();
+                $input_1->string = $service->description;
+                $input_1->transaction = $service->description;
+                $input_1->locale = $locale;
+                $input_1->save();
             }
             foreach ($countries as $country) {
                 $input = new InputTransaction();

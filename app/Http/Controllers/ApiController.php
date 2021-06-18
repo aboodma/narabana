@@ -27,12 +27,14 @@ class ApiController extends Controller
 
                     $request->user()->forceFill([
                         'api_token' => hash('sha256', $token),
+                        'mobile_token' => $request->token,
                     ])->save();
                     $data = array(
                         'user'=>auth()->user(),
                         'earnings'=>auth()->user()->wallets->where('transaction_type',0)->sum('amount'),
                         'withdrawl'=>(auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')),
                         'orders'=>auth()->user()->provider->orders->count(),
+                        'providerTypeName'=>auth()->user()->provider->ProviderType->name,
                     );
 
                      return response()->json($data, 200);

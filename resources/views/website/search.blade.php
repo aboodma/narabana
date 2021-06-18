@@ -29,35 +29,59 @@
 @endsection
 @section('content')
     
+<div class="services-wrapper bg-white py-5">
+    <div class="container">
+      <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-3">{{__('Categories')}}
+      </p>
+        <div class="row">
+            @foreach ($categories as $category)
+            <div class="col-md-3">
+                <a href="{{route('FilterByType',$category->id)}}">
+                    <div class="freelancer">
+                        <img src="{{asset($category->image)}}">
+                        
+                        <div class="freelancer-footer">
 
-    
-
-
-    <div class="services-wrapper bg-white py-5">
-        <div class="container">
-          <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-3">{{__('Categories')}}
-          </p>
-            <div class="row">
-                @foreach ($categories as $category)
-                <div class="col-md-3">
-                    <a href="{{route('FilterByType',$category->id)}}">
-                        <div class="freelancer">
-                            <img src="{{asset($category->image)}}">
+                            <h5 style="padding: 0px;">{{_ti($category->name)}}
+                                <span style="font-size: 12px"></span>
+                            </h5>
                             
-                            <div class="freelancer-footer">
-    
-                                <h5 style="padding: 0px;">{{_ti($category->name)}}
-                                    <span style="font-size: 12px"></span>
-                                </h5>
-                                
-                            </div>
                         </div>
-                    </a>
-                </div>
-                @endforeach
+                    </div>
+                </a>
             </div>
+            @endforeach
         </div>
     </div>
+</div>
+    
+<div class="services-wrapper bg-white py-5">
+    <div class="container">
+      <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-3">{{__('Providers')}}
+      </p>
+        <div class="row">
+            @foreach ($providers as $provider)
+            <div class="col-md-3">
+                <a href="{{route('provider_profile',$provider->provider->id)}}">
+                    <div class="freelancer">
+                        <img src="{{asset($provider->avatar)}}">
+                        
+                        <div class="freelancer-footer">
+
+                            <h5 style="padding: 0px;">{{$provider->name}}
+                                <span style="font-size: 12px"></span>
+                            </h5>
+                            
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+    
 
 
 

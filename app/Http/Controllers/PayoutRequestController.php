@@ -23,9 +23,10 @@ class PayoutRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index()
     {
-        //
+        $payouts = PayoutRequest::all();
+        return view('backend.payouts.index',compact('payouts'));
     }
 
     /**
@@ -56,7 +57,7 @@ class PayoutRequestController extends Controller
      */
     public function show(PayoutRequest $payoutRequest)
     {
-        //
+        return view('backend.payouts.show',compact('payoutRequest'));
     }
 
     /**
@@ -65,10 +66,11 @@ class PayoutRequestController extends Controller
      * @param  \App\PayoutRequest  $payoutRequest
      * @return \Illuminate\Http\Response
      */
-    public function edit(PayoutRequest $payoutRequest)
+    public function acceptRequest(PayoutRequest $payoutRequest)
     {
-        //
+      
     }
+    
 
     /**
      * Update the specified resource in storage.

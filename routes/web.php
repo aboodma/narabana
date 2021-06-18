@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 //Web Routes
+Route::get('search','HomeController@search')->name('search');
 Route::get('star/{provider}','HomeController@provider_profile')->name('provider_profile');
 Route::get('dashboard','HomeController@customer_dashboard')->name('customer_dashboard');
 Route::post('checkout','HomeController@checkout')->name('checkout')->middleware('auth');
@@ -99,6 +100,13 @@ Route::get('/home', 'HomeController@index')->name('home');
   Route::post('/categories/update/{providerType}','ProviderTypeController@update')->name('categories_update');
   Route::delete('/categories/delete/{providerType}','ProviderTypeController@destroy')->name('categories_delete');
 
+  // Orders 
+  Route::get('orders','OrderController@index')->name('orders');
+  Route::get('orders/show/{order}','OrderController@show')->name('orders.show');
+
+  //Payout Requests 
+  Route::get('payouts','PayoutRequestController@index')->name('payouts');
+  Route::get('payouts/show/{payoutRequest}','PayoutRequestController@show')->name('payouts.show');
 
   // Settings 
   Route::get('/Languages','LanguageController@index')->name('language.index');

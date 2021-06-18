@@ -38,9 +38,9 @@
                             <div class="freelancer-footer">
     
                                 <h5 style="padding: 0px;">{{$provider->user->name}}
-                                    <span style="font-size: 12px">{{ucfirst(strtolower($provider->ProviderType->name))}}
+                                    <span style="font-size: 12px">{{ucfirst(strtolower(_ti($provider->ProviderType->name)))}}
                                         <br>
-                                        {{ucfirst(strtolower($provider->Country->name))}}</span>
+                                        {{ucfirst(strtolower(_ti($provider->Country->name)))}}</span>
                                 </h5>
                             </div>
                         </div>

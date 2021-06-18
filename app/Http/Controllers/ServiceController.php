@@ -40,9 +40,11 @@ class ServiceController extends Controller
         $service = new Service();
         $service->name  =  $request->name;
         $service->description  = $request->description;
-        $service->duration  = $request->duration ;
+        $service->duration  = 0 ;
+        $service->is_video  = $request->is_video ;
         if ($service->save()) {
-            App\InputTransaction::create_input($request->name);
+            InputTransaction::create_input($request->name);
+            InputTransaction::create_input($request->description);
             return redirect()->route('admin.service_list');
 
         }

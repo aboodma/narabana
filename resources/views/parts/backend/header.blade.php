@@ -100,6 +100,23 @@
           </a>
          
         </li>
+        <li class="menu-item menu-item-rel">
+          <a href="{{route('admin.orders')}}" class="menu-link ">
+            <span class="menu-text">Orders</span>
+            <span class="menu-desc"></span>
+
+          </a>
+         
+        </li>
+        <li class="menu-item menu-item-rel">
+          <a href="{{route('admin.payouts')}}" class="menu-link ">
+            <span class="menu-text">Payout Requests</span>
+            <span class="menu-desc"></span>
+
+          </a>
+         
+        </li>
+
         <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
           <a href="javascript:;" class="menu-link menu-toggle">
             <span class="menu-text">Website Settings</span>

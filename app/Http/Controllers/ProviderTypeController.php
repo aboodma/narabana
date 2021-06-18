@@ -50,6 +50,7 @@ class ProviderTypeController extends Controller
       $type->image = $avatar;
       if ($type->save()) {
        InputTransaction::create_input($request->name);
+       InputTransaction::create_input($request->description);
           return redirect()->route('admin.categories');
       }
     }

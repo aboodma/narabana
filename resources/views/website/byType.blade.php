@@ -38,10 +38,10 @@
           <div class="row">
             <ol class="breadcrumb bg-white">
                 <li class="breadcrumb-item"><a href="{{route('welcome')}}">{{__('Home')}}</a></li>
-                <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$providerType->name}}</li>
+                <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{_ti($providerType->name)}}</li>
               </ol>
         </div>
-        <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-3">{{$providerType->name}}
+        <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-3">{{_ti($providerType->name)}}
       </p>
             <div class="row">
            @if($providers->count() != 0)
@@ -65,9 +65,9 @@
                         <div class="freelancer-footer">
 
                             <h5 style="padding: 0px;">{{$provider->user->name}}
-                                <span style="font-size: 12px">{{ucfirst(strtolower($provider->ProviderType->name))}}
+                                <span style="font-size: 12px">{{ucfirst(strtolower(_ti($provider->ProviderType->name)))}}
                                     <br>
-                                    {{ucfirst(strtolower($provider->Country->name))}}</span>
+                                    {{ucfirst(strtolower(_ti($provider->Country->name)))}}</span>
                             </h5>
                         </div>
                     </div>

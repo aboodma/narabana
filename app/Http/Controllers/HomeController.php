@@ -206,4 +206,12 @@ class HomeController extends Controller
        return view('parts.reviews',compact('provider'));
     }
     
+    public function search(Request $request)
+    {
+       
+       $categories = ProviderType::where('name', 'like', '%' .$request->q . '%')->get();
+       $providers = User::where('user_type',1)->where('name', 'like', '%' .$request->q . '%')->get();
+       return view('website.search',compact('categories','providers'));
+    }
+    
 }
