@@ -32,8 +32,8 @@
                     <div class="form-group">
                         <label for="">Is Video</label>
                         <select class="form-control" name="is_video" id="">
-                            <option value="0">True</option>
-                            <option value="1">False</option>
+                            <option @if($service->is_video == 1) selected @endif value="1">True</option>
+                            <option @if($service->is_video == 0) selected @endif value="0">False</option>
                         </select>
                     </div>
 

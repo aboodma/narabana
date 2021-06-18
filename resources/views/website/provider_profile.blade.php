@@ -111,6 +111,14 @@
                                 @endforeach
                             </div>
                             <br>
+                            <div class="form-group bg-light rounded p-1 "id="description_row" style="display: none">
+                           
+                    
+                                    <h5>{{__('Service Descrption')}}</h5>
+                                    <p id="description" class=""></p>
+                                
+                     
+                            </div>
                             <div class="form-group mt-2">
                                 <button type="submit"
                                 @if($provider->services->count()  == 0) disabled @endif
@@ -119,6 +127,7 @@
                         </form>
                     </div>
                 </div>
+                
             </div>
         </div>
         @if($provider->orders->count() != 0)
@@ -279,25 +288,32 @@
             });
             
             function checkers() {
+                $("#description_row").hide();
                 $.ajax({
                   url:"{{route('service_check')}}",
                   type:"GET",
                 data:{service_id:$('input[name="service_id"]:checked').val(),provider_id:$("#provider_id").val()},
                   success : function (re) {
-                      $(".price").html(re.price + " USD");
-                      $("#price").val(re.price);
+                    $(".price").html(re.providerService.price + " USD");
+                      $("#description_row").show();
+                      $("#description").html(re.description);
+                      $("#price").val(re.providerService.price);
                   }
               });
             }
 
             $(".service_select").click(function(){
+                $("#description_row").hide();
+
                 $.ajax({
                   url:"{{route('service_check')}}",
                   type:"GET",
                 data:{service_id:this.id,provider_id:$("#provider_id").val()},
                   success : function (re) {
-                      $(".price").html(re.price + " USD");
-                      $("#price").val(re.price);
+                      $(".price").html(re.providerService.price + " USD");
+                      $("#description_row").show();
+                      $("#description").html(re.description);
+                      $("#price").val(re.providerService.price);
                   }
               });
             //    $('#'+this.id).parent().toggleClass('active');

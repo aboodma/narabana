@@ -1,5 +1,8 @@
 @extends('layouts.backend')
 @section('page_header','Services List')
+@section('style')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+@endsection
 @section('page_toolbar')
 
 @endsection
@@ -39,7 +42,7 @@
                         <th title="Field #1">#</th>
                         <th title="Field #2">Service Name </th>
                         <th title="Field #3">Service Description</th>
-                        <th title="Field #4">Duration</th>
+                        <th title="Field #4">Is Video</th>
                         <th title="Field #8">Option</th>
                     </tr>
                 </thead>
@@ -49,7 +52,7 @@
                         <td>{{$service->id}}</td>
                         <td>{{$service->name}}</td>
                         <td>{{$service->description}}</td>
-                        <td>{{$service->duration / 60}} (min)</td>
+                        <td>@if($service->is_video == 1) True @else False @endif </td>
                         <td>
                             <form action="{{route('admin.service_delete',$service->id)}}" method="post">
                             <div class="btn-group">
@@ -77,5 +80,8 @@
 
 
 @section('script')
-  
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script>
+      $("#kt_datatable").dataTable();
+  </script>
 @endsection

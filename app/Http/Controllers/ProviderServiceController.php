@@ -89,6 +89,8 @@ class ProviderServiceController extends Controller
     }
     public function service_check(Request $request)
     {
-      return ProviderService::where(['service_id'=>$request->service_id,'provider_id'=>$request->provider_id])->first();
+      $providerService =  ProviderService::where(['service_id'=>$request->service_id,'provider_id'=>$request->provider_id])->first();
+        $service = $providerService->service;
+        return  response()->json(['providerService'=>$providerService,'description'=>_ti($service->description)], 200);
     }
 }
