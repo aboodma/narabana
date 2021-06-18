@@ -35,6 +35,7 @@ class ApiController extends Controller
                         'withdrawl'=>(auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')),
                         'orders'=>auth()->user()->provider->orders->count(),
                         'providerTypeName'=>auth()->user()->provider->ProviderType->name,
+                        'country'=>auth()->user()->provider->country->name,
                     );
 
                      return response()->json($data, 200);
