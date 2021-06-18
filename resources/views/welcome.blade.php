@@ -17,7 +17,7 @@
                     <img class="d-block d-sm-block d-xs-block d-lg-none " src="{{asset(App\HomePageBanner::where('locale',App::getLocale())->first()->small_image)}}">
                     <img class="d-none d-sm-block " src="{{asset(App\HomePageBanner::where('locale',App::getLocale())->first()->image)}}">
                     <h3 class="text-center d-block d-sm-block d-xs-block d-lg-none banner-text"
-                        style="font-size: 1rem !important;">
+                        style="font-size: 1.4rem !important;">
                         {{App\HomePageBanner::where('locale',App::getLocale())->first()->text_1}} 
                         <br> {{App\HomePageBanner::where('locale',App::getLocale())->first()->text_2}} <br>
                         @guest
