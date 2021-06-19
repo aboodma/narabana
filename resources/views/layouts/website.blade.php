@@ -201,7 +201,7 @@
                         
                         @foreach(App\Language::all() as $language)
                         <a class="dropdown-item dropdown-notifications-item p-2" href="{{route('ChangeLocale',$language->locale)}}">
-                            <img style="max-width: 1.5rem;max-height: 1.5rem;" class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_uk-flag.gif">
+                            <img style="max-width: 1.5rem;max-height: 1.5rem;" class="dropdown-notifications-item-img" src="{{$language->flag}}">
                             <div class="dropdown-notifications-item-content">
                                 <div class="dropdown-notifications-item-content-text">{{$language->name}}</div>
                             </div>
