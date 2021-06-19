@@ -199,24 +199,15 @@
                     <div style="min-width: 9.75rem;" class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
                         aria-labelledby="navbarDropdownMessages">
                         
-                        <a class="dropdown-item dropdown-notifications-item p-2" href="{{route('ChangeLocale','en')}}">
+                        @foreach(App\Language::all() as $language)
+                        <a class="dropdown-item dropdown-notifications-item p-2" href="{{route('ChangeLocale',$language->locale)}}">
                             <img style="max-width: 1.5rem;max-height: 1.5rem;" class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_uk-flag.gif">
                             <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">English</div>
+                                <div class="dropdown-notifications-item-content-text">{{$language->name}}</div>
                             </div>
                         </a>
-                        <a class="dropdown-item dropdown-notifications-item p-2" href="{{route('ChangeLocale','ar')}}">
-                            <img style="max-width: 1.5rem;max-height: 1.5rem;" class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_sa-flag.gif">
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Arabic</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-notifications-item p-2" href="{{route('ChangeLocale','tr')}}">
-                            <img style="max-width: 1.5rem;max-height: 1.5rem;" class="dropdown-notifications-item-img" src="https://www.worldometers.info/img/flags/small/tn_tu-flag.gif">
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Turkish</div>
-                            </div>
-                        </a>
+                        
+                        @endforeach
                         
                      
                     </div>
