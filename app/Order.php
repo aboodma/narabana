@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public function getCreatedAttribute(){
-        $this->attributes['created_at'] = \Carbon\Carbon::createFromTimeStamp(strtotime($this->attributes['created_at']))->diffForHumans() ;
+    public function getCreatedAtAttribute(){
+        \Carbon\Carbon::setLocale('en');
+        return \Carbon\Carbon::createFromTimeStamp(strtotime($this->attributes['created_at']))->diffForHumans() ;
     }
     public function service()
     {
