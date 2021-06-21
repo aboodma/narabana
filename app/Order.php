@@ -10,6 +10,10 @@ class Order extends Model
         \Carbon\Carbon::setLocale('en');
         return \Carbon\Carbon::createFromTimeStamp(strtotime($this->attributes['created_at']))->diffForHumans() ;
     }
+    public function getTotalPriceAttribute()
+    {
+        return $this->attributes['total_price'] . " USD";
+    }
     public function service()
     {
         return $this->belongsTo(Service::class);
