@@ -66,6 +66,7 @@ class ApiController extends Controller
 
     public function AcceptOrder(Request $request)
     {
+        return $request->all();
         $order = Order::find($request->id);
         $order->status = 1;
         if ($order->save()) {
