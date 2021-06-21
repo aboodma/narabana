@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Str;
 use App\User;
+use App\Order;
 
 class ApiController extends Controller
 {
@@ -59,5 +60,22 @@ class ApiController extends Controller
         );
 
      return response()->json($data, 200);
+    }
+
+    public function AcceptOrder(Request $request)
+    {
+        $order = Order::find($request->id);
+        $order->status = 1;
+        if ($order->save()) {
+            return response()->json($order->status,200);
+        }
+    }
+    public function RejectOrder(Request $request)
+    {
+        $order = Order::find($request->id);
+        $order->status = 3;
+        if ($order->save()) {
+            return response()->json($order->status,200);
+        }
     }
 }

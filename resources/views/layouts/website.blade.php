@@ -198,7 +198,6 @@
                     </a>
                     <div style="min-width: 9.75rem;" class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
                         aria-labelledby="navbarDropdownMessages">
-                        
                         @foreach(App\Language::all() as $language)
                         <a class="dropdown-item dropdown-notifications-item p-2" href="{{route('ChangeLocale',$language->locale)}}">
                             <img style="max-width: 1.5rem;max-height: 1.5rem;" class="dropdown-notifications-item-img" src="{{$language->flag}}">
@@ -206,22 +205,14 @@
                                 <div class="dropdown-notifications-item-content-text">{{$language->name}}</div>
                             </div>
                         </a>
-                        
                         @endforeach
-                        
-                     
                     </div>
                 </li>
-
-
             </ul>
         </div>
     </nav>
 
     @yield('content')
-
-
-
     <footer class="bg-white">
         <div class="container">
             <hr>
@@ -257,7 +248,9 @@
                 </p>
                 <ul class="social">
                     <li>
-                        <a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#">
+                            <i class="fab fa-facebook" aria-hidden="true"></i>
+                        </a>
                     </li>
                     <li>
                         <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
