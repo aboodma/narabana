@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login','ApiController@Login');
 Route::post('/userByToken/{token}','ApiController@GetUserByToken');
 
-Route::group(, function(){
+Route::group( function(){
     Route::post('/acceptOrder','ApiController@AcceptOrder');
     Route::post('/rejectOrder','ApiController@RejectOrder');
 });

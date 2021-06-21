@@ -66,15 +66,11 @@ class ApiController extends Controller
 
     public function AcceptOrder(Request $request)
     {
-       try {
         $order = Order::find($request->id);
         $order->status = 1;
         if ($order->save()) {
             return response()->json($order->status,200);
         }
-       } catch (\Throwable $th) {
-           return $th;
-       }
     }
     public function RejectOrder(Request $request)
     {
