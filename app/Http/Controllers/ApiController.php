@@ -52,7 +52,7 @@ class ApiController extends Controller
     {
         $user = User::where('api_token',$token)->first();
         $data = array(
-            'user'=>$user->provider->loadMissing('orders.details'),
+            'user'=>$user->provider->loadMissing('orders.details')->loadMissing('orders.service'),
             'user'=>$user,
             'earnings'=>$user->wallets->where('transaction_type',0)->sum('amount'),
             'withdrawl'=>($user->wallets->where('transaction_type',0)->sum('amount') - $user->wallets->where('transaction_type',1)->sum('amount')),
