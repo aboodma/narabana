@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login','ApiController@Login');
 Route::post('/userByToken/{token}','ApiController@GetUserByToken');
 
-Route::middleware(['auth', 'api'])->group(function () {
+Route::middleware(['auth:api'])->group(function () {
     Route::post('/acceptOrder','ApiController@AcceptOrder');
 Route::post('/rejectOrder','ApiController@RejectOrder');
 Route::post('/ProccedOrder','ApiController@ProccedOrder');
