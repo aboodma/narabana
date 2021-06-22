@@ -50,9 +50,9 @@ class ApiController extends Controller
         }
     }
 
-    public function GetUserByToken($token)
+    public function GetUserByToken()
     {
-        $user = User::where('api_token',$token)->first();
+
         $data = array(
             'user'=>auth()->user()->provider->loadMissing('orders.details')->loadMissing('orders.service'),
             'user'=>auth()->user(),
