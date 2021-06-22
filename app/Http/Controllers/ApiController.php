@@ -125,4 +125,12 @@ class ApiController extends Controller
     {
         return $request;
     }
+    public function Logout(Request $request)
+    {
+        $user = auth()->user();
+        $user->api_token = null;
+        if ($user->save()) {
+            return response()->json(1,200);
+        }
+    }
 }

@@ -23,8 +23,9 @@ Route::post('/userByToken/{token}','ApiController@GetUserByToken');
 
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/acceptOrder','ApiController@AcceptOrder');
-Route::post('/rejectOrder','ApiController@RejectOrder');
-Route::post('/ProccedOrder','ApiController@ProccedOrder');
-Route::post('/user','ApiController@user');
+    Route::post('/rejectOrder','ApiController@RejectOrder');
+    Route::post('/ProccedOrder','ApiController@ProccedOrder');
+    Route::post('/logout','ApiController@Logout');
+    Route::post('/user','ApiController@user');
 });
 
