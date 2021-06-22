@@ -23,4 +23,6 @@ Route::post('/userByToken/{token}','ApiController@GetUserByToken');
 
 Route::post('/acceptOrder','ApiController@AcceptOrder');
 Route::post('/rejectOrder','ApiController@RejectOrder');
+Route::post('/ProccedOrder','ApiController@ProccedOrder')->middleware('auth:api');
+Route::post('/user','ApiController@user')->middleware('auth:api');
 
