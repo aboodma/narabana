@@ -11,7 +11,7 @@ use VideoThumbnail;
 use App\Notification;
 use App\Wallet;
 use App\Provider;
-use App\Category;
+use App\ProviderType;
 use App\Country;
 class ApiController extends Controller
 {
@@ -90,16 +90,16 @@ class ApiController extends Controller
     {
         if($request->hasFile('video')){
             $random = Str::random(40);
-            $file = $request->file('video');     
+            $file = $request->file('video');
             $filename = $file->getClientOriginalName();
             $newName = explode('.',$filename);
-            
+
             $newName = $random.'.'.$file->extension();
             $fil= $file->move(public_path(), $newName);
-   
+
         }
         $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
-     
+
         $order = Order::find($request->order_id);
         $order_details = $order->details;
         $order_details->provider_message = $newName;
@@ -150,14 +150,14 @@ class ApiController extends Controller
     ]);
     if ($validated) {
      $random = Str::random(40);
-     $file = $request->file('avatar');     
+     $file = $request->file('avatar');
      $filename = $file->getClientOriginalName();
      $avatar = explode('.',$filename);
-     $avatar = $random.'.'.$file->extension(); 
-     
+     $avatar = $random.'.'.$file->extension();
+
    if ($fil= $file->move(public_path(), $avatar)) {
        // File is saved successfully
-   
+
      $user =  User::create([
         'name' => $request->name,
         'email' =>$request->email,
@@ -169,20 +169,20 @@ class ApiController extends Controller
   }
     if ($user) {
      $provider = new Provider();
-    
+
         $random = Str::random(40);
-        $file = $request->file('video');     
+        $file = $request->file('video');
         $filename = $file->getClientOriginalName();
         $newName = explode('.',$filename);
-        
+
         $newName = $random.'.'.$file->getClientOriginalExtension();
         $fil= $file->move(public_path(), $newName);
-        
+
         $provider->video = $newName;
-    
-  
+
+
        $provider->user_id = $user->id;
-     
+
        $provider->about_me = $request->about_me;
        $provider->provider_type_id = $request->provider_type_id;
        $provider->country_id = $request->country_id;
@@ -217,7 +217,7 @@ class ApiController extends Controller
 
     public function Categories()
     {
-        $categories = Category::all();
+        $categories = ProviderType::all();
         return response()->json($categories, 200);
     }
     public function Countries()
