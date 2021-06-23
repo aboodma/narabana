@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    protected $appends = ["price_with_currency",];
     public function getCreatedAtAttribute(){
         \Carbon\Carbon::setLocale('en');
         return \Carbon\Carbon::createFromTimeStamp(strtotime($this->attributes['created_at']))->diffForHumans() ;
