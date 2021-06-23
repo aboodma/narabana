@@ -14,6 +14,10 @@ class Order extends Model
     // {
     //     return $this->attributes['total_price'] . " USD";
     // }
+    public function getPriceWithCurrencyAttribute()
+    {
+        return $this->attributes['total_price'] . " USD";
+    }
     public function service()
     {
         return $this->belongsTo(Service::class);
