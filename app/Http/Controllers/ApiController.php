@@ -187,31 +187,10 @@ class ApiController extends Controller
        $provider->provider_type_id = $request->provider_type_id;
        $provider->country_id = $request->country_id;
        $provider->is_approved = false;
-       if ($provider->save()) {
-        $att = Auth::attempt($userdata);
-        if ($att) {
-            $token = Str::random(60);
-
-            $request->user()->forceFill([
-                'api_token' => hash('sha256', $token),
-                'mobile_token' => $request->token,
-            ])->save();
-            $data = array(
-                'user'=>auth()->user()->provider->loadMissing('orders.details')->loadMissing('orders.service'),
-                'user'=>auth()->user(),
-                'earnings'=>auth()->user()->wallets->where('transaction_type',0)->sum('amount'),
-                'withdrawl'=>(auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')),
-                'orders'=>auth()->user()->provider->orders->count(),
-                'providerTypeName'=>auth()->user()->provider->ProviderType->name,
-                'country'=>auth()->user()->provider->country->name,
-            );
-
-             return response()->json($data, 200);
-        }
-       }
-    }
-    }else{
-       return 0;
+       $provider->save(); 
+       
+        
+       
     }
     }
 
