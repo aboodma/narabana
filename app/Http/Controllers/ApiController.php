@@ -13,6 +13,7 @@ use App\Wallet;
 use App\Provider;
 use App\ProviderType;
 use App\Country;
+use Illuminate\Support\Facades\Hash;
 class ApiController extends Controller
 {
     public function Login(Request $request)
