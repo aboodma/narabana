@@ -6,15 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $appends  = ["price_with_currency"];
-    public function getCreatedAtAttribute(){
+    protected $appends  = ["price_with_currency","created_at_human"];
+    public function getCreatedAtHumanAttribute(){
         \Carbon\Carbon::setLocale('en');
         return \Carbon\Carbon::createFromTimeStamp(strtotime($this->attributes['created_at']))->diffForHumans() ;
     }
-    // public function getTotalPriceAttribute()
-    // {
-    //     return $this->attributes['total_price'] . " USD";
-    // }
+
     public function getPriceWithCurrencyAttribute()
     {
         return $this->attributes['total_price'] . " USD";
