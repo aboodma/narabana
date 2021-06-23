@@ -10,6 +10,9 @@ use App\Order;
 use VideoThumbnail;
 use App\Notification;
 use App\Wallet;
+use App\Provider;
+use App\Category;
+use App\Country;
 class ApiController extends Controller
 {
     public function Login(Request $request)
@@ -119,6 +122,7 @@ class ApiController extends Controller
         $wallet->transaction_type = 0 ;
         $wallet->amount = $order->total_price;
         $wallet->save();
+        return response()->json(1,200);
     }
 
     public function user(Request $request)
@@ -132,5 +136,93 @@ class ApiController extends Controller
         if ($user->save()) {
             return response()->json(1,200);
         }
+    }
+    public function SignUp(Request $request)
+    {
+        //  return $request->all();
+      $validated = $request->validate([
+        'name' => 'required',
+        'email' => 'required|unique:users',
+        'password' => 'required',
+        'about_me' => 'required',
+        'provider_type_id' => 'required',
+        'country_id' => 'required',
+    ]);
+    if ($validated) {
+     $random = Str::random(40);
+     $file = $request->file('avatar');     
+     $filename = $file->getClientOriginalName();
+     $avatar = explode('.',$filename);
+     $avatar = $random.'.'.$file->extension(); 
+     
+   if ($fil= $file->move(public_path(), $avatar)) {
+       // File is saved successfully
+   
+     $user =  User::create([
+        'name' => $request->name,
+        'email' =>$request->email,
+        'password' => Hash::make($request->password),
+        'user_type'=>1,
+        'avatar'=>$avatar,
+        'api_token' => Str::random(60),
+    ]);
+  }
+    if ($user) {
+     $provider = new Provider();
+    
+        $random = Str::random(40);
+        $file = $request->file('video');     
+        $filename = $file->getClientOriginalName();
+        $newName = explode('.',$filename);
+        
+        $newName = $random.'.'.$file->getClientOriginalExtension();
+        $fil= $file->move(public_path(), $newName);
+        
+        $provider->video = $newName;
+    
+  
+       $provider->user_id = $user->id;
+     
+       $provider->about_me = $request->about_me;
+       $provider->provider_type_id = $request->provider_type_id;
+       $provider->country_id = $request->country_id;
+       $provider->is_approved = false;
+       if ($provider->save()) {
+        $att = Auth::attempt($userdata);
+        if ($att) {
+            $token = Str::random(60);
+
+            $request->user()->forceFill([
+                'api_token' => hash('sha256', $token),
+                'mobile_token' => $request->token,
+            ])->save();
+            $data = array(
+                'user'=>auth()->user()->provider->loadMissing('orders.details')->loadMissing('orders.service'),
+                'user'=>auth()->user(),
+                'earnings'=>auth()->user()->wallets->where('transaction_type',0)->sum('amount'),
+                'withdrawl'=>(auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')),
+                'orders'=>auth()->user()->provider->orders->count(),
+                'providerTypeName'=>auth()->user()->provider->ProviderType->name,
+                'country'=>auth()->user()->provider->country->name,
+            );
+
+             return response()->json($data, 200);
+        }
+       }
+    }
+    }else{
+       return 0;
+    }
+    }
+
+    public function Categories()
+    {
+        $categories = Category::all();
+        return response()->json($categories, 200);
+    }
+    public function Countries()
+    {
+        $countries = Country::all();
+        return response()->json($countries, 200);
     }
 }
