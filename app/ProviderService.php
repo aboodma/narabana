@@ -11,6 +11,10 @@ class ProviderService extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function services()
+    {
+        return $this->belongsTo(Service::class);
+    }
     public function service()
     {
         return $this->belongsTo(Service::class);
