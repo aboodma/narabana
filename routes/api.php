@@ -30,6 +30,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('/ProccedOrder','ApiController@ProccedOrder');
     Route::post('/logout','ApiController@Logout');
     Route::post('/user','ApiController@user');
+    Route::post('/payout_request','ApiController@payout_request');
   
 });
 

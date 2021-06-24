@@ -12,6 +12,7 @@ use App\Notification;
 use App\Wallet;
 use App\Provider;
 use App\ProviderType;
+use App\PayoutRequest;
 use App\Country;
 use Illuminate\Support\Facades\Hash;
 class ApiController extends Controller
@@ -207,5 +208,17 @@ class ApiController extends Controller
     {
         $countries = Country::all();
         return response()->json($countries, 200);
+    }
+    public function payout_request(Request $request)
+    {
+        $payout = new PayoutRequest();
+        $payout->user_id = auth()->user()->id;
+        $payout->amount = $request->amount;
+        $payout->status = 0;
+        $payout->admin_msg = "";
+        $payout->details = "IBAN : ". $request->iban . " Account Owner Name : " .$request->account_name;
+        if ($payout->save()) {
+            return response()->json(1, 200);
+        }
     }
 }
