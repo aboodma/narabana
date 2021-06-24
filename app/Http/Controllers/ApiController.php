@@ -37,11 +37,12 @@ class ApiController extends Controller
                         'mobile_token' => $request->token,
                     ])->save();
                     $data = array(
-                        'user'=>auth()->user()->provider->loadMissing('orders.details')->loadMissing('orders.service')->loadMissing('provider.providerServices'),
+                        'user'=>auth()->user()->provider->loadMissing('orders.details')->loadMissing('orders.service'),
                         'user'=>auth()->user(),
                         'earnings'=>auth()->user()->wallets->where('transaction_type',0)->sum('amount'),
                         'withdrawl'=>(auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')),
                         'orders'=>auth()->user()->provider->orders->count(),
+                        'services'=>auth()->user()->provider->services->loadMissing('services.service'),
                         'providerTypeName'=>auth()->user()->provider->ProviderType->name,
                         'country'=>auth()->user()->provider->country->name,
                     );
@@ -58,11 +59,12 @@ class ApiController extends Controller
     {
 
         $data = array(
-            'user'=>auth()->user()->provider->loadMissing('orders.details')->loadMissing('orders.service')->loadMissing('provider.providerServices'),
+            'user'=>auth()->user()->provider->loadMissing('orders.details')->loadMissing('orders.service'),
             'user'=>auth()->user(),
             'earnings'=>auth()->user()->wallets->where('transaction_type',0)->sum('amount'),
             'withdrawl'=>(auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')),
             'orders'=>auth()->user()->provider->orders->count(),
+            'services'=>auth()->user()->provider->services->loadMissing('services.service'),
             'providerTypeName'=>auth()->user()->provider->ProviderType->name,
             'country'=>auth()->user()->provider->country->name,
         );
