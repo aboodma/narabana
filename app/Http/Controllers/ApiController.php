@@ -64,7 +64,7 @@ class ApiController extends Controller
             'earnings'=>auth()->user()->wallets->where('transaction_type',0)->sum('amount'),
             'withdrawl'=>(auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')),
             'orders'=>auth()->user()->provider->orders->count(),
-            'services'=>auth()->user()->provider->services->loadMissing('services.service'),
+            'services'=>auth()->user()->provider->services->loadMissing('provider_services.service'),
             'providerTypeName'=>auth()->user()->provider->ProviderType->name,
             'country'=>auth()->user()->provider->country->name,
         );
