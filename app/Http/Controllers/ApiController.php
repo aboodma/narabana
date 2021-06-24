@@ -175,8 +175,8 @@ class ApiController extends Controller
         $file = $request->file('video');
         $filename = $file->getClientOriginalName();
         $newName = explode('.',$filename);
-
-        $newName = $random.'.'.$file->getClientOriginalExtension();
+        
+        $newName = $random.'.'.$request->extension;
         $fil= $file->move(public_path(), $newName);
 
         $provider->video = $newName;
