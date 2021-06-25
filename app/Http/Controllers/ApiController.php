@@ -235,7 +235,7 @@ class ApiController extends Controller
        
     }
     }else {
-        $this->msg['errors'] = $validated;
+        $this->msg['errors'] = "Login Informations Wrong";
         return response()->json($this->msg, $this->ServerError);
     }
 }
