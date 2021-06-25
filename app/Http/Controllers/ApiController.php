@@ -56,7 +56,8 @@ class ApiController extends Controller
                      return response()->json($data, $this->SuccessStatus);
                 }
             } catch (\Throwable $th) {
-                throw $th;
+                $this->msg['errors'] = $validated;
+                return response()->json($this->msg, $this->ServerError);
             }
         }else{
             $this->msg['errors'] = $validated;
