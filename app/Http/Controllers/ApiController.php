@@ -59,11 +59,11 @@ class ApiController extends Controller
             return response()->json($this->msg, $this->ServerError);
                 }
             } catch (\Throwable $th) {
-                $this->msg['errors'] = $validated;
+                $this->msg['errors'] = $errors;
                 return response()->json($this->msg, $this->ServerError);
             }
         }else{
-            $this->msg['errors'] = $validated;
+            $this->msg['errors'] = $errors;
             return response()->json($this->msg, $this->ServerError);
         }
     }
