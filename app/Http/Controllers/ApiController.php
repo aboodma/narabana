@@ -17,6 +17,11 @@ use App\Country;
 use Illuminate\Support\Facades\Hash;
 class ApiController extends Controller
 {
+    public $SuccessStatus = 200;
+    public $RequirementField = 201;
+    public $ServerError = 202;
+    public $msg  = ["errors"=>null];
+
     public function Login(Request $request)
     {
         $validated = $request->validate([
@@ -48,46 +53,71 @@ class ApiController extends Controller
                         'country'=>auth()->user()->provider->country->name,
                     );
 
-                     return response()->json($data, 200);
+                     return response()->json($data, $this->SuccessStatus);
                 }
             } catch (\Throwable $th) {
                 throw $th;
             }
+        }else{
+            $this->msg['errors'] = $validated;
+            return response()->json($this->msg, $this->ServerError);
         }
     }
 
     public function GetUserByToken()
     {
 
-        $data = array(
-            'user'=>auth()->user()->provider->loadMissing('orders.details')->loadMissing('orders.service'),
-            'user'=>auth()->user(),
-            'earnings'=>auth()->user()->wallets->where('transaction_type',0)->sum('amount'),
-            'withdrawl'=>(auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')),
-            'orders'=>auth()->user()->provider->orders->count(),
-            'services'=>auth()->user()->provider->services->loadMissing('service'),
-            'providerTypeName'=>auth()->user()->provider->ProviderType->name,
-            'country'=>auth()->user()->provider->country->name,
-        );
-
-     return response()->json($data, 200);
+        if (Auth::check()) {
+            $data = array(
+                'user'=>auth()->user()->provider->loadMissing('orders.details')->loadMissing('orders.service'),
+                'user'=>auth()->user(),
+                'earnings'=>auth()->user()->wallets->where('transaction_type',0)->sum('amount'),
+                'withdrawl'=>(auth()->user()->wallets->where('transaction_type',0)->sum('amount') - auth()->user()->wallets->where('transaction_type',1)->sum('amount')),
+                'orders'=>auth()->user()->provider->orders->count(),
+                'services'=>auth()->user()->provider->services->loadMissing('service'),
+                'providerTypeName'=>auth()->user()->provider->ProviderType->name,
+                'country'=>auth()->user()->provider->country->name,
+            );
+    
+            return response()->json($data, $this->SuccessStatus);
+        }else{
+            $msg['errors'] = "No User Signed In";
+            return response()->json($this->msg, $this->ServerError);
+        }
     }
 
     public function AcceptOrder(Request $request)
     {
         // return $request->all();
         $order = Order::find($request->id);
+
+        if ($order) {
         $order->status = 1;
         if ($order->save()) {
-            return response()->json($order->status,200);
+            return response()->json($order->status,$this->SuccessStatus);
+        }else{
+            $this->msg['errors'] = "The Order Not Accepted ";
+            return response()->json($this->msg, $this->ServerError);
+        }
+        }else {
+            $this->msg['errors'] = "The Order Not Found ";
+            return response()->json($this->msg, $this->ServerError);
         }
     }
     public function RejectOrder(Request $request)
     {
         $order = Order::find($request->id);
-        $order->status = 3;
+        if ($order) {
+            $order->status = 3;
         if ($order->save()) {
             return response()->json($order->status,200);
+        }else {
+            $this->msg['errors'] = "The Order Not Rejected ";
+            return response()->json($this->msg, $this->ServerError);
+        }
+        }else {
+            $this->msg['errors'] = "The Order Not Found ";
+            return response()->json($this->msg, $this->ServerError);
         }
     }
     public function ProccedOrder(Request $request)
@@ -101,10 +131,14 @@ class ApiController extends Controller
             $newName = $random.'.'.$file->extension();
             $fil= $file->move(public_path(), $newName);
 
+        }else {
+            $this->msg['errors'] = "Please upload Video ";
+            return response()->json($this->msg, $RequirementField);
         }
         $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
 
         $order = Order::find($request->order_id);
+        
         $order_details = $order->details;
         $order_details->provider_message = $newName;
         $order_details->save();
@@ -126,7 +160,7 @@ class ApiController extends Controller
         $wallet->transaction_type = 0 ;
         $wallet->amount = $order->total_price;
         $wallet->save();
-        return response()->json(1,200);
+        return response()->json(1,$this->SuccessStatus);
     }
 
     public function user(Request $request)
@@ -196,6 +230,9 @@ class ApiController extends Controller
         
        
     }
+    }else {
+        $this->msg['errors'] = $validated;
+        return response()->json($this->msg, $this->ServerError);
     }
 }
 
