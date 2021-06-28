@@ -17,6 +17,7 @@ use App\Service;
 use App\PayoutRequest;
 use App\Country;
 use Illuminate\Support\Facades\Hash;
+use DB;
 class ApiController extends Controller
 {
     public $SuccessStatus = 200;
