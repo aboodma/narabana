@@ -114,7 +114,7 @@ class ApiController extends Controller
         if ($order) {
             $order->status = 3;
         if ($order->save()) {
-            return response()->json($order->status,200);
+            return response()->json($order->status,$this->SuccessStatus);
         }else {
             $this->msg['errors'] = "The Order Not Rejected ";
             return response()->json($this->msg, $this->ServerError);
@@ -176,7 +176,7 @@ class ApiController extends Controller
         $user = auth()->user();
         $user->api_token = null;
         if ($user->save()) {
-            return response()->json(1,200);
+            return response()->json(1,$this->SuccessStatus);
         }
     }
     public function SignUp(Request $request)
@@ -243,12 +243,12 @@ class ApiController extends Controller
     public function Categories()
     {
         $categories = ProviderType::all();
-        return response()->json($categories, 200);
+        return response()->json($categories, $this->SuccessStatus);
     }
     public function Countries()
     {
         $countries = Country::all();
-        return response()->json($countries, 200);
+        return response()->json($countries, $this->SuccessStatus);
     }
     public function payout_request(Request $request)
     {
@@ -259,7 +259,17 @@ class ApiController extends Controller
         $payout->admin_msg = "";
         $payout->details = "IBAN : ". $request->iban . " Account Owner Name : " .$request->account_name;
         if ($payout->save()) {
-            return response()->json(1, 200);
+            return response()->json(1, $this->SuccessStatus);
+        }
+    }
+    public function UpdateService(Request $request)
+    {
+        $service = ProviderService::find($request->provider_service_id);
+        $service->price = $request->price;
+        if ($service->save()) {
+            return response()->json(1,$this->SuccessStatus);
+        }else {
+            return response()->json(1,$this->ServerError);
         }
     }
 }
