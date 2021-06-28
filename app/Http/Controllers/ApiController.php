@@ -265,7 +265,7 @@ class ApiController extends Controller
             return response()->json(1, $this->SuccessStatus);
         }
     }
-    public function AddService()
+    public function AddService(Request $request)
     {
        $service = new ProviderService();
        $service->service_id = $request->service_id;
