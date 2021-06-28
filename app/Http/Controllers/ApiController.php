@@ -277,7 +277,17 @@ class ApiController extends Controller
     }
     public function AllServices(Request $request)
     {
-      $services = Service::all();
+        $serv = \App\ProviderService::where('provider_id',auth()->user()->provider->id)->get();
+        $data = array();
+        $services = array();
+        foreach ($serv as $ser) {
+           array_push($data,$ser->service_id);
+        }
+        foreach (DB::table('services')->
+        whereNotIn('id',$data)
+        ->get() as $service){
+            array_push($data,$service);
+        }
       return response()->json($services,$this->SuccessStatus);
 
     }
