@@ -82,7 +82,7 @@ class PayoutRequestController extends Controller
       $payout->status = 3;
       $payout->admin_msg = $request->admin_note;
       $payout->save();
-      send_notify($payoutRequest->user->mobile_token , "Payout Rejected" , $request->admin_note , $image = null);
+      send_notify($payout->user->mobile_token , "Payout Rejected" , $request->admin_note , $image = null);
       return redirect()->back();
     }
     public function paid(Request $request)
@@ -97,7 +97,7 @@ class PayoutRequestController extends Controller
         $wallet->amount = $payout->amount;
         $wallet->transaction_type = 1;
         $wallet->save();
-        send_notify($payoutRequest->user->mobile_token , "Payout Paid" , $request->admin_note , $image = null);
+        send_notify($payout->user->mobile_token , "Payout Paid" , $request->admin_note , $image = null);
       }
       return redirect()->back();
     }
