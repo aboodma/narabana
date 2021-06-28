@@ -286,7 +286,7 @@ class ApiController extends Controller
         foreach (DB::table('services')->
         whereNotIn('id',$data)
         ->get() as $service){
-            array_push($data,$service);
+            array_push($services,$service);
         }
       return response()->json($services,$this->SuccessStatus);
 
