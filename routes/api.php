@@ -31,6 +31,8 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('/logout','ApiController@Logout');
     Route::post('/user','ApiController@user');
     Route::post('/payout_request','ApiController@payout_request');
+    Route::post('/all_services','ApiController@AllServices');
+    Route::post('/add_service','ApiController@AddService');
     Route::post('/update_service','ApiController@UpdateService');
     Route::post('/delete_service','ApiController@DeleteService');
   

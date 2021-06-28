@@ -12,6 +12,8 @@ use App\Notification;
 use App\Wallet;
 use App\Provider;
 use App\ProviderType;
+use App\ProviderService;
+use App\Service;
 use App\PayoutRequest;
 use App\Country;
 use Illuminate\Support\Facades\Hash;
@@ -261,6 +263,23 @@ class ApiController extends Controller
         if ($payout->save()) {
             return response()->json(1, $this->SuccessStatus);
         }
+    }
+    public function AddService()
+    {
+       $service = new ProviderService();
+       $service->service_id = $request->service_id;
+       $service->price = $request->price ;
+       if ($service->save()) {
+        return response()->json(1,$this->SuccessStatus);
+        }else {
+            return response()->json(1,$this->ServerError);
+        }
+    }
+    public function AllServices(Request $request)
+    {
+      $services = Service::all();
+      return response()->json($services,$this->SuccessStatus);
+
     }
     public function UpdateService(Request $request)
     {
