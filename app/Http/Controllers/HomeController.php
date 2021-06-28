@@ -99,6 +99,7 @@ class HomeController extends Controller
             $Providernotify->msg = "New Order Placed";
             $Providernotify->type = 0;
             $Providernotify->save();
+            send_notify(Provider::find($request->provider_id)->user->mobile_token , "New Order Placed" , "You have New Order " , $image = null);
 
         }
 
