@@ -269,6 +269,7 @@ class ApiController extends Controller
     {
        $service = new ProviderService();
        $service->service_id = $request->service_id;
+       $service->provider_id = auth()->user()->provider->id;
        $service->price = $request->price ;
        if ($service->save()) {
         return response()->json(1,$this->SuccessStatus);
