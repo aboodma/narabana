@@ -272,4 +272,14 @@ class ApiController extends Controller
             return response()->json(1,$this->ServerError);
         }
     }
+    public function DeleteService(Request $request)
+    {
+        $service = ProviderService::find($request->provider_service_id);
+ 
+        if ($service->delete()) {
+            return response()->json(1,$this->SuccessStatus);
+        }else {
+            return response()->json(1,$this->ServerError);
+        }
+    }
 }

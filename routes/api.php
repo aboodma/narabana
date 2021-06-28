@@ -32,6 +32,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('/user','ApiController@user');
     Route::post('/payout_request','ApiController@payout_request');
     Route::post('/update_service','ApiController@UpdateService');
+    Route::post('/delete_service','ApiController@DeleteService');
   
 });
 
