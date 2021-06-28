@@ -233,7 +233,7 @@ class ApiController extends Controller
        $provider->country_id = $request->country_id;
        $provider->is_approved = false;
        $provider->save(); 
-       
+       send_notify($user->mobile_token , "Welcome" , "Hi! Now you can manage your orders and your payments from your phone let's start now " , $image = null);
         
        
     }

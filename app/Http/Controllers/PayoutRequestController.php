@@ -45,6 +45,7 @@ class PayoutRequestController extends Controller
         $payout->status = 0;
         $payout->admin_msg = "";
         $payout->details = "IBAN : ". $request->iban . " Account Owner Name : " .$request->account_name;
+        send_notify(auth()->user()->mobile_token , "Payout Request" , "Your payout Request Has been submitted. Please be patient until the admin approve your request " , $image = null);
         if ($payout->save()) {
             return redirect()->route('provider.payouts');
         }
@@ -71,6 +72,7 @@ class PayoutRequestController extends Controller
     {
       $payoutRequest->status = 1;
       $payoutRequest->save();
+      send_notify($payoutRequest->user->mobile_token , "Congratulations" , "Congratulations, the administrator has approved your request, the payment will be completed as soon as possible. Thank you for your patience" , $image = null);
       return redirect()->back();
     }
 
@@ -80,6 +82,7 @@ class PayoutRequestController extends Controller
       $payout->status = 3;
       $payout->admin_msg = $request->admin_note;
       $payout->save();
+      send_notify($payoutRequest->user->mobile_token , "Payout Rejected" , $request->admin_note , $image = null);
       return redirect()->back();
     }
     public function paid(Request $request)
@@ -94,7 +97,7 @@ class PayoutRequestController extends Controller
         $wallet->amount = $payout->amount;
         $wallet->transaction_type = 1;
         $wallet->save();
-
+        send_notify($payoutRequest->user->mobile_token , "Payout Paid" , $request->admin_note , $image = null);
       }
       return redirect()->back();
     }
