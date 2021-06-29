@@ -18,6 +18,8 @@ use App\PayoutRequest;
 use App\Country;
 use Illuminate\Support\Facades\Hash;
 use DB;
+
+
 class ApiController extends Controller
 {
     public $SuccessStatus = 200;
@@ -225,7 +227,7 @@ class ApiController extends Controller
 
         $provider->video = $newName;
 
-
+        $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
        $provider->user_id = $user->id;
 
        $provider->about_me = $request->about_me;
@@ -331,10 +333,9 @@ class ApiController extends Controller
         $file = $request->file('video');
         $filename = $file->getClientOriginalName();
         $newName = explode('.',$filename);
-        
         $newName = $random.'.'.$request->extension;
         $fil= $file->move(public_path(), $newName);
-
+        $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
         $provider->video = $newName;
        }
        if ($provider->save()) {
