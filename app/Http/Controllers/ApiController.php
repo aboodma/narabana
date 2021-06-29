@@ -326,6 +326,17 @@ class ApiController extends Controller
        $provider->links_snap = $request->snap;
        $provider->links_tweet = $request->tweet;
        $provider->links_youtube = $request->youtube;
+       if ($request->has('video')) {
+        $random = Str::random(40);
+        $file = $request->file('video');
+        $filename = $file->getClientOriginalName();
+        $newName = explode('.',$filename);
+        
+        $newName = $random.'.'.$request->extension;
+        $fil= $file->move(public_path(), $newName);
+
+        $provider->video = $newName;
+       }
        if ($provider->save()) {
            $user = auth()->user();
            $user->name = $request->name;
@@ -343,7 +354,7 @@ class ApiController extends Controller
            if ($user->save()) {
             return response()->json(1,$this->SuccessStatus);
             }else {
-                return response()->json(1,$this->ServerError);
+            return response()->json(1,$this->ServerError);
             }
        }
        
