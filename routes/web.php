@@ -21,7 +21,7 @@ Auth::routes();
 
 //Web Routes
 Route::get('search','HomeController@search')->name('search');
-Route::get('star/{provider}','HomeController@provider_profile')->name('provider_profile');
+Route::get('star/{slug}','HomeController@provider_profile')->name('provider_profile');
 Route::get('dashboard','HomeController@customer_dashboard')->name('customer_dashboard');
 Route::post('checkout','HomeController@checkout')->name('checkout')->middleware('auth');
 Route::post('payment_info','HomeController@payment_info')->name('payment_info')->middleware('auth');

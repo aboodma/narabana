@@ -196,6 +196,7 @@ class ApiController extends Controller
         'country_id' => 'required',
     ]);
     if ($validated) {
+        $slug = slugify($request->name);
      $random = Str::random(40);
      $file = $request->file('avatar');
      $filename = $file->getClientOriginalName();
@@ -216,7 +217,7 @@ class ApiController extends Controller
   }
     if ($user) {
      $provider = new Provider();
-
+        $provider->slug = $slug;
         $random = Str::random(40);
         $file = $request->file('video');
         $filename = $file->getClientOriginalName();
@@ -317,8 +318,10 @@ class ApiController extends Controller
     }
     public function update_profile(Request $request)
     {
-      
+        $slug = slugify($request->name);
+    
        $provider = auth()->user()->provider;
+        $provider->slug = $slug;
        $provider->about_me = $request->about_me;
        $provider->provider_type_id = $request->provider_type;
        $provider->country_id = $request->country_id;

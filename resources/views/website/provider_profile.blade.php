@@ -1,4 +1,5 @@
 @extends('layouts.website')
+@section('title',$provider->user->name)
 @section('style')
 <style>
     .slick-track{
@@ -185,7 +186,7 @@
                 <div class="row freelance-slider">
                     @foreach (\App\Provider::where('provider_type_id',$provider->ProviderType->id)->get()->take(10) as $provider)
                     <div class="col">
-                        <a href="{{route('provider_profile',$provider->id)}}">
+                        <a href="{{route('provider_profile',$provider->slug)}}">
                             <div class="freelancer">
                                 <div>
                                     <div class="top-right p-1 text-center">
@@ -280,8 +281,8 @@
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToShow: 2,
+        slidesToScroll: 2
       }
     }
                 ]

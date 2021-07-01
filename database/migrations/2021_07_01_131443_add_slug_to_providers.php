@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProviderTypesTable extends Migration
+class AddSlugToProviders extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateProviderTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('provider_types', function (Blueprint $table) {
-            $table->id();
-            $table->text('name');
-            $table->text('description');
-            $table->timestamps();
+        Schema::table('providers', function (Blueprint $table) {
+            $table->text('slug');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateProviderTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('provider_types');
+        Schema::table('providers', function (Blueprint $table) {
+            //
+        });
     }
 }
