@@ -37,7 +37,10 @@ class HomeController extends Controller
          return  redirect()->route('welcome');
       }
 
-
+      public function checkout(Request $request)
+     {
+        return view('website.checkout',compact('request'));
+     }
      public function provider_profile($slug)
      {
          $provider = Provider::where('slug',$slug)->first();
