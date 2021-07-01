@@ -46,6 +46,16 @@ class ProviderController extends Controller
        $provider->links_snap = $request->snap;
        $provider->links_tweet = $request->tweet;
        $provider->links_youtube = $request->youtube;
+       if ($request->has('video')) {
+        $random = Str::random(40);
+        $file = $request->file('video');
+        $filename = $file->getClientOriginalName();
+        $newName = explode('.',$filename);
+        $newName = $random.'.'.$request->extension;
+        $fil= $file->move(public_path(), $newName);
+        $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
+        $provider->video = $newName;
+       }
        if ($provider->save()) {
            $user = auth()->user();
            $user->name = $request->name;
@@ -60,6 +70,7 @@ class ProviderController extends Controller
                 $user->save();
             }
            }
+           
        }
        return redirect()->route('provider.profile');
     }
