@@ -38,7 +38,6 @@ class HomeController extends Controller
       }
 
 
-     public function provider_profile(Provider $provider)
      public function provider_profile($slug)
      {
          $provider = Provider::where('slug',$slug)->first();
@@ -61,11 +60,7 @@ class HomeController extends Controller
      {
         return view('website.customer.dashboard');
      }
-     public function checkout(Request $request)
-     {
-        return view('website.checkout',compact('request'));
-     }
-
+   
      public function payment_info(Request $request)
      {
         return view('website.payment_info',compact('request'));
@@ -138,6 +133,7 @@ class HomeController extends Controller
     public function provider_request(Request $request)
     {
       //  return $request->all();
+       $slug = slugify($request->name);
       $validated = $request->validate([
          'name' => 'required',
          'email' => 'required|unique:users',
@@ -147,6 +143,7 @@ class HomeController extends Controller
          'country_id' => 'required',
      ]);
      if ($validated) {
+      $slug = slugify($request->name);
       $random = Str::random(40);
       $file = $request->file('avatar');     
       $filename = $file->getClientOriginalName();
@@ -167,7 +164,7 @@ class HomeController extends Controller
    }
      if ($user) {
       $provider = new Provider();
-     
+         $provider->slug = $slug;
          $random = Str::random(40);
          $file = $request->file('video');     
          $filename = $file->getClientOriginalName();
