@@ -39,7 +39,9 @@ class HomeController extends Controller
 
 
      public function provider_profile(Provider $provider)
+     public function provider_profile($slug)
      {
+         $provider = Provider::where('slug',$slug)->first();
         return view('website.provider_profile',compact('provider'));
      }
 
