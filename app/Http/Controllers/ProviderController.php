@@ -51,7 +51,7 @@ class ProviderController extends Controller
         $file = $request->file('video');
         $filename = $file->getClientOriginalName();
         $newName = explode('.',$filename);
-        $newName = $random.'.'.$request->extension;
+        $newName = $random.'.'.$file->extension();
         $fil= $file->move(public_path(), $newName);
         $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
         $provider->video = $newName;
