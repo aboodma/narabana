@@ -17,7 +17,7 @@
                 <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$provider->user->name}}</li>
               </ol>
         </div>
-        <div class="row d-inline ">
+        <div class="row d-inline d-none d-sm-block d-md-none">
             <div class="col-md-12">
                
                 <h2 class="">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>
@@ -27,7 +27,8 @@
         
         <div class="row">
            
-          
+            <h2 class=" d-inline d-none d-md-block d-lg-block">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>
+            </h2>
             <div class="col-md-3">
                 <img style="position: absolute;
                 width: 30%;
