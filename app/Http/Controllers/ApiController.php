@@ -229,7 +229,8 @@ class ApiController extends Controller
         $provider->video = $newName;
 
         $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
-       $provider->user_id = $user->id;
+        $provider->video_thumpnail = 'uploads/thumbs/'.$random.".jpg";
+        $provider->user_id = $user->id;
 
        $provider->about_me = $request->about_me;
        $provider->provider_type_id = $request->provider_type_id;
