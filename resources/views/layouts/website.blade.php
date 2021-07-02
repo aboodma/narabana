@@ -47,7 +47,8 @@
         <div class="container">
 
             <a class="navbar-brand d-none d-lg-block" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
-            <a class="navbar-brand d-lg-none  m-auto  pb-2" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
+            <a class="navbar-brand d-lg-none  m-auto  pb-3" href="{{route('welcome')}}">
+                <img style="height: 30px;" src="{{asset('images/logo.png')}}" alt=""></a>
 
             <form action="{{route('search')}}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
