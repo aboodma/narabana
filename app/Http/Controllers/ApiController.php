@@ -145,7 +145,7 @@ class ApiController extends Controller
             return response()->json($this->msg, $RequirementField);
         }
         $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
-        $provider->video_thumpnail = $thumb;
+        $provider->video_thumpnail = 'uploads/thumbs/'.$random.".jpg";
         $order = Order::find($request->order_id);
         
         $order_details = $order->details;
@@ -339,7 +339,7 @@ class ApiController extends Controller
         $newName = $random.'.'.$request->extension;
         $fil= $file->move(public_path(), $newName);
         $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
-        $provider->video_thumpnail = $thumb;
+        $provider->video_thumpnail = 'uploads/thumbs/'.$random.".jpg";
         $provider->video = $newName;
        }
        if ($provider->save()) {

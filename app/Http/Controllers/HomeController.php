@@ -182,7 +182,7 @@ class HomeController extends Controller
          // unlink($path.'/'.$newName);
          $provider->video = $newName;
          $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
-         $provider->video_thumpnail = $thumb;
+         $provider->video_thumpnail = 'uploads/thumbs/'.$random.".jpg";
         $provider->user_id = $user->id;
       
         $provider->about_me = $request->about_me;
