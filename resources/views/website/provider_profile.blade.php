@@ -47,7 +47,7 @@
                 <span id="play-{{$provider->id}}" onclick="playVideo('{{$provider->id}}')" class="fa fa-play play-btn" ></span>
                 <span id="pause-{{$provider->id}}" onclick="pauseVideo('{{$provider->id}}')" class="fa fa-pause pause-btn" ></span>
             </div>
-            <div class="col-md-6 mt-4">
+            <div class="col-md-6 ">
                 <div class="row">
                     <div class="col-md-12">
                         <h2 class="d-none d-lg-block">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>
