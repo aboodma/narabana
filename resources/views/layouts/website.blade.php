@@ -196,7 +196,7 @@
                     <a class="btn btn-icon btn-transparent-dark dropdown-toggle  " style="background: #f1f2f500" id="navbarDropdownMessages"
                         href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fas fa-globe-europe " style="font-size: 1.2rem;color: #505355"></i>
+                        <i class="fas fa-globe-europe " style="font-size: 1.2rem;color: #ba6089;"></i>
                     </a>
                     <div style="min-width: 9.75rem;" class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
                         aria-labelledby="navbarDropdownMessages">
