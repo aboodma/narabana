@@ -20,7 +20,8 @@
         <div class="row">
             <div class="col-md-12">
                 <h5 style="font-weight: bold;color: #ba6089;">Offical Page</h5>
-                <h2 class="">{{$provider->user->name}} </h2>
+                <h2 class="">{{$provider->user->name}} <i class="fas fa-check-circle "></i>
+                </h2>
             </div>
         </div>
         <div class="row">
