@@ -46,7 +46,8 @@
     <nav class="navbar navbar-expand-lg navbar-light topbar  shadow-sm bg-white osahan-nav-top px-1  ">
         <div class="container">
 
-            <a class="navbar-brand" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
+            <a class="navbar-brand d-none d-lg-block" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
+            <a class="navbar-brand d-lg-none  m-auto  pb-2" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
 
             <form action="{{route('search')}}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
@@ -63,7 +64,7 @@
             </form>
 
             <ul class="navbar-nav align-items-center ml-auto">
-                <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications d-sm-none">
+                <li class="nav-item dropdown no-arrow no-caret mr-1 dropdown-notifications d-sm-none">
                     <a class="btn btn-icon btn-transparent-dark dropdown-toggle" href="#" id="searchDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-search fa-fw"></i>
@@ -86,21 +87,21 @@
                     </div>
                 </li>
                 @guest
-                <li class="nav-item dropdown no-arrow no-caret mr-3 ">
+                <li class="nav-item dropdown no-arrow no-caret mr-1 ">
                     <a class="btn btn-outline-danger pink-btn" id="navbarDropdownAlerts" href="{{route('login')}}"
                         role="button">
                         {{__('Login')}}
                     </a>
 
                 </li>
-                <li class="nav-item dropdown no-arrow no-caret mr-3 ">
+                <li class="nav-item dropdown no-arrow no-caret mr-1 ">
                     <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="{{route('register')}}"
                         role="button">
                         {{__('Sign Up')}}
                     </a>
 
                 </li>
-                <li class="nav-item dropdown no-arrow no-caret mr-3 ">
+                <li class="nav-item dropdown no-arrow no-caret mr-1 ">
                     <a class="btn btn-outline-secondary sec-btn" href="{{route('be_our_partner')}}" role="button">
                         {{__('Be Our Partner')}}
                     </a>
@@ -109,7 +110,7 @@
                 @endguest
                 
                 @auth
-                <li class="nav-item dropdown no-arrow no-caret mr-3 ">
+                <li class="nav-item dropdown no-arrow no-caret mr-1 ">
                     <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts"
                         href="@if(auth()->user()->user_type == 1){{route('provider.dashboard')}} @elseif(auth()->user()->user_type == 0){{route('customer_dashboard')}} @else {{route('admin.home')}}  @endif"
                         role="button">
@@ -117,7 +118,7 @@
                     </a>
 
                 </li>
-                <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
+                <li class="nav-item dropdown no-arrow no-caret mr-1 dropdown-notifications">
                     <a class="btn btn-icon btn-transparent-dark dropdown-toggle " style="background: #f1f2f500"
                         id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
