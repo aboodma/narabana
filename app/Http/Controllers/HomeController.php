@@ -172,7 +172,7 @@ class HomeController extends Controller
          $file = $request->file('video');     
          $filename = $file->getClientOriginalName();
          $newName = explode('.',$filename);
-         
+        
          $newName = $random.'.'.$file->getClientOriginalExtension();
          $fil= $file->move(public_path(), $newName);
          // FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
@@ -180,8 +180,8 @@ class HomeController extends Controller
          // ->save("provider/".$random.'.webm');
          // unlink($path.'/'.$newName);
          $provider->video = $newName;
-     
-   
+         $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
+         $provider->video_thumpnail = $thumb;
         $provider->user_id = $user->id;
       
         $provider->about_me = $request->about_me;

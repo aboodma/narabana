@@ -339,6 +339,7 @@ class ApiController extends Controller
         $newName = $random.'.'.$request->extension;
         $fil= $file->move(public_path(), $newName);
         $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
+        $provider->video_thumpnail = $thumb;
         $provider->video = $newName;
        }
        if ($provider->save()) {
