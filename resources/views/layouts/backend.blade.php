@@ -38,7 +38,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
-	<body id="kt_body" class="header-fixed subheader-enabled page-loading">
+	<body id="kt_body" class="header-fixed subheader-enabled page-loading" style="background-image: url('../media/bg/bg-2.jpg');">
 		<!--begin::Main-->
 		<div class="d-flex flex-column flex-root">
 			<!--begin::Page-->
@@ -48,7 +48,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!--begin::Header Mobile-->
 					<div id="kt_header_mobile" class="header-mobile">
 						<!--begin::Logo-->
-						<a href="index.html">
+						<a href="/">
 							<img alt="Logo" src="{{asset('/images/logo.png')}}" class="max-h-30px" />
 						</a>
 						<!--end::Logo-->
