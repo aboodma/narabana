@@ -18,6 +18,8 @@
               </ol>
         </div>
         <div class="row">
+           
+            <h2 class="mb-0 pb-0">{{$provider->user->name}} Offical Page</h2>
             <div class="col-md-3">
                 <img style="position: absolute;
                 width: 30%;
@@ -37,11 +39,10 @@
                 <span id="play-{{$provider->id}}" onclick="playVideo('{{$provider->id}}')" class="fa fa-play play-btn" ></span>
                 <span id="pause-{{$provider->id}}" onclick="pauseVideo('{{$provider->id}}')" class="fa fa-pause pause-btn" ></span>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-4">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="mb-0 pb-0
-                        ">{{$provider->user->name}}</h2>
+                        
                         <span class="pb-2 mb-2">{{_ti($provider->Country->name)}} / {{_ti($provider->ProviderType->name)}}</span>
                         <p class="pt-2">{{$provider->about_me}}</p>
                         <p style="font-weight: bold;color: #ba6089;"><i class="fa fa-clock-o" style="color: #ba6089;font-size: initial;"></i> {{__('Replies in 5 days')}}</p>
