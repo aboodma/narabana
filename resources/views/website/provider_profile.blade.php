@@ -17,20 +17,14 @@
                 <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$provider->user->name}}</li>
               </ol>
         </div>
-        <div class="row d-inline d-md-none d-lg-none">
+        <div class="row d-inline ">
             <div class="col-md-12">
-                <h5 style="font-weight: bold;color: #ba6089;">Offical Page</h5>
+               
                 <h2 class="">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>
                 </h2>
             </div>
         </div>
-        <div class="row d-inline d-sm-none d-lg-block">
-            <div class="col-md-12">
-              
-                <h2 class="">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>   <span style="font-weight: bold;color: #ba6089;">Offical Page</span>
-                </h2>
-            </div>
-        </div>
+        
         <div class="row">
            
           
