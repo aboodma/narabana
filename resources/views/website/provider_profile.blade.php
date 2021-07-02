@@ -18,7 +18,9 @@
               </ol>
         </div>
         <div class="row">
-            <h2 class="mb-0 pb-0">{{$provider->user->name}} Offical Page</h2>
+            <div class="col-md-12">
+                <h2 class="mb-0 pb-0">{{$provider->user->name}} Offical Page</h2>
+            </div>
         </div>
         <div class="row">
            
