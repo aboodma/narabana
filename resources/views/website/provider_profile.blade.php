@@ -50,7 +50,7 @@
             <div class="col-md-6 mt-4">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class=" d-inline d-none d-sm-none d-md-block d-lg-block">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>
+                        <h2 class="  d-sm-none d-md-block d-lg-block">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>
                         </h2>
                         <span class="pb-2 mb-2">{{_ti($provider->Country->name)}} / {{_ti($provider->ProviderType->name)}}</span>
                         <p class="pt-2">{{$provider->about_me}}</p>
