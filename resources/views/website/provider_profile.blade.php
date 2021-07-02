@@ -18,8 +18,11 @@
               </ol>
         </div>
         <div class="row">
-           
             <h2 class="mb-0 pb-0">{{$provider->user->name}} Offical Page</h2>
+        </div>
+        <div class="row">
+           
+          
             <div class="col-md-3">
                 <img style="position: absolute;
                 width: 30%;
