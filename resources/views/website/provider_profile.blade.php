@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h3>Offical Page</h3>
+                <h5>Offical Page</h5>
                 <h2 class="">{{$provider->user->name}} </h2>
             </div>
         </div>
