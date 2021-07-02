@@ -8,6 +8,7 @@ use App\Order;
 use App\OrderDetail;
 use App\OrderReview;
 use App\ProviderType;
+use VideoThumbnail;
 use Crypt;
 use App\User;
 use Illuminate\Support\Facades\Hash;
