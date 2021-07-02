@@ -622,7 +622,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<!--end::Symbol-->
 											<!--begin::Text-->
 											<div class="text-dark m-0 flex-grow-1 mr-3 font-size-h5">{{auth()->user()->name}}</div>
-											<span class="label label-light-success label-lg font-weight-bold label-inline">3 messages</span>
+											{{-- <span class="label label-light-success label-lg font-weight-bold label-inline">3 messages</span> --}}
 											<!--end::Text-->
 										</div>
 										<div class="separator separator-solid"></div>
@@ -687,7 +687,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="navi-footer px-8 py-5">
 												<a href="{{ route('logout') }}"
 													 onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="btn btn-light-primary font-weight-bold">Sign Out</a>
-												<a href="custom/user/login-v2.html" target="_blank" class="btn btn-clean font-weight-bold">Upgrade Plan</a>
+												{{-- <a href="custom/user/login-v2.html" target="_blank" class="btn btn-clean font-weight-bold">Upgrade Plan</a> --}}
 											</div>
 											<!--end::Footer-->
 										</div>
