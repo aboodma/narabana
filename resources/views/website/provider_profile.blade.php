@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h2 class="mb-0 pb-0">{{$provider->user->name}} Offical Page</h2>
+                <h2 class="">{{$provider->user->name}} Offical Page</h2>
             </div>
         </div>
         <div class="row">
