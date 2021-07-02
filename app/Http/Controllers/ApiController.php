@@ -145,7 +145,7 @@ class ApiController extends Controller
             return response()->json($this->msg, $RequirementField);
         }
         $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
-
+        $provider->video_thumpnail = $thumb;
         $order = Order::find($request->order_id);
         
         $order_details = $order->details;
