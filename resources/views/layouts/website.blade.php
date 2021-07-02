@@ -66,7 +66,7 @@
 
             <ul class="navbar-nav align-items-center ml-auto">
                 <li class="nav-item dropdown no-arrow no-caret mr-1 dropdown-notifications d-sm-none">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" href="#" id="searchDropdown"
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle p-1" href="#" id="searchDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-search fa-fw"></i>
                     </a>
@@ -89,21 +89,21 @@
                 </li>
                 @guest
                 <li class="nav-item dropdown no-arrow no-caret mr-1 ">
-                    <a class="btn btn-outline-danger pink-btn" id="navbarDropdownAlerts" href="{{route('login')}}"
+                    <a class="btn btn-outline-danger pink-btn p-1" id="navbarDropdownAlerts" href="{{route('login')}}"
                         role="button">
                         {{__('Login')}}
                     </a>
 
                 </li>
                 <li class="nav-item dropdown no-arrow no-caret mr-1 ">
-                    <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="{{route('register')}}"
+                    <a class="btn btn-outline-secondary sec-btn p-1" id="navbarDropdownAlerts" href="{{route('register')}}"
                         role="button">
                         {{__('Sign Up')}}
                     </a>
 
                 </li>
                 <li class="nav-item dropdown no-arrow no-caret mr-1 ">
-                    <a class="btn btn-outline-secondary sec-btn" href="{{route('be_our_partner')}}" role="button">
+                    <a class="btn btn-outline-secondary sec-btn p-1" href="{{route('be_our_partner')}}" role="button">
                         {{__('Be Our Partner')}}
                     </a>
 
@@ -112,7 +112,7 @@
                 
                 @auth
                 <li class="nav-item dropdown no-arrow no-caret mr-1 ">
-                    <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts"
+                    <a class="btn btn-outline-secondary sec-btn p-1" id="navbarDropdownAlerts"
                         href="@if(auth()->user()->user_type == 1){{route('provider.dashboard')}} @elseif(auth()->user()->user_type == 0){{route('customer_dashboard')}} @else {{route('admin.home')}}  @endif"
                         role="button">
                         {{__('Profile')}}
@@ -120,7 +120,7 @@
 
                 </li>
                 <li class="nav-item dropdown no-arrow no-caret mr-1 dropdown-notifications">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle " style="background: #f1f2f500"
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle p-1" style="background: #f1f2f500"
                         id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -175,7 +175,7 @@
                     @csrf
                 </form>
                 <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
-                    <button class="btn btn-icon btn-transparent-dark dropdown-toggle" style="background: #f1f2f500"
+                    <button class="btn btn-icon btn-transparent-dark dropdown-toggle p-1" style="background: #f1f2f500"
                         id="navbarDropdownAlerts" href="{{ route('logout') }}" role="button"
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                         aria-expanded="false">
