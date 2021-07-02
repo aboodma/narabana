@@ -93,7 +93,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							<!--begin::Topbar-->
 							<div class="topbar topbar-minimize">
 								<!--begin::Search-->
-								<div class="topbar-item mr-3 w-100 w-lg-auto justify-content-start">
+								{{-- <div class="topbar-item mr-3 w-100 w-lg-auto justify-content-start">
 									<div class="quick-search quick-search-inline w-auto w-lg-200px" id="kt_quick_search_inline">
 										<!--begin::Form-->
 										<form method="get" class="quick-search-form">
@@ -131,10 +131,10 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 										<!--end::Dropdown-->
 									</div>
-								</div>
+								</div> --}}
 								<!--end::Search-->
 								<!--begin::Notifications-->
-								<div class="dropdown">
+								{{-- <div class="dropdown">
 									<!--begin::Toggle-->
 									<div class="topbar-item mr-3" data-toggle="dropdown" data-offset="10px,0px">
 										<div class="btn btn-icon btn-clean h-40px w-40px btn-dropdown pulse pulse-white">
@@ -589,7 +589,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										</form>
 									</div>
 									<!--end::Dropdown-->
-								</div>
+								</div> --}}
 								<!--end::Notifications-->
 
 								<!--begin::User-->
@@ -616,12 +616,12 @@ License: You must have a valid license purchased only from themeforest(the above
 										<!--begin::Header-->
 										<div class="d-flex align-items-center p-8 rounded-top">
 											<!--begin::Symbol-->
-											<div class="symbol symbol-md bg-light-primary mr-3 flex-shrink-0">
+											{{-- <div class="symbol symbol-md bg-light-primary mr-3 flex-shrink-0">
 												<img src="{{asset('assets/media/users/300_21.jpg')}}" alt="" />
-											</div>
+											</div> --}}
 											<!--end::Symbol-->
 											<!--begin::Text-->
-											<div class="text-dark m-0 flex-grow-1 mr-3 font-size-h5">Sean Stone</div>
+											<div class="text-dark m-0 flex-grow-1 mr-3 font-size-h5">{{auth()->user()->name}}</div>
 											<span class="label label-light-success label-lg font-weight-bold label-inline">3 messages</span>
 											<!--end::Text-->
 										</div>
@@ -630,7 +630,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										<!--begin::Nav-->
 										<div class="navi navi-spacer-x-0 pt-5">
 											<!--begin::Item-->
-											<a href="custom/apps/user/profile-1/personal-information.html" class="navi-item px-8">
+											{{-- <a href="custom/apps/user/profile-1/personal-information.html" class="navi-item px-8">
 												<div class="navi-link">
 													<div class="navi-icon mr-2">
 														<i class="flaticon2-calendar-3 text-success"></i>
@@ -641,10 +641,10 @@ License: You must have a valid license purchased only from themeforest(the above
 														<span class="label label-light-danger label-inline font-weight-bold">update</span></div>
 													</div>
 												</div>
-											</a>
+											</a> --}}
 											<!--end::Item-->
 											<!--begin::Item-->
-											<a href="custom/apps/user/profile-3.html" class="navi-item px-8">
+											{{-- <a href="custom/apps/user/profile-3.html" class="navi-item px-8">
 												<div class="navi-link">
 													<div class="navi-icon mr-2">
 														<i class="flaticon2-mail text-warning"></i>
@@ -654,10 +654,10 @@ License: You must have a valid license purchased only from themeforest(the above
 														<div class="text-muted">Inbox and tasks</div>
 													</div>
 												</div>
-											</a>
+											</a> --}}
 											<!--end::Item-->
 											<!--begin::Item-->
-											<a href="custom/apps/user/profile-2.html" class="navi-item px-8">
+											{{-- <a href="custom/apps/user/profile-2.html" class="navi-item px-8">
 												<div class="navi-link">
 													<div class="navi-icon mr-2">
 														<i class="flaticon2-rocket-1 text-danger"></i>
@@ -667,10 +667,10 @@ License: You must have a valid license purchased only from themeforest(the above
 														<div class="text-muted">Logs and notifications</div>
 													</div>
 												</div>
-											</a>
+											</a> --}}
 											<!--end::Item-->
 											<!--begin::Item-->
-											<a href="custom/apps/userprofile-1/overview.html" class="navi-item px-8">
+											{{-- <a href="custom/apps/userprofile-1/overview.html" class="navi-item px-8">
 												<div class="navi-link">
 													<div class="navi-icon mr-2">
 														<i class="flaticon2-hourglass text-primary"></i>
@@ -680,7 +680,7 @@ License: You must have a valid license purchased only from themeforest(the above
 														<div class="text-muted">latest tasks and projects</div>
 													</div>
 												</div>
-											</a>
+											</a> --}}
 											<!--end::Item-->
 											<!--begin::Footer-->
 											<div class="navi-separator mt-3"></div>
