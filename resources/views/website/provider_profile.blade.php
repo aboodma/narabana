@@ -27,7 +27,7 @@
         <div class="row d-inline d-sm-none d-lg-block">
             <div class="col-md-12">
               
-                <h2 class="">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>   <h5 style="font-weight: bold;color: #ba6089;">Offical Page</h5>
+                <h2 class="">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>   <span style="font-weight: bold;color: #ba6089;">Offical Page</span>
                 </h2>
             </div>
         </div>
