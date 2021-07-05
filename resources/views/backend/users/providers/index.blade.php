@@ -84,6 +84,8 @@
                             @endif
                             
                             <form action="{{route('admin.users.providers_destroy',[$user->id,$user->provider->id])}}" method="POST">
+                                @csrf
+                                @method("DELETE")
                             <a href="{{route('admin.users.providers_show',$user->id)}}" class="btn btn-sm btn-primary font-weight-bolder text-uppercase ">Show Profile</a>
                             <a href="{{route('admin.users.providers_edit',$user->id)}}" class="btn btn-sm btn-warning font-weight-bolder text-uppercase">Edit</a>
 
