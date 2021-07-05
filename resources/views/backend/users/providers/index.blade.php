@@ -83,7 +83,7 @@
                             <a href="{{route('admin.users.providers_approve',$user->provider->id)}}" class="btn btn-sm btn-success font-weight-bolder text-uppercase ">Approve</a>
                             @endif
                             
-                            <form action="{{route('admin.users.providers_destroy',[$user->id,$user->provider->i])}}" method="POST">
+                            <form action="{{route('admin.users.providers_destroy',[$user->id,$user->provider->id])}}" method="POST">
                             <a href="{{route('admin.users.providers_show',$user->id)}}" class="btn btn-sm btn-primary font-weight-bolder text-uppercase ">Show Profile</a>
                             <a href="{{route('admin.users.providers_edit',$user->id)}}" class="btn btn-sm btn-warning font-weight-bolder text-uppercase">Edit</a>
 
