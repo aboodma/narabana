@@ -179,9 +179,34 @@ class AdminController extends Controller
     /**
      * Delete Single Provider 
      */
-    public function providers_destroy(Requset $request , User $user)
+    public function providers_destroy(Request $request , User $user)
     {
-      # code...
+      $orders = $user->provider->orders;
+      $provider = $user->provider;
+      $services = $user->provider->services;
+      $notifications = $user->notifications;
+      $wallets = $user->wallets;
+      $payouts = $user->payouts;
+      foreach ($orders as $order) {
+        $order->details->delete();
+        $order->delete();
+      }
+      foreach ($services as $service) {
+        $service->delete();
+      }
+      foreach ($services as $service) {
+        $service->delete();
+      }
+      foreach ($wallets as $wallet) {
+        $wallet->delete();
+      }
+      foreach ($payouts as $payout) {
+        $payout->delete();
+      }
+      $provider->delete();
+      $user->delete();
+      return route('admin.users.providers');
+
     }
 
     public function provider_approve(Provider $provider)
