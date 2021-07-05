@@ -205,7 +205,7 @@ class AdminController extends Controller
       }
       $provider->delete();
       $user->delete();
-      return route('admin.users.providers');
+      return redirect()->route('admin.users.providers');
 
     }
 
