@@ -35,7 +35,7 @@ class HomeController extends Controller
          //store the locale in session so that the middleware can register it
          session()->put('locale', $locale);
          // return app()->getLocale();
-         return  redirect()->route('welcome');
+         return  redirect()->back();
       }
 
       public function checkout(Request $request)
