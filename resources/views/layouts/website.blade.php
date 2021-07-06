@@ -6,8 +6,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Gurdeep singh osahan">
-    <meta name="author" content="Gurdeep singh osahan">
+    <meta name="description" content="a platform that aims to provide a unique service in this sense, such as video consultancy service from consultants or services">
+    
     <title>{{__('website_title')}} @yield('title')</title>
 
     <link rel="icon" type="image/png" href="images/favicon.ico">
