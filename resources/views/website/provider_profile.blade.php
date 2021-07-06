@@ -353,7 +353,7 @@
                             <div class="form-group bg-light rounded p-1 " id="description_row" style="display: none">
 
 
-                                <h5>{{__('Service Descrption')}}</h5>
+                        
                                 <p id="description" class=""></p>
 
 
