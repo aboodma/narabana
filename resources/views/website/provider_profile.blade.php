@@ -10,8 +10,15 @@
 @section('content')
 <div class="services-wrapper bg-white py-4 ">
     <div class="container">
-        <div class="row">
+        <div class="row d-inline d-none d-sm-block d-md-none">
             <ol class="breadcrumb bg-white mb-0 pb-0">
+                <li class="breadcrumb-item"><a href="{{route('welcome')}}">{{__('Home')}}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('FilterByType',$provider->ProviderType->id)}}">{{_ti($provider->ProviderType->name)}}</a></li>
+                <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$provider->user->name}}</li>
+              </ol>
+        </div>
+        <div class="row d-none d-lg-block">
+            <ol class="breadcrumb bg-white ">
                 <li class="breadcrumb-item"><a href="{{route('welcome')}}">{{__('Home')}}</a></li>
                 <li class="breadcrumb-item"><a href="{{route('FilterByType',$provider->ProviderType->id)}}">{{_ti($provider->ProviderType->name)}}</a></li>
                 <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$provider->user->name}}</li>
@@ -19,7 +26,6 @@
         </div>
         <div class="row d-inline d-none d-sm-block d-md-none">
             <div class="col-md-12">
-               
                 <h2 class="pb-0">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>
                 </h2>
             </div>
