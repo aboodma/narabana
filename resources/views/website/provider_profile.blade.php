@@ -422,7 +422,7 @@
         @endif
         <div class="freelance-projects bg-white py-5">
             <div class="container">
-                <h1>{{_ti($provider->ProviderType->name)}}</h1>
+                <h3>{{_ti($provider->ProviderType->name)}}</h3>
                 <div class="row freelance-slider">
                     @foreach (\App\Provider::where('provider_type_id',$provider->ProviderType->id)->get()->take(10) as
                     $provider)
