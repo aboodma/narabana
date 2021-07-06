@@ -5,7 +5,7 @@
 @section('content')
 
 
-<div class="services-wrapper bg-white py-5">
+<div class="services-wrapper bg-white py-4">
     <div class="container">
         <div class="row main-slider">
 
@@ -39,7 +39,7 @@
 </div>
 
 
-<div class="services-wrapper bg-white py-3">
+<div class="services-wrapper bg-white py-1">
     <div class="container">
         <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-1">{{__('Categories')}}
             <a href="{{route('categories')}}" style="color:#d47fa6; font-weight:800" class="float-right"> <small
