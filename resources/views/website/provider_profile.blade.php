@@ -8,7 +8,7 @@
 </style>
 @endsection
 @section('content')
-<div class="services-wrapper bg-white py-4 ">
+<div class="services-wrapper bg-white py-2 ">
     <div class="container">
         <div class="row d-inline d-none d-sm-block d-md-none">
             <ol class="breadcrumb bg-white mb-0 pb-0">
