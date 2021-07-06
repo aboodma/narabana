@@ -210,11 +210,17 @@
                 <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$provider->user->name}}</li>
             </ol>
         </div>
-        <div class="row d-inline d-none d-sm-block d-md-none">
-            <div class="col-md-12">
+        <div class="row d-inline d-none d-sm-block d-md-none ">
+            <div class="col-md-12 d-flex justify-content-between">
                 <h2 class="pb-0">{{$provider->user->name}} <i class="fas fa-check-circle text-primary"
                         style="font-size: large;"></i>
                 </h2>
+                <button class="btn btn-icon " type="button" data-toggle="modal" data-target="#share"> <i
+                    class="fa fa-share-square"></i> </button>
+            </div>
+            <div class="col-md-12">
+                <span class="pb-2 mb-2 ">{{_ti($provider->Country->name)}} /
+                    {{_ti($provider->ProviderType->name)}}</span>
             </div>
         </div>
 
@@ -247,10 +253,10 @@
                             <h2 class="d-none d-lg-block">{{$provider->user->name}} <i
                                     class="fas fa-check-circle text-primary" style="font-size: large;"></i>
                             </h2>
-                            <button class="btn btn-icon" type="button" data-toggle="modal" data-target="#share"> <i
+                            <button class="btn btn-icon d-none d-lg-block" type="button" data-toggle="modal" data-target="#share"> <i
                                     class="fa fa-share-square"></i> </button>
                         </div>
-                        <span class="pb-2 mb-2">{{_ti($provider->Country->name)}} /
+                        <span class="pb-2 mb-2 d-none d-lg-block">{{_ti($provider->Country->name)}} /
                             {{_ti($provider->ProviderType->name)}}</span>
 
 
