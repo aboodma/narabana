@@ -52,15 +52,15 @@
 
             <form action="{{route('search')}}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
-                    <input type="text" style="border-top-left-radius:20px;border-bottom-left-radius:20px;padding:20px"
+                    <input type="text" style="/*! border-top-left-radius:20px; *//*! border-bottom-left-radius:20px; */padding:21px;border-radius: 20px;padding-right: 6.5rem;"
                         class="form-control bg-white small"name="q" placeholder="{{__('Find Services...')}}" aria-label="Search"
                         aria-describedby="basic-addon2">
-                    <div class="input-group-append">
+                   
                         <button class="btn btn-dark"
-                            style="border-top-right-radius:20px;border-bottom-right-radius:20px;" type="submit">
+                        style="/*! border-top-right-radius:20px; *//*! border-bottom-right-radius:20px; */position: absolute;right: 0px;/*! top: 0px; *//*! bottom: 0px; */border-radius: 20px;margin: 5px;background-color: #d47fa6;border-color: #d47fa6;" type="submit">
                             <i class="fa fa-search fa-sm"></i>
                         </button>
-                    </div>
+                 
                 </div>
             </form>
 
