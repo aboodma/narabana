@@ -33,7 +33,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--end::Global Theme Styles-->
 		<!--begin::Layout Themes(used by all pages)-->
 		<!--end::Layout Themes-->
-		<link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+		<link rel="icon" type="image/png" href="images/favicon.ico">
 		@yield('style')
 	</head>
 	<!--end::Head-->
