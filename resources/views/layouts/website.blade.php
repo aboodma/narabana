@@ -26,8 +26,12 @@
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
+    @if(app()->getLocale() == "ar")
+    <link href="{{asset('css/style-ar.css')}}" rel="stylesheet">
+    @else 
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
+    @endif
 
 
     @yield('style')
