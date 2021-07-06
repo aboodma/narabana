@@ -46,7 +46,8 @@
     <nav class="navbar navbar-expand-lg navbar-light topbar  shadow-sm bg-white osahan-nav-top px-1  ">
         <div class="container">
 
-            <a class="navbar-brand d-none d-lg-block" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
+            <a class="navbar-brand d-none d-lg-block" href="{{route('welcome')}}">
+                <img src="{{asset('images/logo.png')}}" style="height: 30px;" alt=""></a>
             <a class="navbar-brand d-lg-none  m-auto  pb-3" href="{{route('welcome')}}">
                 <img style="height: 30px;" src="{{asset('images/logo.png')}}" alt=""></a>
 
