@@ -252,7 +252,10 @@
                         <div class="d-flex justify-content-between">
                             <h2 class="d-none d-lg-block">{{$provider->user->name}} <i
                                     class="fas fa-check-circle text-primary" style="font-size: large;"></i>
-                            </h2>
+                                    <button type="button" class="btn btn-outline-danger pink-btn btn-borderless " data-toggle="modal" data-target="#reservationModal">
+                                        Make Reservation
+                                    </button>
+                                </h2>
                             <button class="btn btn-icon d-none d-lg-block" type="button" data-toggle="modal" data-target="#share"> <i
                                     class="fa fa-share-square"></i> </button>
                         </div>
@@ -595,6 +598,46 @@
                         </div>
                     </div>
 
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="reservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="reservationModalLabel">{{__('Ask For Reservation')}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body border-0" >
+                    <div class="form-horizontal">
+                        <form action="{{route('reservation_store')}}" method="post" class="form">
+                                @csrf
+                            <input type="hidden" name="provider_id" value="{{$provider->id}}">
+                            <div class="form-group">
+                                <label for="">Date</label>
+                                <input type="date" class="datepicker form-control" value="{{date('Y-m-d', strtotime("+1 week"))}}" min="{{date('Y-m-d', strtotime("+1 week"))}}" name="date" id="date">
+                            </div>
+                            <div class="form-group">
+                                    <label for="">Phone <small>example : +90 000 000 0000</small></label>
+                                <input id="phone" name="phone" placeholder="+90 000 000 0000" type="tel" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Reservation Reason <small>(Please Explane The Reason in 60 Charecter)</small> </label>
+                                <input maxlength="60" type="text" class="form-control" name="reservation_reason" >
+                            </div>
+                            <div class="form-group">
+                                <label for="">Notes</label>
+                                <textarea name="msg" id="" class="form-control" cols="30" rows="10"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-outline-primary form-control">Make Reservation</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
             </div>
