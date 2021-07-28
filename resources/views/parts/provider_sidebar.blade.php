@@ -47,6 +47,9 @@
                 <a class="dropdown-item py-2" href="{{route('provider.wallet')}}">
                     {{__('My Wallet')}}
                 </a>
+                <a class="dropdown-item py-2" href="{{route('provider.reservations')}}">
+                    {{__('My Reservations')}}
+                </a>
                 <a class="dropdown-item py-2" href="{{route('provider.payouts')}}">
                     {{__('Payout Requests')}}
                 </a>

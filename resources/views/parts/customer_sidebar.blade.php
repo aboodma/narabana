@@ -35,6 +35,10 @@
                   href="{{route('customer.myFavoritList')}} ">
                   <i class="fas fa-star mr-2"></i>  {{__('My Favorit Celebrates')}}
               </a>
+              <a class="dropdown-item py-2 @if (Route::is('customer.reservations')) active   @endif"
+              href="{{route('customer.reservations')}} ">
+               <i class="fas fa-book mr-2"></i>  {{__('My Reservations')}}
+           </a>
               
           </div>
       </div>
