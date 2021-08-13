@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <div class="buttons-wrapper  justify-content-around" style="display:block ">
-                    <a href="{{route('provider_profile',auth()->user()->provider->username)}}" target="_blank" class="btn btn-success btn-contact-me js-contact-me js-open-popup-join">{{__('Show Profile')}}</a>
+                    <a href="{{route('provider_profile',auth()->user()->provider->slug)}}" target="_blank" class="btn btn-success btn-contact-me js-contact-me js-open-popup-join">{{__('Show Profile')}}</a>
                    <a href="{{route('provider.profile')}}" class="btn btn-outline-secondary">{{__('Edit Profile')}}</a>
                 </div>
                 <div class="user-stats-desc">
