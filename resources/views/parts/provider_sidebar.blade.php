@@ -57,9 +57,9 @@
 
 
 
-                <a class="dropdown-item py-2 " href="edit-payment.html">
+                {{-- <a class="dropdown-item py-2 " href="edit-payment.html">
                     {{__('Log Out')}}
-                </a>
+                </a> --}}
             </div>
         </div>
     </div>
